@@ -1,0 +1,9 @@
+# Virtual env
+venv
+
+# Notebooks cache files
+**/.ipynb_checkpoints
+
+#IDE
+
+**/.idea
