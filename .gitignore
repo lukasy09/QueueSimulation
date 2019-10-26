@@ -5,5 +5,7 @@ venv
 **/.ipynb_checkpoints
 
 #IDE
-
 **/.idea
+
+# Cache
+*.pyc
