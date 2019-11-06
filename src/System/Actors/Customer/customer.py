@@ -16,6 +16,7 @@ class Customer:
     hurry = None
 
     status = CustomerStatus.BEFORE  # Default status, BEFORE entering the system
+    shopping_remaining_time = None
 
     def __init__(self, identifier, age, sex, disable, pregnant, hurry):
         self.id = identifier
@@ -30,6 +31,9 @@ class Customer:
 
     def set_status(self, status):
         self.status = status
+
+    def decrement_remaining_time(self):
+        self.shopping_remaining_time -= 1
 
     def __str__(self):
         return "Customer:Index {}, Age:{}, Sex:{}, Disable:{}, Pregnant: {}, In hurry: {}".format(self.index, self.age,
