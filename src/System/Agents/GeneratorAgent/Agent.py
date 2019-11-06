@@ -33,7 +33,6 @@ class GeneratorAgent:
             customer = self.generate_customer()
             customer.set_index(i)
             self.customer_pool.append(customer)
-            print(customer)
         return self.customer_pool
 
     def generate_customer(self):
@@ -51,5 +50,4 @@ class GeneratorAgent:
         customer = Customer(identifier=str(uuid.uuid1()), age=age, sex=sex, disable=disable, pregnant=pregnant,
                             hurry=hurry)
         return customer
-
 
