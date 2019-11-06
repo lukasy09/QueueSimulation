@@ -1,16 +1,34 @@
+"""
+    The class represents the system's main actor
+"""
+
+
 class Customer:
     id = None
+    index = None  # Informs about creation order of customers
     age = None
     sex = None
-    is_disable = None
-    is_pregnant = None
-    is_in_hurry = None
+    disable = None
+    pregnant = None
+    hurry = None
 
-    def __init__(self, identifier):
+    status = None
+
+    def __init__(self, identifier, age, sex, disable, pregnant, hurry):
         self.id = identifier
+        self.age = age
+        self.sex = sex
+        self.disable = disable
+        self.pregnant = pregnant
+        self.hurry = hurry
+
+    def set_index(self, index):
+        self.index = index
+
 
     def __str__(self):
-        return "Customer: Age:{}, Sex:{}, Disable:{}, Pregnant: {}, In hurry: {}".format(self.age, self.sex,
-                                                                                         self.is_disable,
-                                                                                         self.is_pregnant,
-                                                                                         self.is_in_hurry)
+        return "Customer:Index {}, Age:{}, Sex:{}, Disable:{}, Pregnant: {}, In hurry: {}".format(self.index, self.age,
+                                                                                                  self.sex,
+                                                                                                  self.disable,
+                                                                                                  self.pregnant,
+                                                                                                  self.hurry)

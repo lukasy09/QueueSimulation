@@ -1,10 +1,6 @@
 # Imports
-from src.System.Agents.GeneratorAgent.agent import GeneratorAgent
-from src.System.Agents.ManagingAgent.agent import ManagingAgent
+from src.System.Agents.ManagingAgent.Agent import ManagingAgent
 
 # Run Simulation
 manager = ManagingAgent()
-gen = GeneratorAgent()
-
-customer = gen.generate_customer()
-print(customer)
+manager.setup_initial_state()
