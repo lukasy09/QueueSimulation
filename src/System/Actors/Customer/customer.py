@@ -1,4 +1,4 @@
-from System.Agents.ManagingAgent.customer_status import CustomerStatus
+from System.Agents.ManagingAgent.customer_simulation_status import CustomerSimulationStatus
 
 """
     The class represents the system's main actor
@@ -19,17 +19,20 @@ class Customer:
     hurry = None
 
     # Simulation info
-    status = CustomerStatus.BEFORE  # Default status, BEFORE entering the system
+    status = CustomerSimulationStatus.BEFORE  # Default status, BEFORE entering the system
     shopping_remaining_time = None
 
     def __init__(self, identifier=None, biometric=None):
         self.index = identifier
         self.biometric = biometric
 
-    def set_status(self, status):
+    def set_simulation_status(self, status):
         self.status = status
 
-    def decrement_remaining_time(self):
+    def set_customer_status(self, status):
+        self.customer_status = status
+
+    def update_remaining_time(self):
         self.shopping_remaining_time -= 1
 
     def __str__(self):

@@ -8,7 +8,7 @@ class ManagingAgent:
 
     # Simulation constant
     simulation_time = 3600  # time unit e.g seconds, minutes etc.
-    pool_size = 100
+    pool_size = 1000
     defaultTraffic = Traffic.MEDIUM
 
     # queue_type: count
@@ -30,7 +30,7 @@ class ManagingAgent:
     # """Simulation variables
     customer_pool = []
     queues = []
-    traffic = None
+    traffic = Traffic.MEDIUM
 
     def __init__(self, traffic=defaultTraffic):
         self.gen = GeneratorAgent()

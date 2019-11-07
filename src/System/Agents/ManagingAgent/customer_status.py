@@ -1,5 +1,5 @@
 class CustomerStatus:
-        BEFORE = 1
-        IN = 2
-        AFTER = 3
+    NORMAL = "NORMAL"
+    REGULAR = "REGULAR"
+    VIP = "VIP"
 
