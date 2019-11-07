@@ -1,33 +1,30 @@
+from System.Agents.ManagingAgent.customer_status import CustomerStatus
+
 """
     The class represents the system's main actor
 """
-from src.System.Agents.ManagingAgent.customer_status import CustomerStatus
 
 
 class Customer:
 
-    # Customer's properties
-    id = None
-    index = None  # Informs about creation order of customers
+    # identification data stored in the main db
+    index = None  # Informs about creation order of customers, unique.
+    biometric = None  # Biometric data of a customer, unique
+    customer_status = None  # Informs about the customer status(e.g is he/she a VIP or a regular customer)
+    # Customer's properties set by the monitoring system
     age = None
     sex = None
     disable = None
     pregnant = None
     hurry = None
 
+    # Simulation info
     status = CustomerStatus.BEFORE  # Default status, BEFORE entering the system
     shopping_remaining_time = None
 
-    def __init__(self, identifier, age, sex, disable, pregnant, hurry):
-        self.id = identifier
-        self.age = age
-        self.sex = sex
-        self.disable = disable
-        self.pregnant = pregnant
-        self.hurry = hurry
-
-    def set_index(self, index):
-        self.index = index
+    def __init__(self, identifier=None, biometric=None):
+        self.index = identifier
+        self.biometric = biometric
 
     def set_status(self, status):
         self.status = status
@@ -36,8 +33,10 @@ class Customer:
         self.shopping_remaining_time -= 1
 
     def __str__(self):
-        return "Customer:Index {}, Age:{}, Sex:{}, Disable:{}, Pregnant: {}, In hurry: {}".format(self.index, self.age,
-                                                                                                  self.sex,
-                                                                                                  self.disable,
-                                                                                                  self.pregnant,
-                                                                                                  self.hurry)
+        return "Customer:Index {},Biometric:{}, Age:{}, Sex:{}, Disable:{}, Pregnant: {}, In hurry: {}".format(self.index,
+                                                                                                               self.biometric,
+                                                                                                               self.age,
+                                                                                                               self.sex,
+                                                                                                               self.disable,
+                                                                                                               self.pregnant,
+                                                                                                               self.hurry)

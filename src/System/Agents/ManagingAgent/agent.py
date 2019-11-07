@@ -1,20 +1,23 @@
-from src.System.Actors.Queue.queue import Queue
-from src.System.Agents.GeneratorAgent.agent import GeneratorAgent
-from src.System.Agents.ManagingAgent.queue_types import QueueType
-from src.System.Agents.ManagingAgent.simulation_mode import Traffic
+from System.Actors.Queue.queue import Queue
+from System.Agents.GeneratorAgent.agent import GeneratorAgent
+from System.Agents.ManagingAgent.queue_types import QueueType
+from System.Agents.ManagingAgent.simulation_mode import Traffic
 
 
 class ManagingAgent:
 
-    """Simulation constants"""
+    # Simulation constant
     simulation_time = 3600  # time unit e.g seconds, minutes etc.
-    pool_size = 1000
+    pool_size = 100
     defaultTraffic = Traffic.MEDIUM
+
+    # queue_type: count
     queues_config = {
         QueueType.NORMAL: 2,
         QueueType.PRIVILEGED: 1,
         QueueType.MOST_PRIVILEGED: 1
     }
+
     # Pseudo-random client generation periods
     customer_period = {
         Traffic.VERY_HIGH: (10, 60),
@@ -24,7 +27,7 @@ class ManagingAgent:
         Traffic.VERY_LOW: (50, 800)
     }
 
-    """Simulation variables"""
+    # """Simulation variables
     customer_pool = []
     queues = []
     traffic = None
@@ -33,22 +36,22 @@ class ManagingAgent:
         self.gen = GeneratorAgent()
         self.traffic = traffic
 
-    # Creating customer pool, queues
+    """Creating customer pool, queues"""
     def setup_initial_state(self):
         self.queues = self.init_queues()
         self.customer_pool = self.gen.generate_population(self.pool_size)
 
 
+    """Initialising queues based on the config map"""
     def init_queues(self):
         queues = []
         config = self.queues_config.items()
-        for uniq_id, item in enumerate(config):
-            index = uniq_id
+        uniq_index = 0
+        for item in config:
             queue_type = item[0]
             count = item[1]
             for i in range(count):
-                queue = Queue(index, queue_type)
+                queue = Queue(uniq_index, queue_type)
                 queues.append(queue)
-
-
+                uniq_index += 1
         return queues

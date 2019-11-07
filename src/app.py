@@ -1,6 +1,6 @@
 # Imports
-from src.System.Agents.ManagingAgent.agent import ManagingAgent
-from src.System.Agents.ManagingAgent.simulation_mode import Traffic
+from System.Agents.ManagingAgent.agent import ManagingAgent
+from System.Agents.ManagingAgent.simulation_mode import Traffic
 
 # Run Simulation
 
@@ -17,10 +17,10 @@ customer_pool = manager.customer_pool
 time = 0  # Variable holds the current time of simulation
 
 
-while time < manager.simulation_time:
-    # Is new customer in our system?
-
-    break
-
-
-    time += 1
+# while time < manager.simulation_time:
+#     # Is new customer in our system?
+#
+#     break
+#
+#
+#     time += 1
