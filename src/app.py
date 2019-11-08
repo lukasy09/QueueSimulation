@@ -1,8 +1,7 @@
 # Imports
 from System.Agents.ManagingAgent.agent import ManagingAgent
 from System.Agents.ManagingAgent.simulation_mode import Traffic
-
-# Run Simulation
+from Utils.GaussianUtil import generate_integer_in_range
 
 # Simulation parameters(if not using the default ones)
 traffic = Traffic.HIGH
@@ -11,16 +10,20 @@ traffic = Traffic.HIGH
 manager = ManagingAgent(traffic=traffic)
 manager.setup_initial_state()  # Creating customer pool & queues
 
-customer_pool = manager.customer_pool
+customer_pool = manager.customer_pool # All available customers
 
 # Start
 time = 0  # Variable holds the current time of simulation
+appear_time = generate_integer_in_range(manager.customer_period_range[0], manager.customer_period_range[1] + 1)
 
+count = 0
+while time < manager.simulation_time:
+    # Is new customer in our system?
+    if time == appear_time:
+        appear_time = generate_integer_in_range(manager.customer_period_range[0] + time,manager.customer_period_range[1] + time + 1)
 
-# while time < manager.simulation_time:
-#     # Is new customer in our system?
-#
-#     break
-#
-#
-#     time += 1
+        count += 1
+
+    time += 1
+
+print(count)

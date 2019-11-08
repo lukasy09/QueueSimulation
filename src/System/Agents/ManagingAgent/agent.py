@@ -9,7 +9,9 @@ class ManagingAgent:
     # Simulation constant
     simulation_time = 3600  # time unit e.g seconds, minutes etc.
     pool_size = 1000
+    expected_shopping_time = 600
     defaultTraffic = Traffic.MEDIUM
+    customer_period_range = None  # This parameter is is set during runtime
 
     # queue_type: count
     queues_config = {
@@ -19,7 +21,7 @@ class ManagingAgent:
     }
 
     # Pseudo-random client generation periods
-    customer_period = {
+    customer_period_ranges = {
         Traffic.VERY_HIGH: (10, 60),
         Traffic.HIGH: (10, 100),
         Traffic.MEDIUM: (30, 180),
@@ -30,11 +32,15 @@ class ManagingAgent:
     # """Simulation variables
     customer_pool = []
     queues = []
+    virtual_queue = []
+    system_customers = []
+
     traffic = Traffic.MEDIUM
 
     def __init__(self, traffic=defaultTraffic):
         self.gen = GeneratorAgent()
         self.traffic = traffic
+        self.customer_period_range = self.customer_period_ranges[self.traffic]
 
     """Creating customer pool, queues"""
     def setup_initial_state(self):

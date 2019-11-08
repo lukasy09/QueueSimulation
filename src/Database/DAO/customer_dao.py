@@ -11,6 +11,7 @@ class CustomerDao:
                                            database=db_config["db"])
         self.cursor = self.cnx.cursor()
 
+    """"""
     def initialise_customers_table(self):
         query = "TRUNCATE TABLE customers;"
         self.cursor.execute(query)
