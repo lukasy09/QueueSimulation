@@ -1,5 +1,5 @@
-from Database.config import db_config
 import mysql.connector
+from Database.config import db_config
 
 
 class CustomerDao:

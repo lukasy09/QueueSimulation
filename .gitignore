@@ -1,5 +1,6 @@
 # Virtual env
 venv
+.env
 
 # Notebooks cache files
 **/.ipynb_checkpoints
@@ -9,3 +10,5 @@ venv
 
 # Cache
 *.pyc
+
+.vscode

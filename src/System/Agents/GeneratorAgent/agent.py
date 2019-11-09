@@ -1,8 +1,8 @@
+from Database.DAO.customer_dao import CustomerDao
 import uuid
 from System.Actors.Customer.customer import Customer
 from System.Agents.ManagingAgent.customer_status import CustomerStatus
 from Utils.GaussianUtil import generate_uniform_random
-from Database.DAO.customer_dao import CustomerDao
 
 
 class GeneratorAgent:
