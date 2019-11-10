@@ -24,8 +24,6 @@ class GeneratorAgent:
     """Data access object"""
     dao = CustomerDao()
 
-    gaussianUtil = GaussianUtil()
-
     def generate_population(self, size):
         self.dao.initialise_customers_table()
         for i in range(0, size):
@@ -33,7 +31,7 @@ class GeneratorAgent:
             customer = self.generate_customer(index=i, biometric=biometric)
 
             # The customer is a regular one. He will be saved to the main database.
-            criteria = self.gaussianUtil.generate_uniform_random()
+            criteria = GaussianUtil.generate_uniform_random()
             if criteria <= self.regular_probability:
                 if criteria <= self.vip_probability:
                     customer.set_customer_status(CustomerStatus.VIP)

@@ -9,8 +9,6 @@ from random import *
 # Simulation parameters(if not using the default ones)
 traffic = Traffic.HIGH
 
-#GaussianUtil
-gaussianUtil = GaussianUtil();
 
 # Setting up initials
 manager = ManagingAgent(traffic=traffic)
@@ -20,7 +18,7 @@ customer_pool = manager.customer_pool # All available customers
 
 # Start
 current_time = 0  # Variable holds the current time of simulation
-appear_time = gaussianUtil.generate_integer_in_range(manager.customer_period_range[0], manager.customer_period_range[1] + 1)
+appear_time = GaussianUtil.generate_integer_in_range(manager.customer_period_range[0], manager.customer_period_range[1] + 1)
 
 count = 0
 while current_time < manager.simulation_time:
@@ -33,7 +31,7 @@ while current_time < manager.simulation_time:
         print('Queue ' + str(i) + ': ' + ('+' * randrange(0, 8)))
     time.sleep(1)
     if current_time == appear_time:
-        appear_time = gaussianUtil.generate_integer_in_range(manager.customer_period_range[0] + current_time, manager.customer_period_range[1] + current_time + 1)
+        appear_time = GaussianUtil.generate_integer_in_range(manager.customer_period_range[0] + current_time, manager.customer_period_range[1] + current_time + 1)
 
         count += 1
 
