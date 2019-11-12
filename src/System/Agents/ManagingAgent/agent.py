@@ -3,6 +3,7 @@ from System.Agents.GeneratorAgent.agent import GeneratorAgent
 from System.Agents.ManagingAgent.queue_types import QueueType
 from System.Agents.ManagingAgent.simulation_mode import Traffic
 from System.Agents.ManagingAgent.customer_simulation_status import CustomerSimulationStatus
+from System.Agents.ManagingAgent.customer_status import CustomerStatus
 from System.Agents.IdentificationAgent.agent import IdentificationAgent
 from Database.DAO.customer_dao import CustomerDao
 
@@ -82,9 +83,17 @@ class ManagingAgent:
     """Importing an unit(customer) to the system."""
     def import_to_system(self, index):
         new_customer = self.customer_pool[index]
-        self.identification_agent.identify(new_customer)
+        new_customer.set_simulation_status(CustomerSimulationStatus.IN)  # Setting the customer's simulation status
+
+        customer_data = self.identification_agent.identify(new_customer)
+        if customer_data is not None:  # The customer has been found
+            new_customer.set_customer_status(customer_data[2])
+            new_customer.set_is_new(bool(customer_data[3]))
+        else:  # The customer is new
+            new_customer.set_customer_status(CustomerStatus.NORMAL)
+            new_customer.set_is_new(True)
+            self.identification_agent.save_new_customer(new_customer)
 
         self.system_customers.append(new_customer)  # Adding to the system's list
-        new_customer.set_simulation_status(CustomerSimulationStatus.IN)  # Setting the customer's simulation status
         del self.customer_pool[index]  # Removing from the customer pool
 

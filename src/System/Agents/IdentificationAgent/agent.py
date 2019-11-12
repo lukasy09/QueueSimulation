@@ -15,5 +15,7 @@ class IdentificationAgent:
 
     def identify(self, customer):
         biometric = self.fingerprint_reader.read(customer)
-        self.dao.get_customer_by_biometric(biometric)
+        return self.dao.get_customer_by_biometric(biometric)
 
+    def save_new_customer(self, customer):
+        self.dao.save_new_customer(customer)

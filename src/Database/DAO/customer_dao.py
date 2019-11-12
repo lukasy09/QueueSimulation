@@ -16,7 +16,7 @@ class CustomerDao:
         query = "TRUNCATE TABLE customers;"
         self.cursor.execute(query)
 
-    def save_customer(self, customer=None, customer_status = None, is_new=None):
+    def save_customer(self, customer=None, customer_status=None, is_new=None):
         biometric = str(customer.biometric)
         customer_status = str(customer_status)
         is_new = bool(is_new)
@@ -27,7 +27,13 @@ class CustomerDao:
     def get_customer_by_biometric(self, biometric):
         query = "SELECT * FROM customers where biometric = '{}' LIMIT 1".format(biometric)
         self.cursor.execute(query)
-
         customer = self.cursor.fetchone()
-        print(customer)
+        return customer
+
+    """This method is run in simulation time"""
+    def save_new_customer(self, customer):
+        query = "INSERT INTO customers (biometric, customer_status, is_new) VALUES(%s, %s, %s);"
+        self.cursor.execute(query, (str(customer.biometric), customer.customer_status, customer.is_new))
+        self.cnx.commit()
+
 
