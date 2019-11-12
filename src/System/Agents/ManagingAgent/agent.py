@@ -2,6 +2,11 @@ from System.Actors.Queue.queue import Queue
 from System.Agents.GeneratorAgent.agent import GeneratorAgent
 from System.Agents.ManagingAgent.queue_types import QueueType
 from System.Agents.ManagingAgent.simulation_mode import Traffic
+from System.Agents.ManagingAgent.customer_simulation_status import CustomerSimulationStatus
+from System.Agents.IdentificationAgent.agent import IdentificationAgent
+from Database.DAO.customer_dao import CustomerDao
+
+"""Managing agent  - MA"""
 
 
 class ManagingAgent:
@@ -35,12 +40,23 @@ class ManagingAgent:
     virtual_queue = []
     queues = []
 
+    # Defaults
     traffic = Traffic.MEDIUM
 
+    # Agents
+    identification_agent = IdentificationAgent()
+
+    # Others aggregated objects
+    dao = CustomerDao()
+
     def __init__(self, traffic=defaultTraffic):
-        self.gen = GeneratorAgent()
+        self.gen = GeneratorAgent(self.dao)
         self.traffic = traffic
         self.customer_period_range = self.customer_period_ranges[self.traffic]
+
+        self.identification_agent.set_dao(self.dao)
+
+
 
     """Creating customer pool, queues"""
     def setup_initial_state(self):
@@ -62,8 +78,13 @@ class ManagingAgent:
                 uniq_index += 1
         return queues
 
+
     """Importing an unit(customer) to the system."""
     def import_to_system(self, index):
         new_customer = self.customer_pool[index]
+        self.identification_agent.identify(new_customer)
+
         self.system_customers.append(new_customer)  # Adding to the system's list
+        new_customer.set_simulation_status(CustomerSimulationStatus.IN)  # Setting the customer's simulation status
         del self.customer_pool[index]  # Removing from the customer pool
+

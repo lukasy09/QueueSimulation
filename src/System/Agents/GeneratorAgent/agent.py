@@ -1,8 +1,8 @@
 from Database.DAO.customer_dao import CustomerDao
-import uuid
 from System.Actors.Customer.customer import Customer
 from System.Agents.ManagingAgent.customer_status import CustomerStatus
 from Utils.GeneratorUtil import GeneratorUtil
+import uuid
 
 
 class GeneratorAgent:
@@ -20,24 +20,24 @@ class GeneratorAgent:
 
     customer_pool = []
 
-
-    """Data access object"""
-    dao = CustomerDao()
+    def __init__(self, dao):
+        self.dao = dao
 
     def generate_population(self, size):
         self.dao.initialise_customers_table()
         for i in range(0, size):
             biometric = self.generate_biometric()
             customer = self.generate_customer(index=i, biometric=biometric)
-
             # The customer is a regular one. He will be saved to the main database.
             criteria = GeneratorUtil.generate_uniform_random()
             if criteria <= self.regular_probability:
+                is_new = False
                 if criteria <= self.vip_probability:
-                    customer.set_customer_status(CustomerStatus.VIP)
+                    customer_status = CustomerStatus.VIP
                 else:
-                    customer.set_customer_status(CustomerStatus.REGULAR)
-                self.dao.save_customer(customer)
+                    customer_status = CustomerStatus.REGULAR
+
+                self.dao.save_customer(customer, customer_status, is_new)
 
             self.customer_pool.append(customer)
 

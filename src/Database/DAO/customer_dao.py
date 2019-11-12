@@ -9,16 +9,25 @@ class CustomerDao:
                                            password=db_config["password"],
                                            host=db_config["host"],
                                            database=db_config["db"])
-        self.cursor = self.cnx.cursor()
+        self.cursor = self.cnx.cursor(buffered=True)
 
-    """"""
+    """Setting up the environment"""
     def initialise_customers_table(self):
         query = "TRUNCATE TABLE customers;"
         self.cursor.execute(query)
 
-    def save_customer(self, customer=None):
+    def save_customer(self, customer=None, customer_status = None, is_new=None):
         biometric = str(customer.biometric)
-        status = customer.customer_status
-        query = "INSERT INTO customers (biometric, customer_status) VALUES(%s, %s);"
-        self.cursor.execute(query, (biometric, status))
+        customer_status = str(customer_status)
+        is_new = bool(is_new)
+        query = "INSERT INTO customers (biometric, customer_status, is_new) VALUES(%s, %s, %s);"
+        self.cursor.execute(query, (biometric, customer_status, is_new))
         self.cnx.commit()
+
+    def get_customer_by_biometric(self, biometric):
+        query = "SELECT * FROM customers where biometric = '{}' LIMIT 1".format(biometric)
+        self.cursor.execute(query)
+
+        customer = self.cursor.fetchone()
+        print(customer)
+

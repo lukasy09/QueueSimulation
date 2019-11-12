@@ -37,5 +37,3 @@ class Simulation:
                 appear_time = GeneratorUtil.get_next_appear_time(manager.customer_period_range[0], manager.customer_period_range[1], current_time)
 
             current_time += 1
-        print(len(manager.customer_pool))
-        print(len(manager.system_customers))
