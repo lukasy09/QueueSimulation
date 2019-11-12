@@ -11,12 +11,13 @@ class Customer:
     index = None  # Informs about creation order of customers, unique.
     biometric = None  # Biometric data of a customer, unique
     customer_status = None  # Informs about the customer status(e.g is he/she a VIP or a regular customer)
+
     # Customer's properties set by the monitoring system
     age = None
     sex = None
     disable = None
     pregnant = None
-    hurry = None
+    thermal = None
 
     # Simulation info
     status = CustomerSimulationStatus.BEFORE  # Default status, BEFORE entering the system
@@ -36,10 +37,12 @@ class Customer:
         self.shopping_remaining_time -= 1
 
     def __str__(self):
-        return "Customer:Index {},Biometric:{}, Age:{}, Sex:{}, Disable:{}, Pregnant: {}, In hurry: {}".format(self.index,
-                                                                                                               self.biometric,
-                                                                                                               self.age,
-                                                                                                               self.sex,
-                                                                                                               self.disable,
-                                                                                                               self.pregnant,
-                                                                                                               self.hurry)
+        return "Customer:Index {},Biometric:{}, Status: {}, Simulation status: {}, Age:{}, Sex:{}, Disable:{}, Pregnant: {}, Thermal: {}".format(self.index,
+                                                                                                                                                 self.biometric,
+                                                                                                                                                 self.customer_status,
+                                                                                                                                                 self.status,
+                                                                                                                                                 self.age,
+                                                                                                                                                 self.sex,
+                                                                                                                                                 self.disable,
+                                                                                                                                                 self.pregnant,
+                                                                                                                                                 self.thermal)

@@ -2,7 +2,7 @@ from Database.DAO.customer_dao import CustomerDao
 import uuid
 from System.Actors.Customer.customer import Customer
 from System.Agents.ManagingAgent.customer_status import CustomerStatus
-from Utils.GaussianUtil import GaussianUtil
+from Utils.GeneratorUtil import GeneratorUtil
 
 
 class GeneratorAgent:
@@ -31,7 +31,7 @@ class GeneratorAgent:
             customer = self.generate_customer(index=i, biometric=biometric)
 
             # The customer is a regular one. He will be saved to the main database.
-            criteria = GaussianUtil.generate_uniform_random()
+            criteria = GeneratorUtil.generate_uniform_random()
             if criteria <= self.regular_probability:
                 if criteria <= self.vip_probability:
                     customer.set_customer_status(CustomerStatus.VIP)

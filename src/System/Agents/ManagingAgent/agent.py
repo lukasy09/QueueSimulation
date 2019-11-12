@@ -29,11 +29,11 @@ class ManagingAgent:
         Traffic.VERY_LOW: (50, 800)
     }
 
-    # """Simulation variables
+    # Simulation variables
     customer_pool = []
-    queues = []
-    virtual_queue = []
     system_customers = []
+    virtual_queue = []
+    queues = []
 
     traffic = Traffic.MEDIUM
 
@@ -61,3 +61,9 @@ class ManagingAgent:
                 queues.append(queue)
                 uniq_index += 1
         return queues
+
+    """Importing an unit(customer) to the system."""
+    def import_to_system(self, index):
+        new_customer = self.customer_pool[index]
+        self.system_customers.append(new_customer)  # Adding to the system's list
+        del self.customer_pool[index]  # Removing from the customer pool
