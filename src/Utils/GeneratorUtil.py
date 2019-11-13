@@ -24,3 +24,7 @@ class GeneratorUtil:
     @staticmethod
     def get_next_appear_time(low, high, current_time):
         return GeneratorUtil.generate_integer_in_range(low + current_time, high + current_time + 1)
+
+    @staticmethod
+    def generate_shopping_time(mu, sigma):
+        return int(round(GeneratorUtil.generate_in_distribution(mu, sigma, n=1)[0]))

@@ -36,7 +36,7 @@ class GeneratorAgent:
                     customer_status = CustomerStatus.VIP
                 else:
                     customer_status = CustomerStatus.REGULAR
-
+                customer.set_customer_status(customer_status)
                 self.dao.save_customer(customer, customer_status, is_new)
 
             self.customer_pool.append(customer)

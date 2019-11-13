@@ -1,5 +1,12 @@
-class FingerprintReader:
+from System.Actors.IoT.sensor import Sensor
 
-    @staticmethod
-    def read(customer):
-        return customer.biometric
+
+class FingerprintReader(Sensor):
+
+    biometric = None
+
+    def read(self, customer):
+        self.biometric = customer.biometric
+
+    def send(self):
+        return self.biometric

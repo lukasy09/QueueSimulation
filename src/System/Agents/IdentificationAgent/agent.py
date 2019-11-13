@@ -1,6 +1,9 @@
 from System.Actors.IoT.fingerprint_reader import FingerprintReader
 from Database.DAO.customer_dao import CustomerDao
 
+"""Identification agent,cooperating with fingerprint reader(s). 
+    It manages them, responsible for customer identification and registering if he/she is not known to the system """
+
 
 class IdentificationAgent:
 
@@ -14,8 +17,9 @@ class IdentificationAgent:
         self.dao = dao
 
     def identify(self, customer):
-        biometric = self.fingerprint_reader.read(customer)
+        self.fingerprint_reader.read(customer)
+        biometric = self.fingerprint_reader.send()
         return self.dao.get_customer_by_biometric(biometric)
 
-    def save_new_customer(self, customer):
+    def register_new_customer(self, customer):
         self.dao.save_new_customer(customer)

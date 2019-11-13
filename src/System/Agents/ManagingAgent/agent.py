@@ -14,7 +14,7 @@ class ManagingAgent:
 
     # Simulation constant
     simulation_time = 3600  # time unit e.g seconds, minutes etc.
-    pool_size = 1000
+    pool_size = 1000   # The pool of customers.
     expected_shopping_time = 600
     defaultTraffic = Traffic.MEDIUM
     customer_period_range = None  # This parameter is is set during runtime
@@ -35,6 +35,8 @@ class ManagingAgent:
         Traffic.VERY_LOW: (50, 800)
     }
 
+    shopping_time_distribution = (10 * 60, 250)  # N ~ (m, s), expected value is in seconds
+
     # Simulation variables
     customer_pool = []
     system_customers = []
@@ -46,6 +48,7 @@ class ManagingAgent:
 
     # Agents
     identification_agent = IdentificationAgent()
+    monitoring_agents = []
 
     # Others aggregated objects
     dao = CustomerDao()
@@ -60,7 +63,7 @@ class ManagingAgent:
 
 
     """Creating customer pool, queues"""
-    def setup_initial_state(self):
+    def setup_environment(self):
         self.queues = self.init_queues()
         self.customer_pool = self.gen.generate_population(self.pool_size)
 
@@ -81,18 +84,16 @@ class ManagingAgent:
 
 
     """Importing an unit(customer) to the system."""
-    def import_to_system(self, index):
-        new_customer = self.customer_pool[index]
+    def import_to_system(self, new_customer, index):
         new_customer.set_simulation_status(CustomerSimulationStatus.IN)  # Setting the customer's simulation status
 
         customer_data = self.identification_agent.identify(new_customer)
-        if customer_data is not None:  # The customer has been found
+        if customer_data is not None:  # The customer has been found, exists in the system
             new_customer.set_customer_status(customer_data[2])
             new_customer.set_is_new(bool(customer_data[3]))
         else:  # The customer is new
             new_customer.set_customer_status(CustomerStatus.NORMAL)
-            new_customer.set_is_new(True)
-            self.identification_agent.save_new_customer(new_customer)
+            self.identification_agent.register_new_customer(new_customer)
 
         self.system_customers.append(new_customer)  # Adding to the system's list
         del self.customer_pool[index]  # Removing from the customer pool
