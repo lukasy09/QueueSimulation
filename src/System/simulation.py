@@ -21,11 +21,10 @@ class Simulation:
         # Setting up initials, creating simulation's environment
         manager = ManagingAgent(traffic=traffic)
         manager.setup_environment()  # Creating customer pool & queues with passed parameters
-
         # Start
         current_time = 0  # Variable holds the current time of simulation
-        appear_time = GeneratorUtil.get_next_appear_time(manager.customer_period_range[0], manager.customer_period_range[1], current_time)
-        count = 0
+        appear_time = GeneratorUtil.get_next_appear_time(manager.customer_period_range[0],
+                                                         manager.customer_period_range[1], current_time)
         while current_time < manager.simulation_time:
             # Is new customer in our system?
             if current_time == appear_time:
@@ -34,24 +33,24 @@ class Simulation:
                 new_customer = manager.customer_pool[new_customer_index]
                 manager.import_to_system(new_customer, new_customer_index)
                 # Settings customer's simulation parameters
-                new_customer.set_shopping_remaining_time(GeneratorUtil.generate_shopping_time(manager.shopping_time_distribution[0],
-                                                                                              manager.shopping_time_distribution[1]))
-
-                new_customer.set_monitoring_remaining_time(manager.monitoring_time)  #
-                new_customer.set_monitoring_status(CustomerMonitoringStatus.DURING_MONITORING)
+                new_customer.set_shopping_remaining_time(
+                    GeneratorUtil.generate_shopping_time(manager.shopping_time_distribution[0],
+                                                         manager.shopping_time_distribution[1]))
+                manager.activate_monitoring_agent(new_customer)
 
                 # The time when the next unit is appearing in our system
-                appear_time = GeneratorUtil.get_next_appear_time(manager.customer_period_range[0], manager.customer_period_range[1], current_time)
+                appear_time = GeneratorUtil.get_next_appear_time(manager.customer_period_range[0],
+                                                                 manager.customer_period_range[1], current_time)
 
             # Monitoring
-            for customer in manager.system_customers:
-                if customer.monitoring_status == CustomerMonitoringStatus.DURING_MONITORING:
-
+            for monitoring_agent in manager.monitoring_agents:
+                if monitoring_agent.customer.monitoring_status == CustomerMonitoringStatus.DURING_MONITORING:
+                    monitoring_agent.monitor_customer()
+                else:
                     pass
 
-                customer.update_monitoring_remaining_time() # remaining
 
             current_time += 1
 
         print(len(manager.system_customers))
-        print(count)
+        print(len(manager.monitoring_agents))

@@ -3,6 +3,7 @@ from System.Agents.GeneratorAgent.agent import GeneratorAgent
 from System.Agents.ManagingAgent.queue_types import QueueType
 from System.Agents.ManagingAgent.simulation_mode import Traffic
 from System.Agents.ManagingAgent.customer_simulation_status import CustomerSimulationStatus
+from System.Agents.ManagingAgent.customer_monitoring_status import CustomerMonitoringStatus
 from System.Agents.ManagingAgent.customer_status import CustomerStatus
 from System.Agents.IdentificationAgent.agent import IdentificationAgent
 from System.Agents.MonitoringAgent.agent import MonitoringAgent
@@ -19,7 +20,7 @@ class ManagingAgent:
     expected_shopping_time = 600
     defaultTraffic = Traffic.MEDIUM
     customer_period_range = None  # This parameter is is set during runtime
-    monitoring_time = 5  # Time how long a single unit is being monitored to extract its features
+    monitoring_success_rate = 0.2  # Probability of monitoring success at a time t
 
     # queue_type: count
     queues_config = {
@@ -102,6 +103,7 @@ class ManagingAgent:
 
 
     def activate_monitoring_agent(self, observed_customer):
-        monitoring_agent = MonitoringAgent()
+        monitoring_agent = MonitoringAgent(self.monitoring_success_rate)
         monitoring_agent.set_monitored(observed_customer)
+        observed_customer.set_monitoring_status(CustomerMonitoringStatus.DURING_MONITORING)
         self.monitoring_agents.append(monitoring_agent)

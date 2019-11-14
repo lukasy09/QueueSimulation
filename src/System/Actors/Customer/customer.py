@@ -25,7 +25,6 @@ class Customer:
     simulation_status = CustomerSimulationStatus.BEFORE  # Default status, BEFORE entering the system
     monitoring_status = CustomerMonitoringStatus.BEFORE_MONITORING
     shopping_remaining_time = None
-    monitoring_remaining_time = None
 
     def __init__(self, identifier=None, biometric=None):
         self.index = identifier
@@ -45,9 +44,6 @@ class Customer:
 
     def set_shopping_remaining_time(self, time):
         self.shopping_remaining_time = time
-
-    def update_monitoring_remaining_time(self):
-        self.monitoring_remaining_time -= 1
 
     def update_remaining_time(self):
         self.shopping_remaining_time -= 1

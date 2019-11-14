@@ -9,12 +9,6 @@ class GeneratorAgent:
 
 
     """Customers' parameters"""
-    minimal_age = 18
-    maximal_age = 90
-    sex_options = ["M", "F"]
-    disable_probability = 0.05
-    pregnant_probability = 0.04  # On the condition if the customer is "F"
-    hurry_probability = 0.15
     regular_probability = 0.2
     vip_probability = 0.01
 
