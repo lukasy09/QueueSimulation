@@ -5,6 +5,7 @@ from System.Agents.ManagingAgent.simulation_mode import Traffic
 from System.Agents.ManagingAgent.customer_simulation_status import CustomerSimulationStatus
 from System.Agents.ManagingAgent.customer_status import CustomerStatus
 from System.Agents.IdentificationAgent.agent import IdentificationAgent
+from System.Agents.MonitoringAgent.agent import MonitoringAgent
 from Database.DAO.customer_dao import CustomerDao
 
 """Managing agent  - MA"""
@@ -18,6 +19,7 @@ class ManagingAgent:
     expected_shopping_time = 600
     defaultTraffic = Traffic.MEDIUM
     customer_period_range = None  # This parameter is is set during runtime
+    monitoring_time = 5  # Time how long a single unit is being monitored to extract its features
 
     # queue_type: count
     queues_config = {
@@ -98,3 +100,8 @@ class ManagingAgent:
         self.system_customers.append(new_customer)  # Adding to the system's list
         del self.customer_pool[index]  # Removing from the customer pool
 
+
+    def activate_monitoring_agent(self, observed_customer):
+        monitoring_agent = MonitoringAgent()
+        monitoring_agent.set_monitored(observed_customer)
+        self.monitoring_agents.append(monitoring_agent)
