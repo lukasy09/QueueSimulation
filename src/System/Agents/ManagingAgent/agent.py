@@ -22,6 +22,11 @@ class ManagingAgent:
     customer_period_range = None  # This parameter is is set during runtime
     monitoring_success_rate = 0.2  # Probability of monitoring success at a time t
 
+    # Generating parameters
+    age_distribution = (35.6, 25)
+    temperature_distribution = (36.8, 0.4)
+
+
     # queue_type: count
     queues_config = {
         QueueType.NORMAL: 2,

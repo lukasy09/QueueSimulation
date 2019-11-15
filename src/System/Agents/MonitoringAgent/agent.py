@@ -17,15 +17,12 @@ class MonitoringAgent:
     thermal_camera = ThermalCamera.get_instance()
     camera = Camera.get_instance()
 
-
-    # Customer generating config
-    age_distribution = (35.6, 25)
+    # Customer decisive parameters
+    elderly_threshold = 60
     sex_options = ["M", "F"]
     disable_probability = 0.15
     pregnant_probability = 0.1  # On the condition if the customer is "F"
-
-    # Customer features config
-    elderly_threshold = 65
+    thermal_threshold = 37.5
 
 
     def __init__(self, rate):
@@ -40,20 +37,26 @@ class MonitoringAgent:
     def monitor_customer(self):
         if self.status == MonitoringAgentStatus.ACTIVE:
             if GeneratorUtil.generate_uniform_random() <= self.monitoring_success_rate:
-                grabbed_data = self.camera.record()
+                customer_data = self.camera.record()
+                thermal_data = self.thermal_camera.record()
 
-                if grabbed_data['age'] > self.elderly_threshold:
+                if customer_data['age'] > self.elderly_threshold:
                     self.customer.elderly = True
 
-                if grabbed_data['sex'] < 0.5:
+                if customer_data['sex'] < 0.5:
                     self.customer.sex = self.sex_options[0]
                 else:
                     self.customer.sex = self.sex_options[1]
 
-                if grabbed_data['disable'] <= self.disable_probability:
+                if customer_data['disable'] <= self.disable_probability:
                     self.customer.disable = True
 
-                if grabbed_data['pregnant'] <= self.pregnant_probability and self.customer.sex == self.sex_options[1]:
+                if customer_data['pregnant'] <= self.pregnant_probability and self.customer.sex == self.sex_options[1]:
                     self.customer.pregnant = True
+
+                if thermal_data['temperature'] >= self.thermal_threshold:
+                    self.customer.thermal = True
+
+
 
                 self.customer.set_monitoring_status(CustomerMonitoringStatus.AFTER_MONITORING)

@@ -1,11 +1,13 @@
 import numpy as np
 from random import *
 from random import random
+from System.Agents.ManagingAgent.agent import *
 
 
 class GeneratorUtil:
 
     age_distribution = (35.6, 25)
+    temperature_distribution = (36.8, 0.4)
 
     @staticmethod
     def generate_integer_in_range(low=0, high=1):
@@ -44,4 +46,12 @@ class GeneratorUtil:
             "sex": sex,
             "disable": disable,
             "pregnant": pregnant
+        }
+
+    @staticmethod
+    def generate_thermal_data():
+        dist = GeneratorUtil.temperature_distribution
+        temp = GeneratorUtil.generate_in_distribution(dist[0], dist[1])[0]
+        return {
+            "temperature": temp
         }
