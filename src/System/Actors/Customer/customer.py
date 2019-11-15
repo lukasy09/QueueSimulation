@@ -15,11 +15,11 @@ class Customer:
     is_new = True  # Flag(Boolean) informing if the unit is known by the system before the simulation's start
 
     # Customer's properties set by the monitoring system based on the physical features
-    elderly = None  # Boolean
+    elderly = False  # Boolean
     sex = None  # Enumeration
-    disable = None  # Boolean
-    pregnant = None  # Boolean
-    thermal = None  # Boolean
+    disable = False  # Boolean
+    pregnant = False  # Boolean
+    thermal = False  # Boolean
 
     # Simulation/System info
     simulation_status = CustomerSimulationStatus.BEFORE  # Default status, BEFORE entering the system
@@ -52,13 +52,12 @@ class Customer:
     """A log representation of a single customer"""
 
     def __str__(self):
-        return "Customer:Index {},Biometric:{},Customer Status: {},\n Simulation status: {}, Monitoring status: {}, Monitoring remaining time: {}, Elderly:{},\n Sex:{}, Disable:{}, Pregnant: {},\n Thermal: {}".format(
+        return "Customer:Index {},Biometric:{},Customer Status: {},\n Simulation status: {}, Monitoring status: {}, Elderly:{},\n Sex:{}, Disable:{}, Pregnant: {},\n Thermal: {}".format(
             self.index,
             self.biometric,
             self.customer_status,
             self.simulation_status,
             self.monitoring_status,
-            self.monitoring_remaining_time,
             self.elderly,
             self.sex,
             self.disable,

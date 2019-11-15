@@ -9,9 +9,10 @@ class ThermalCamera:
 
     @staticmethod
     def get_instance():
-        if self.instance is None:
-            return ThermalCamera()
-        return self.instance
+        if ThermalCamera.instance is None:
+            ThermalCamera.instance = ThermalCamera()
+            return ThermalCamera.instance
+        return ThermalCamera.instance
 
     def record(self):
         pass

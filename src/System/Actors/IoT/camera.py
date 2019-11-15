@@ -1,4 +1,5 @@
 from System.Actors.IoT.sensor import Sensor
+from Utils.GeneratorUtil import GeneratorUtil
 
 
 """Recognizing human's age, sex, pregnancy, disability"""
@@ -9,10 +10,13 @@ class Camera(Sensor):
 
     @staticmethod
     def get_instance():
-        if self.instance is None:
-            return Camera()
+        if Camera.instance is None:
+            Camera.instance = Camera()
+            return Camera.instance
 
-        return self.instance
+        return Camera.instance
+
 
     def record(self):
-        pass
+        if self.instance is not None:
+            return GeneratorUtil.generate_customer_data()

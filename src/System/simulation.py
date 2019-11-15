@@ -52,5 +52,8 @@ class Simulation:
 
             current_time += 1
 
-        print(len(manager.system_customers))
-        print(len(manager.monitoring_agents))
+
+        for c in manager.system_customers:
+            print(c)
+        # print(len(manager.system_customers))
+        # print(len(manager.monitoring_agents))
