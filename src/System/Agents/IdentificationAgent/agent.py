@@ -7,11 +7,22 @@ from Database.DAO.customer_dao import CustomerDao
 
 class IdentificationAgent:
 
+    # instance
+    instance = None
+
     # IoT objects, sensors
     fingerprint_reader = FingerprintReader()
 
     # Other
     dao = None  # Data access object
+
+    @staticmethod
+    def get_instance():
+        if IdentificationAgent.instance is None:
+            IdentificationAgent.instance = IdentificationAgent()
+            return IdentificationAgent.instance
+
+        return IdentificationAgent.instance
 
     def set_dao(self, dao):
         self.dao = dao

@@ -1,3 +1,4 @@
+from Database.DAO.customer_dao import CustomerDao
 from System.Actors.Queue.queue import Queue
 from System.Agents.GeneratorAgent.agent import GeneratorAgent
 from System.Agents.ManagingAgent.queue_types import QueueType
@@ -6,8 +7,8 @@ from System.Agents.ManagingAgent.customer_simulation_status import CustomerSimul
 from System.Agents.ManagingAgent.customer_monitoring_status import CustomerMonitoringStatus
 from System.Agents.ManagingAgent.customer_status import CustomerStatus
 from System.Agents.IdentificationAgent.agent import IdentificationAgent
+from System.Agents.VirtualQueueAgent.agent import VirtualQueueAgent
 from System.Agents.MonitoringAgent.agent import MonitoringAgent
-from Database.DAO.customer_dao import CustomerDao
 
 """Managing agent  - MA"""
 
@@ -36,6 +37,7 @@ class ManagingAgent:
 
     # Pseudo-random client generation periods
     customer_period_ranges = {
+        Traffic.ULTIMATE: (1, 10),
         Traffic.VERY_HIGH: (10, 60),
         Traffic.HIGH: (10, 100),
         Traffic.MEDIUM: (30, 180),
@@ -55,8 +57,10 @@ class ManagingAgent:
     traffic = Traffic.MEDIUM
 
     # Agents
-    identification_agent = IdentificationAgent()
+    identification_agent = IdentificationAgent.get_instance()
+    virtual_queue_agent = VirtualQueueAgent.get_instance()
     monitoring_agents = []
+
 
     # Others aggregated objects
     dao = CustomerDao()
@@ -93,8 +97,6 @@ class ManagingAgent:
 
     """Importing an unit(customer) to the system."""
     def import_to_system(self, new_customer, index):
-        new_customer.set_simulation_status(CustomerSimulationStatus.IN)  # Setting the customer's simulation status
-
         customer_data = self.identification_agent.identify(new_customer)
         if customer_data is not None:  # The customer has been found, exists in the system
             new_customer.set_customer_status(customer_data[2])
@@ -103,9 +105,13 @@ class ManagingAgent:
             new_customer.set_customer_status(CustomerStatus.NORMAL)
             self.identification_agent.register_new_customer(new_customer)
 
+        new_customer.set_simulation_status(CustomerSimulationStatus.IN)  # Setting the customer's simulation status
         self.system_customers.append(new_customer)  # Adding to the system's list
         del self.customer_pool[index]  # Removing from the customer pool
 
+
+    """Activating an agent per an unit(customer). 
+       Customers with these agents are in relation 1 to 1"""
 
     def activate_monitoring_agent(self, observed_customer):
         monitoring_agent = MonitoringAgent(self.monitoring_success_rate)

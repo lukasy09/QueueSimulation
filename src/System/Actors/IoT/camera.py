@@ -8,6 +8,7 @@ from Utils.GeneratorUtil import GeneratorUtil
 class Camera(Sensor):
     instance = None
 
+
     @staticmethod
     def get_instance():
         if Camera.instance is None:
@@ -17,6 +18,6 @@ class Camera(Sensor):
         return Camera.instance
 
 
-    def record(self):
+    def detect(self):
         if self.instance is not None:
             return GeneratorUtil.generate_customer_data()

@@ -16,6 +16,6 @@ class ThermalCamera:
         return ThermalCamera.instance
 
 
-    def record(self):
+    def detect(self):
         if self.instance is not None:
             return GeneratorUtil.generate_thermal_data()

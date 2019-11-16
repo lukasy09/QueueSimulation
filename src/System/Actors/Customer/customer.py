@@ -26,28 +26,64 @@ class Customer:
     monitoring_status = CustomerMonitoringStatus.BEFORE_MONITORING
     shopping_remaining_time = None
 
+    # @TODO Observers
+
     def __init__(self, identifier=None, biometric=None):
         self.index = identifier
         self.biometric = biometric
 
-    def set_simulation_status(self, status):
-        self.simulation_status = status
+    """Mutation methods, setters and updates method(s)"""
+
+    # Statuses and system identification knowledge
+
 
     def set_customer_status(self, status):
         self.customer_status = status
 
+    def set_is_new(self, is_new):
+        self.is_new = is_new
+
     def set_monitoring_status(self, status):
         self.monitoring_status = status
 
-    def set_is_new(self, is_new):
-        self.is_new = is_new
+    def set_simulation_status(self, status):
+        self.simulation_status = status
+
+
+    # Simulation parameters - times
+
 
     def set_shopping_remaining_time(self, time):
         self.shopping_remaining_time = time
 
     def update_remaining_time(self):
-        self.shopping_remaining_time -= 1
+        if self.shopping_remaining_time > 1:
+            self.shopping_remaining_time -= 1
 
+
+    # Own detected features
+
+
+    def set_elderly(self, elderly):
+        self.elderly = elderly
+
+    def set_sex(self, sex):
+        self.sex = sex
+
+    def set_disable(self, disable):
+        self.disable = disable
+
+    def set_pregnant(self, pregnant):
+        self.pregnant = pregnant
+
+    def set_thermal(self, thermal):
+        self.thermal = thermal
+
+
+    """Customer's actions"""
+
+    def enter_virtual_queue(self):
+        pass
 
     """A log representation of a single customer"""
 

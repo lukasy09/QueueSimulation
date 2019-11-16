@@ -1,6 +1,7 @@
 from System.Agents.ManagingAgent.agent import ManagingAgent
 from System.Agents.ManagingAgent.simulation_mode import Traffic
 from System.Agents.ManagingAgent.customer_monitoring_status import CustomerMonitoringStatus
+from System.Agents.ManagingAgent.customer_simulation_status import CustomerSimulationStatus
 from Utils.GeneratorUtil import GeneratorUtil
 import time
 from os import system
@@ -42,18 +43,21 @@ class Simulation:
                 appear_time = GeneratorUtil.get_next_appear_time(manager.customer_period_range[0],
                                                                  manager.customer_period_range[1], current_time)
 
-            # Monitoring
+            # Monitoring customer behaviour
             for monitoring_agent in manager.monitoring_agents:
                 if monitoring_agent.customer.monitoring_status == CustomerMonitoringStatus.DURING_MONITORING:
                     monitoring_agent.monitor_customer()
-                else:
-                    pass
 
+            # Customer's behaviour in system
+            for customer in manager.system_customers:
+                if customer.simulation_status == CustomerSimulationStatus.IN \
+                        and customer.monitoring_status == CustomerMonitoringStatus.AFTER_MONITORING \
+                        and customer.shopping_remaining_time == 0:
+                    customer.enter_virtual_queue()
+
+                customer.update_remaining_time()  # Decrementing
 
             current_time += 1
 
-
-        for c in manager.system_customers:
-            print(c)
         # print(len(manager.system_customers))
         # print(len(manager.monitoring_agents))

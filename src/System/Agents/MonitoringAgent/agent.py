@@ -37,16 +37,16 @@ class MonitoringAgent:
     def monitor_customer(self):
         if self.status == MonitoringAgentStatus.ACTIVE:
             if GeneratorUtil.generate_uniform_random() <= self.monitoring_success_rate:
-                customer_data = self.camera.record()
-                thermal_data = self.thermal_camera.record()
+                customer_data = self.camera.detect()
+                thermal_data = self.thermal_camera.detect()
 
                 if customer_data['age'] > self.elderly_threshold:
                     self.customer.elderly = True
 
                 if customer_data['sex'] < 0.5:
-                    self.customer.sex = self.sex_options[0]
+                    self.customer.sex = self.sex_options[0]  # Male
                 else:
-                    self.customer.sex = self.sex_options[1]
+                    self.customer.sex = self.sex_options[1]  # Female
 
                 if customer_data['disable'] <= self.disable_probability:
                     self.customer.disable = True
@@ -56,7 +56,5 @@ class MonitoringAgent:
 
                 if thermal_data['temperature'] >= self.thermal_threshold:
                     self.customer.thermal = True
-
-
 
                 self.customer.set_monitoring_status(CustomerMonitoringStatus.AFTER_MONITORING)
