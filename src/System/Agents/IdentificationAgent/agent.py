@@ -7,7 +7,7 @@ from Database.DAO.customer_dao import CustomerDao
 
 class IdentificationAgent:
 
-    # instance
+    # Instance
     instance = None
 
     # IoT objects, sensors

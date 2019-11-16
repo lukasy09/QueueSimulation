@@ -52,12 +52,21 @@ class Simulation:
             for customer in manager.system_customers:
                 if customer.simulation_status == CustomerSimulationStatus.IN \
                         and customer.monitoring_status == CustomerMonitoringStatus.AFTER_MONITORING \
-                        and customer.shopping_remaining_time == 0:
-                    customer.enter_virtual_queue()
+                        and customer.shopping_remaining_time == 0:  # Customer entering VQ's area
 
-                customer.update_remaining_time()  # Decrementing
+                    if not customer.in_virtual_queue_area:
+                        customer.enter_virtual_queue_area(manager.virtual_queue_await_time)
+                    else:
+                        if customer.virtual_queue_remaining_time == 0:
+                            manager.join_virtual_queue(customer)
+
+                    customer.update_virtual_queue_remaining_time()
+
+                else:
+                    customer.update_shopping_remaining_time()  # Decrementing
 
             current_time += 1
 
-        # print(len(manager.system_customers))
-        # print(len(manager.monitoring_agents))
+        print(len(manager.system_customers))
+        print(len(manager.monitoring_agents))
+        print(len(manager.virtual_queue_agent.virtual_queue))

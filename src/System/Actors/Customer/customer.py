@@ -11,7 +11,7 @@ class Customer:
     # identification data stored in the main db
     index = None  # Informs about creation order of customers, unique(Integer).
     biometric = None  # Biometric data of a customer, unique hash
-    customer_status = CustomerStatus.NORMAL  # Informs about the customer status(e.g is he/she a VIP or a regular customer)
+    customer_status = CustomerStatus.NORMAL  # Informs about the customer status(e.g is he/she a VIP or a REGULAR customer or a NORMAL)
     is_new = True  # Flag(Boolean) informing if the unit is known by the system before the simulation's start
 
     # Customer's properties set by the monitoring system based on the physical features
@@ -23,8 +23,10 @@ class Customer:
 
     # Simulation/System info
     simulation_status = CustomerSimulationStatus.BEFORE  # Default status, BEFORE entering the system
-    monitoring_status = CustomerMonitoringStatus.BEFORE_MONITORING
-    shopping_remaining_time = None
+    monitoring_status = CustomerMonitoringStatus.BEFORE_MONITORING  # Enumeration
+    shopping_remaining_time = None  # Integer
+    virtual_queue_remaining_time = None  # Integer
+    in_virtual_queue_area = False  # Boolean
 
     # @TODO Observers
 
@@ -56,10 +58,16 @@ class Customer:
     def set_shopping_remaining_time(self, time):
         self.shopping_remaining_time = time
 
-    def update_remaining_time(self):
-        if self.shopping_remaining_time > 1:
+    def update_shopping_remaining_time(self):
+        if self.shopping_remaining_time > 0:
             self.shopping_remaining_time -= 1
 
+    def set_virtual_queue_remaining_time(self, time):
+        self.virtual_queue_remaining_time = time
+
+    def update_virtual_queue_remaining_time(self):
+        if self.virtual_queue_remaining_time > 0:
+            self.virtual_queue_remaining_time -= 1
 
     # Own detected features
 
@@ -82,8 +90,12 @@ class Customer:
 
     """Customer's actions"""
 
-    def enter_virtual_queue(self):
-        pass
+    def enter_virtual_queue_area(self, await_time):
+        self.in_virtual_queue_area = True
+        self.set_virtual_queue_remaining_time(await_time)
+
+    def leave_virtual_queue_area(self):
+        self.in_virtual_queue_area = False
 
     """A log representation of a single customer"""
 

@@ -15,15 +15,16 @@ from System.Agents.MonitoringAgent.agent import MonitoringAgent
 
 class ManagingAgent:
 
-    # Simulation constant
+    # Simulation constants
     simulation_time = 3600  # time unit e.g seconds, minutes etc.
     pool_size = 1000   # The pool of customers.
-    expected_shopping_time = 600
     defaultTraffic = Traffic.MEDIUM
     customer_period_range = None  # This parameter is is set during runtime
     monitoring_success_rate = 0.2  # Probability of monitoring success at a time t
+    virtual_queue_await_time = 5
 
-    # Generating parameters
+    # Generating parameters distributions
+    shopping_time_distribution = (10 * 60, 250)  # N ~ (m, s), expected value is in seconds
     age_distribution = (35.6, 25)
     temperature_distribution = (36.8, 0.4)
 
@@ -45,12 +46,9 @@ class ManagingAgent:
         Traffic.VERY_LOW: (50, 800)
     }
 
-    shopping_time_distribution = (10 * 60, 250)  # N ~ (m, s), expected value is in seconds
-
     # Simulation variables
     customer_pool = []
     system_customers = []
-    virtual_queue = []
     queues = []
 
     # Defaults
@@ -69,7 +67,6 @@ class ManagingAgent:
         self.gen = GeneratorAgent(self.dao)
         self.traffic = traffic
         self.customer_period_range = self.customer_period_ranges[self.traffic]
-
         self.identification_agent.set_dao(self.dao)
 
 
@@ -118,3 +115,12 @@ class ManagingAgent:
         monitoring_agent.set_monitored(observed_customer)
         observed_customer.set_monitoring_status(CustomerMonitoringStatus.DURING_MONITORING)
         self.monitoring_agents.append(monitoring_agent)
+
+
+    def join_virtual_queue(self, customer):
+        self.virtual_queue_agent.accept_customer(customer)
+        for i, unit in enumerate(self.system_customers):
+            if unit.index == customer.index:
+                del self.system_customers[i]
+
+        customer.set_simulation_status(CustomerSimulationStatus.IN_VQ)
