@@ -54,19 +54,35 @@ class Simulation:
                         and customer.monitoring_status == CustomerMonitoringStatus.AFTER_MONITORING \
                         and customer.shopping_remaining_time == 0:  # Customer entering VQ's area
 
-                    if not customer.in_virtual_queue_area:
+                    if not customer.in_virtual_queue_area:  # If the customer wasn't in VQ's area before
                         customer.enter_virtual_queue_area(manager.virtual_queue_await_time)
                     else:
-                        if customer.virtual_queue_remaining_time == 0:
+                        if customer.virtual_queue_remaining_time == 0:  # A customer is waiting long enough for queue assignment
                             manager.join_virtual_queue(customer)
 
-                    customer.update_virtual_queue_remaining_time()
+                    customer.update_virtual_queue_remaining_time()  # waiting for queue assignment
+
+                elif customer.simulation_status == CustomerSimulationStatus.IN_VQ:
+                    assigned_queue_type = manager.virtual_queue_agent.assign_queue(customer)
+                    manager.delegate_customer(customer, assigned_queue_type)
 
                 else:
                     customer.update_shopping_remaining_time()  # Decrementing
 
             current_time += 1
 
-        print(len(manager.system_customers))
-        print(len(manager.monitoring_agents))
-        print(len(manager.virtual_queue_agent.virtual_queue))
+        print(len(manager.monitoring_agents), "<- Number of monitoring agents/all customers in simulation")
+        print(len(manager.system_customers), "<- Number of customers still in system")
+        print(len(manager.virtual_queue_agent.virtual_queue), "<- Customers in VQ")
+
+        count = 0
+        for i in range(len(manager.queues_agents)):
+            queue_agent = manager.queues_agents[i]
+            print(queue_agent)
+            length = len(queue_agent.queue)
+            print(length)
+            count += length
+        print(count, "<- Customers in all queues")
+
+        # for queue_agent in manager.queues_agents:
+        #     print(queue_agent)

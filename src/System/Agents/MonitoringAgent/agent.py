@@ -18,7 +18,7 @@ class MonitoringAgent:
     camera = Camera.get_instance()
 
     # Customer decisive parameters
-    elderly_threshold = 60
+    elderly_threshold = 65
     sex_options = ["M", "F"]
     disable_probability = 0.15
     pregnant_probability = 0.1  # On the condition if the customer is "F"

@@ -27,6 +27,7 @@ class Customer:
     shopping_remaining_time = None  # Integer
     virtual_queue_remaining_time = None  # Integer
     in_virtual_queue_area = False  # Boolean
+    waiting_time = 0  # Number, time spent in queue waiting for service
 
     # @TODO Observers
 

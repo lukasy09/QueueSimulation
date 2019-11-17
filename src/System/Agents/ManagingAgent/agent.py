@@ -1,5 +1,5 @@
+import math
 from Database.DAO.customer_dao import CustomerDao
-from System.Actors.Queue.queue import Queue
 from System.Agents.GeneratorAgent.agent import GeneratorAgent
 from System.Agents.ManagingAgent.queue_types import QueueType
 from System.Agents.ManagingAgent.simulation_mode import Traffic
@@ -7,8 +7,10 @@ from System.Agents.ManagingAgent.customer_simulation_status import CustomerSimul
 from System.Agents.ManagingAgent.customer_monitoring_status import CustomerMonitoringStatus
 from System.Agents.ManagingAgent.customer_status import CustomerStatus
 from System.Agents.IdentificationAgent.agent import IdentificationAgent
-from System.Agents.VirtualQueueAgent.agent import VirtualQueueAgent
 from System.Agents.MonitoringAgent.agent import MonitoringAgent
+from System.Agents.VirtualQueueAgent.agent import VirtualQueueAgent
+from System.Agents.QueueAgent.agent import QueueAgent
+
 
 """Managing agent  - MA"""
 
@@ -49,15 +51,15 @@ class ManagingAgent:
     # Simulation variables
     customer_pool = []
     system_customers = []
-    queues = []
 
     # Defaults
     traffic = Traffic.MEDIUM
 
     # Agents
     identification_agent = IdentificationAgent.get_instance()
-    virtual_queue_agent = VirtualQueueAgent.get_instance()
     monitoring_agents = []
+    virtual_queue_agent = VirtualQueueAgent.get_instance()
+    queues_agents = []
 
 
     # Others aggregated objects
@@ -73,23 +75,24 @@ class ManagingAgent:
 
     """Creating customer pool, queues"""
     def setup_environment(self):
-        self.queues = self.init_queues()
+        self.queues_agents = self.init_queues_agents()
         self.customer_pool = self.gen.generate_population(self.pool_size)
 
 
     """Initialising queues based on the config map"""
-    def init_queues(self):
-        queues = []
+    def init_queues_agents(self):
+        queues_agents = []
         config = self.queues_config.items()
         uniq_index = 0
         for item in config:
             queue_type = item[0]
             count = item[1]
             for i in range(count):
-                queue = Queue(uniq_index, queue_type)
-                queues.append(queue)
+                queue_agent = QueueAgent(uniq_index)
+                queue_agent.set_queue_type(queue_type)
+                queues_agents.append(queue_agent)
                 uniq_index += 1
-        return queues
+        return queues_agents
 
 
     """Importing an unit(customer) to the system."""
@@ -117,10 +120,34 @@ class ManagingAgent:
         self.monitoring_agents.append(monitoring_agent)
 
 
+
+    """Passing the customer on to the VQ agent and deleting from the system list(shopping)"""
     def join_virtual_queue(self, customer):
         self.virtual_queue_agent.accept_customer(customer)
-        for i, unit in enumerate(self.system_customers):
-            if unit.index == customer.index:
-                del self.system_customers[i]
-
+        # for i, unit in enumerate(self.system_customers):
+        #     if unit.index == customer.index:
+        #         del self.system_customers[i]
         customer.set_simulation_status(CustomerSimulationStatus.IN_VQ)
+
+
+    def delegate_customer(self, customer, queue_type):
+        matching_agents = []
+        for queue_agent in self.queues_agents:
+            if queue_agent.queue_type == queue_type:
+                matching_agents.append(queue_agent)
+
+        minimal_length = math.inf
+        optimal_agent = None
+        for matching_agent in matching_agents:
+            if len(matching_agent.queue) == 0:
+                matching_agent.accept(customer)
+            else:
+                if len(matching_agent.queue) < minimal_length:
+                    minimal_length = len(matching_agent.queue)
+                    optimal_agent = matching_agent
+
+        if optimal_agent is not None:
+            optimal_agent.accept(customer)
+
+        self.virtual_queue_agent.remove_customer(customer)  # Removing from the VQ
+        customer.set_simulation_status(CustomerSimulationStatus.IN_QUEUE)  # Setting the customer's status
