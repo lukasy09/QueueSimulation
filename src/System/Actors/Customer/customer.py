@@ -84,6 +84,9 @@ class Customer:
     def update_service_time(self):
         self.service_time -= 1
 
+    def set_is_first(self, is_first):
+        self.is_first = is_first
+
     # Own detected features
 
 

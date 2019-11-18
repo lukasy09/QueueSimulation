@@ -76,31 +76,37 @@ class Simulation:
             # Customers waiting in queues
             for queue_agent in manager.queues_agents:
                 customers_queue = queue_agent.queue  # Queue (list)
+
+                for customer in customers_queue:
+                    if customer.simulation_status == CustomerSimulationStatus.IN_QUEUE:
+                        customer.set_is_first(True)  # Setting is_first flag in each queue
+                        break
+
                 for i in range(len(customers_queue)):
                     customer = customers_queue[i]
-                    if i == 0:  # Handling the first customer in a queue
-                        if customer.simulation_status == CustomerSimulationStatus.IN_QUEUE and customer.service_time == 0:
-                            # queue_agent.remove_head()  # Removing serviced customer from queue
-                            manager.remove_customer(customer)  # Removing from the system and the simulation
-                        else:
-                            customer.update_service_time()
+                    if customer.simulation_status == CustomerSimulationStatus.IN_QUEUE and customer.service_time == 0 and customer.is_first:
+                            manager.remove_customer(customer)  # Removing from the system and the simulation, setting status
+                            customer.set_is_first(False)
                     else:
-                        customer.update_waiting_time()
+                            customer.update_service_time()
+                            customer.update_waiting_time()
+
 
             current_time += 1
 
         # print(len(manager.monitoring_agents), "<- Number of monitoring agents/all customers in simulation")
         print(len(manager.system_customers), "<- Number of customers still in system")
+        c = 0
+        for customer in manager.system_customers:
+            if customer.simulation_status == CustomerSimulationStatus.IN:
+                c += 1
+        print(c, "<- Number of customers in shopping")
         print(len(manager.virtual_queue_agent.virtual_queue), "<- Customers in VQ")
         print(len(manager.removed_customers), "<- Removed customers")
         count = 0
         for i in range(len(manager.queues_agents)):
             queue_agent = manager.queues_agents[i]
-            # print(queue_agent)
-            length = len(queue_agent.queue)
-            # print(length)
-            count += length
+            for unit in queue_agent.queue:
+                if unit.simulation_status == CustomerSimulationStatus.IN_QUEUE:
+                    count += 1
         print(count, "<- Customers in all queues")
-
-        # for queue_agent in manager.queues_agents:
-        #     print(queue_agent)
