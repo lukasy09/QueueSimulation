@@ -20,6 +20,9 @@ class QueueAgent:
     def accept(self, customer):
         self.queue.append(customer)
 
+    def remove_head(self):
+        self.queue.remove(self.queue[0])
+
     def __str__(self):
         return "QueueAgent: Index: {}, type: {}, number of people waiting: {}"\
                 .format(self.index, self.queue_type, len(self.queue))

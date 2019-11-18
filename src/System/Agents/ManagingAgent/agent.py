@@ -10,6 +10,7 @@ from System.Agents.IdentificationAgent.agent import IdentificationAgent
 from System.Agents.MonitoringAgent.agent import MonitoringAgent
 from System.Agents.VirtualQueueAgent.agent import VirtualQueueAgent
 from System.Agents.QueueAgent.agent import QueueAgent
+from Utils.GeneratorUtil import GeneratorUtil
 
 
 """Managing agent  - MA"""
@@ -20,15 +21,17 @@ class ManagingAgent:
     # Simulation constants
     simulation_time = 3600  # time unit e.g seconds, minutes etc.
     pool_size = 1000   # The pool of customers.
-    defaultTraffic = Traffic.MEDIUM
+    defaultTraffic = Traffic.MEDIUM  # Default mode
+
     customer_period_range = None  # This parameter is is set during runtime
     monitoring_success_rate = 0.2  # Probability of monitoring success at a time t
-    virtual_queue_await_time = 5
+    virtual_queue_await_time = 5  # Time after which virtual queue system recognizes new unit in the VQ area
 
     # Generating parameters distributions
     shopping_time_distribution = (10 * 60, 250)  # N ~ (m, s), expected value is in seconds
-    age_distribution = (35.6, 25)
-    temperature_distribution = (36.8, 0.4)
+    age_distribution = (35.6, 18)
+    temperature_distribution = (36.6, 0.2)
+    service_waiting_time_distribution = (60, 20)
 
 
     # queue_type: count
@@ -51,6 +54,7 @@ class ManagingAgent:
     # Simulation variables
     customer_pool = []
     system_customers = []
+    removed_customers = []
 
     # Defaults
     traffic = Traffic.MEDIUM
@@ -130,6 +134,8 @@ class ManagingAgent:
         customer.set_simulation_status(CustomerSimulationStatus.IN_VQ)
 
 
+    """Delegating a customer to an assigned queue type.
+       This method directs to the queue with lowest number of units"""
     def delegate_customer(self, customer, queue_type):
         matching_agents = []
         for queue_agent in self.queues_agents:
@@ -150,4 +156,12 @@ class ManagingAgent:
             optimal_agent.accept(customer)
 
         self.virtual_queue_agent.remove_customer(customer)  # Removing from the VQ
+        customer.set_service_time(GeneratorUtil.generate_service_time(self.service_waiting_time_distribution))
         customer.set_simulation_status(CustomerSimulationStatus.IN_QUEUE)  # Setting the customer's status
+        customer.start_waiting()
+
+
+    """Removing customer from the system. Adding the unit to the removed list"""
+    def remove_customer(self, customer):
+        customer.set_simulation_status(CustomerSimulationStatus.AFTER)
+        self.removed_customers.append(customer)

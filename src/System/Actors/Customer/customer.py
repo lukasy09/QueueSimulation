@@ -27,9 +27,10 @@ class Customer:
     shopping_remaining_time = None  # Integer
     virtual_queue_remaining_time = None  # Integer
     in_virtual_queue_area = False  # Boolean
-    waiting_time = 0  # Number, time spent in queue waiting for service
+    waiting_time = None  # Number, time spent in queue waiting for service
+    service_time = None
+    is_first = False  # Flag informing if the customer is first in queue
 
-    # @TODO Observers
 
     def __init__(self, identifier=None, biometric=None):
         self.index = identifier
@@ -69,6 +70,19 @@ class Customer:
     def update_virtual_queue_remaining_time(self):
         if self.virtual_queue_remaining_time > 0:
             self.virtual_queue_remaining_time -= 1
+
+    def start_waiting(self):
+        self.waiting_time = 0
+
+    def update_waiting_time(self):
+        self.waiting_time += 1
+
+
+    def set_service_time(self, time):
+        self.service_time = time
+
+    def update_service_time(self):
+        self.service_time -= 1
 
     # Own detected features
 

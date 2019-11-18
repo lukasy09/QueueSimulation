@@ -55,3 +55,11 @@ class GeneratorUtil:
         return {
             "temperature": temp
         }
+
+    @staticmethod
+    def generate_service_time(dist):
+        time = GeneratorUtil.generate_in_distribution(dist[0], dist[1], n=1)[0]
+        if time < 0:
+            return 0
+        return int(time)
+

@@ -20,7 +20,7 @@ class MonitoringAgent:
     # Customer decisive parameters
     elderly_threshold = 65
     sex_options = ["M", "F"]
-    disable_probability = 0.15
+    disable_probability = 0.07
     pregnant_probability = 0.1  # On the condition if the customer is "F"
     thermal_threshold = 37.5
 

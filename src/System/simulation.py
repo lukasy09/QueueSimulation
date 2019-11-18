@@ -50,6 +50,8 @@ class Simulation:
 
             # Customer's behaviour in system
             for customer in manager.system_customers:
+
+                # Customers in system, shopping
                 if customer.simulation_status == CustomerSimulationStatus.IN \
                         and customer.monitoring_status == CustomerMonitoringStatus.AFTER_MONITORING \
                         and customer.shopping_remaining_time == 0:  # Customer entering VQ's area
@@ -62,25 +64,41 @@ class Simulation:
 
                     customer.update_virtual_queue_remaining_time()  # waiting for queue assignment
 
+                # Customers in virtual queue
                 elif customer.simulation_status == CustomerSimulationStatus.IN_VQ:
-                    assigned_queue_type = manager.virtual_queue_agent.assign_queue(customer)
-                    manager.delegate_customer(customer, assigned_queue_type)
+                    assigned_queue_type = manager.virtual_queue_agent.assign_queue(customer)  # Assigning queue type by the customer's state
+                    manager.delegate_customer(customer, assigned_queue_type)  # Sending the customer to the right queue
 
+                # Customers in system who are not in any special state (doing shopping etc.)
                 else:
                     customer.update_shopping_remaining_time()  # Decrementing
 
+            # Customers waiting in queues
+            for queue_agent in manager.queues_agents:
+                customers_queue = queue_agent.queue  # Queue (list)
+                for i in range(len(customers_queue)):
+                    customer = customers_queue[i]
+                    if i == 0:  # Handling the first customer in a queue
+                        if customer.simulation_status == CustomerSimulationStatus.IN_QUEUE and customer.service_time == 0:
+                            # queue_agent.remove_head()  # Removing serviced customer from queue
+                            manager.remove_customer(customer)  # Removing from the system and the simulation
+                        else:
+                            customer.update_service_time()
+                    else:
+                        customer.update_waiting_time()
+
             current_time += 1
 
-        print(len(manager.monitoring_agents), "<- Number of monitoring agents/all customers in simulation")
+        # print(len(manager.monitoring_agents), "<- Number of monitoring agents/all customers in simulation")
         print(len(manager.system_customers), "<- Number of customers still in system")
         print(len(manager.virtual_queue_agent.virtual_queue), "<- Customers in VQ")
-
+        print(len(manager.removed_customers), "<- Removed customers")
         count = 0
         for i in range(len(manager.queues_agents)):
             queue_agent = manager.queues_agents[i]
-            print(queue_agent)
+            # print(queue_agent)
             length = len(queue_agent.queue)
-            print(length)
+            # print(length)
             count += length
         print(count, "<- Customers in all queues")
 

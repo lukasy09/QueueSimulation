@@ -9,7 +9,7 @@ class GeneratorAgent:
 
 
     """Customers' parameters"""
-    regular_probability = 0.15
+    regular_probability = 0.45
     vip_probability = 0.01
 
     customer_pool = []
