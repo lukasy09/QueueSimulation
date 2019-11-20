@@ -21,7 +21,7 @@ class ManagingAgent:
     # Simulation constants
     simulation_time = 3600  # time unit e.g seconds, minutes etc.
     pool_size = 1000   # The pool of customers.
-    defaultTraffic = Traffic.MEDIUM  # Default mode
+    defaultTraffic = Traffic.HIGH  # Default mode
 
     customer_period_range = None  # This parameter is is set during runtime
     monitoring_success_rate = 0.2  # Probability of monitoring success at a time t
@@ -31,14 +31,15 @@ class ManagingAgent:
     shopping_time_distribution = (10 * 60, 50)  # N ~ (m, s), expected value is in seconds
     age_distribution = (35.6, 18)
     temperature_distribution = (36.6, 0.2)
-    service_service_time_distribution = (60, 20)
+    service_service_time_distribution = (120, 20)
 
 
-    # queue_type: count
+    # queue_type: count, there must at least one queue for each type
     queues_config = {
-        QueueType.NORMAL: 2,
-        QueueType.PRIVILEGED: 1,
-        QueueType.MOST_PRIVILEGED: 1
+        QueueType.VIP: 1,
+        QueueType.THERMAL: 1,
+        QueueType.SPECIAL: 1,
+        QueueType.NORMAL: 1
     }
 
     # Pseudo-random client generation periods
@@ -81,7 +82,6 @@ class ManagingAgent:
     def setup_environment(self):
         self.queues_agents = self.init_queues_agents()
         self.customer_pool = self.gen.generate_population(self.pool_size)
-
 
     """Initialising queues based on the config map"""
     def init_queues_agents(self):

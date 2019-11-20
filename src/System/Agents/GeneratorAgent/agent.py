@@ -10,7 +10,7 @@ class GeneratorAgent:
 
     """Customers' parameters"""
     regular_probability = 0.2
-    vip_probability = 0.01
+    vip_probability = 0.1
 
     customer_pool = []
 
@@ -24,17 +24,12 @@ class GeneratorAgent:
             customer = self.generate_customer(index=i, biometric=biometric)
             # The customer is a regular one. He will be saved to the main database.
             criteria = GeneratorUtil.generate_uniform_random()
-            if criteria <= self.regular_probability:
+            if criteria <= self.vip_probability:
                 is_new = False
-                if criteria <= self.vip_probability:
-                    customer_status = CustomerStatus.VIP
-                else:
-                    customer_status = CustomerStatus.REGULAR
+                customer_status = CustomerStatus.VIP
                 customer.set_customer_status(customer_status)
                 self.dao.save_customer(customer, customer_status, is_new)
-
             self.customer_pool.append(customer)
-
         return self.customer_pool
 
 

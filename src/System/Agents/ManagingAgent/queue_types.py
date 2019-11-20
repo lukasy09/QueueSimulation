@@ -2,7 +2,8 @@
 
 
 class QueueType:
+    VIP = "vip"
+    SPECIAL = "special"
+    THERMAL = "thermal"
     NORMAL = "normal"
-    PRIVILEGED = "privileged"
-    MOST_PRIVILEGED = "most privileged"
 

@@ -25,11 +25,13 @@ class VirtualQueueAgent:
 
     def assign_queue(self, customer):
         if self.instance is not None:
-            if customer.customer_status == CustomerStatus.VIP or customer.elderly \
-                    or customer.disable or customer.pregnant:
-                return QueueType.MOST_PRIVILEGED
-            elif customer.customer_status == CustomerStatus.REGULAR or customer.thermal:
-                return QueueType.PRIVILEGED
+            if customer.customer_status == CustomerStatus.VIP:
+                return QueueType.VIP
+            elif customer.thermal:
+                return QueueType.THERMAL
+
+            elif customer.elderly or customer.disable or customer.pregnant:
+                return QueueType.SPECIAL
             else:
                 return QueueType.NORMAL
 

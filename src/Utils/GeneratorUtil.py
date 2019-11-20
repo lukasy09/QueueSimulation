@@ -7,7 +7,7 @@ from System.Agents.ManagingAgent.agent import *
 class GeneratorUtil:
 
     age_distribution = (35.6, 25)
-    temperature_distribution = (36.8, 0.4)
+    temperature_distribution = (36.8, 1.2)
 
     @staticmethod
     def generate_integer_in_range(low=0, high=1):

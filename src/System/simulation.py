@@ -16,6 +16,7 @@ class Simulation:
     def __init__(self, logger):
         self.logger = logger
 
+
     def run(self):
         # Simulation parameters(if not using the default ones)
         traffic = Traffic.VERY_HIGH
@@ -92,8 +93,8 @@ class Simulation:
                         if customer.simulation_status == CustomerSimulationStatus.IN_QUEUE:
                                 if customer.is_first:
                                     customer.update_service_time()
-
-                                customer.update_waiting_time()
+                                else:
+                                    customer.update_waiting_time()
             current_time += 1
 
         self.logger.set_data_source(manager)
