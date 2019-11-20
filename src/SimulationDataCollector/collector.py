@@ -13,16 +13,12 @@ class SimulationDataCollector:
     def collect_data(self):
         general = self.collect_general_data()
         mean_time_data = self.compute_mean_waiting_time()
-        shopping_customers = self.collect_system_status_customers(CustomerSimulationStatus.IN)
-        vq_customers = self.collect_queue_status_customers(CustomerSimulationStatus.IN_VQ)
+        # shopping_customers = self.collect_system_status_customers(CustomerSimulationStatus.IN)
+        # vq_customers = self.collect_queue_status_customers(CustomerSimulationStatus.IN_VQ)
         waiting_customers = self.collect_queue_status_customers(CustomerSimulationStatus.IN_QUEUE)
         serviced_customers = self.collect_queue_status_customers(CustomerSimulationStatus.AFTER)
-        print(general)
-        print(shopping_customers)
-        print(vq_customers)
-        print(waiting_customers)
-        print(serviced_customers)
 
+        return general, mean_time_data, waiting_customers, serviced_customers
 
     """Collecting general simulation data"""
     def collect_general_data(self):
