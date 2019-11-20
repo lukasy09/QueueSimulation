@@ -28,10 +28,10 @@ class ManagingAgent:
     virtual_queue_await_time = 5  # Time after which virtual queue system recognizes new unit in the VQ area
 
     # Generating parameters distributions
-    shopping_time_distribution = (10 * 60, 250)  # N ~ (m, s), expected value is in seconds
+    shopping_time_distribution = (10 * 60, 50)  # N ~ (m, s), expected value is in seconds
     age_distribution = (35.6, 18)
     temperature_distribution = (36.6, 0.2)
-    service_waiting_time_distribution = (60, 20)
+    service_service_time_distribution = (60, 20)
 
 
     # queue_type: count
@@ -52,9 +52,9 @@ class ManagingAgent:
     }
 
     # Simulation variables
-    customer_pool = []
-    system_customers = []
-    removed_customers = []
+    customer_pool = []      # Collection of customers that may take part in simulation
+    system_customers = []   # Collection of all customers that came through the system
+    removed_customers = []  # Collection of all customers that had left the system before the simulation  ended
 
     # Defaults
     traffic = Traffic.MEDIUM
@@ -156,7 +156,7 @@ class ManagingAgent:
             optimal_agent.accept(customer)
 
         self.virtual_queue_agent.remove_customer(customer)  # Removing from the VQ
-        customer.set_service_time(GeneratorUtil.generate_service_time(self.service_waiting_time_distribution))
+        customer.set_service_time(GeneratorUtil.generate_service_time(self.service_service_time_distribution))
         customer.set_simulation_status(CustomerSimulationStatus.IN_QUEUE)  # Setting the customer's status
         customer.start_waiting()
 
@@ -165,3 +165,7 @@ class ManagingAgent:
     def remove_customer(self, customer):
         customer.set_simulation_status(CustomerSimulationStatus.AFTER)
         self.removed_customers.append(customer)
+
+    """Deactivating monitoring agent"""
+    def deactivate_monitoring_agent(self, index):
+        pass

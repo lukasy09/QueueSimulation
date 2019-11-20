@@ -11,13 +11,14 @@ from random import *
 
 class Simulation:
 
-    def __init__(self):
-        pass
+    logger = None
 
-    @staticmethod
-    def run():
+    def __init__(self, logger):
+        self.logger = logger
+
+    def run(self):
         # Simulation parameters(if not using the default ones)
-        traffic = Traffic.HIGH
+        traffic = Traffic.VERY_HIGH
 
         # Setting up initials, creating simulation's environment
         manager = ManagingAgent(traffic=traffic)
@@ -80,33 +81,19 @@ class Simulation:
                 for customer in customers_queue:
                     if customer.simulation_status == CustomerSimulationStatus.IN_QUEUE:
                         customer.set_is_first(True)  # Setting is_first flag in each queue
-                        break
+                        break                        # There can be only one customer in a queue with the flag set on the true
 
                 for i in range(len(customers_queue)):
                     customer = customers_queue[i]
-                    if customer.simulation_status == CustomerSimulationStatus.IN_QUEUE and customer.service_time == 0 and customer.is_first:
+                    if customer.simulation_status == CustomerSimulationStatus.IN_QUEUE and customer.is_first and customer.service_time == 0:
                             manager.remove_customer(customer)  # Removing from the system and the simulation, setting status
                             customer.set_is_first(False)
                     else:
-                            customer.update_service_time()
-                            customer.update_waiting_time()
+                        if customer.simulation_status == CustomerSimulationStatus.IN_QUEUE:
+                                if customer.is_first:
+                                    customer.update_service_time()
 
-
+                                customer.update_waiting_time()
             current_time += 1
 
-        # print(len(manager.monitoring_agents), "<- Number of monitoring agents/all customers in simulation")
-        print(len(manager.system_customers), "<- Number of customers still in system")
-        c = 0
-        for customer in manager.system_customers:
-            if customer.simulation_status == CustomerSimulationStatus.IN:
-                c += 1
-        print(c, "<- Number of customers in shopping")
-        print(len(manager.virtual_queue_agent.virtual_queue), "<- Customers in VQ")
-        print(len(manager.removed_customers), "<- Removed customers")
-        count = 0
-        for i in range(len(manager.queues_agents)):
-            queue_agent = manager.queues_agents[i]
-            for unit in queue_agent.queue:
-                if unit.simulation_status == CustomerSimulationStatus.IN_QUEUE:
-                    count += 1
-        print(count, "<- Customers in all queues")
+        self.logger.set_data_source(manager)

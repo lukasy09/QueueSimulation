@@ -77,7 +77,6 @@ class Customer:
     def update_waiting_time(self):
         self.waiting_time += 1
 
-
     def set_service_time(self, time):
         self.service_time = time
 
@@ -111,6 +110,8 @@ class Customer:
     def enter_virtual_queue_area(self, await_time):
         self.in_virtual_queue_area = True
         self.set_virtual_queue_remaining_time(await_time)
+        self.set_simulation_status(CustomerSimulationStatus.IN_VQ)
+
 
     def leave_virtual_queue_area(self):
         self.in_virtual_queue_area = False
