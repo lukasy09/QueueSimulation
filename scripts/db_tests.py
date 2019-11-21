@@ -1,9 +1,9 @@
 import mysql.connector
 db_config = {
     "user": "root",
-    "password": "admin",
+    "password": "",
     "db": "queue_simulation",
-    "host": "192.168.1.100",
+    "host": "127.0.0.1",
 }
 
 cnx = mysql.connector.connect(user=db_config["user"],

@@ -11,6 +11,7 @@ class SimulationDataCollector:
         self.manager = manager
 
     def collect_data(self):
+        queues = self.collect_queues()
         general = self.collect_general_data()
         mean_time_data = self.compute_mean_waiting_time()
         # shopping_customers = self.collect_system_status_customers(CustomerSimulationStatus.IN)
@@ -18,7 +19,7 @@ class SimulationDataCollector:
         waiting_customers = self.collect_queue_status_customers(CustomerSimulationStatus.IN_QUEUE)
         serviced_customers = self.collect_queue_status_customers(CustomerSimulationStatus.AFTER)
 
-        return general, mean_time_data, waiting_customers, serviced_customers
+        return queues, general, mean_time_data, waiting_customers, serviced_customers
 
     """Collecting general simulation data"""
     def collect_general_data(self):
@@ -43,7 +44,7 @@ class SimulationDataCollector:
                 queue_waiting_time_sum += unit.waiting_time
 
             if queue_customer_number > 0:
-                queues_mean_waiting_time["{}:{}".format(queue_agent.queue_type, queue_agent.index)] = round(queue_waiting_time_sum/queue_customer_number)
+                queues_mean_waiting_time[str(queue_agent.queue_type)] = round(queue_waiting_time_sum/queue_customer_number)
 
         return queues_mean_waiting_time
 
@@ -60,7 +61,7 @@ class SimulationDataCollector:
                     count += 1
                     total += 1
 
-            serviced_customers["{}:{}".format(queue.queue_type, queue.index)] = count
+            serviced_customers[str(queue.queue_type)] = count
         serviced_customers["total"] = total
         return serviced_customers
 
@@ -75,6 +76,13 @@ class SimulationDataCollector:
         return status, count
 
 
+    def collect_queues(self):
+        manager = self.manager
+        queues = []
+        for queue_agent in manager.queues_agents:
+            queues.append((queue_agent.index, queue_agent.queue_type))
+
+        return queues
 
     def log_final_state(self):
         manager = self.manager

@@ -1,1 +1,13 @@
-Parameter,Queue number,Simulation time 3600
+Parameter,Queue number,Value
+Number of people waiting clients in queue:,0-vip,0
+,1-thermal,1
+,2-special,0
+,3-normal,17
+Number of clients serviced in queue:,0-vip,6
+,1-thermal,19
+,2-special,13
+,3-normal,24
+Average waiting time in queue:,0-vip,6
+,1-thermal,188
+,2-special,40
+,3-normal,685

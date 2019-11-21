@@ -77,11 +77,11 @@ class ManagingAgent:
         self.identification_agent.set_dao(self.dao)
 
 
-
     """Creating customer pool, queues"""
     def setup_environment(self):
         self.queues_agents = self.init_queues_agents()
         self.customer_pool = self.gen.generate_population(self.pool_size)
+
 
     """Initialising queues based on the config map"""
     def init_queues_agents(self):
