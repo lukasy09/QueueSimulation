@@ -1,4 +1,5 @@
-from System.Agents.ManagingAgent.queue_types import QueueType
+from System.Agents.QueueAgent.queue_types import QueueType
+
 
 
 class QueueAgent:

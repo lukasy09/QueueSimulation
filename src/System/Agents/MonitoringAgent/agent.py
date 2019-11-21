@@ -1,5 +1,5 @@
 from System.Agents.MonitoringAgent.monitoring_agent_status import MonitoringAgentStatus
-from System.Agents.ManagingAgent.customer_monitoring_status import CustomerMonitoringStatus
+from System.Actors.Customer.customer_monitoring_status import CustomerMonitoringStatus
 from System.Actors.IoT.camera import Camera
 from System.Actors.IoT.thermal_camera import ThermalCamera
 from Utils.GeneratorUtil import GeneratorUtil

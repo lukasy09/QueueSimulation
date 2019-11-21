@@ -1,11 +1,11 @@
 import math
 from Database.DAO.customer_dao import CustomerDao
 from System.Agents.GeneratorAgent.agent import GeneratorAgent
-from System.Agents.ManagingAgent.queue_types import QueueType
+from System.Agents.QueueAgent.queue_types import QueueType
 from System.Agents.ManagingAgent.simulation_mode import Traffic
-from System.Agents.ManagingAgent.customer_simulation_status import CustomerSimulationStatus
-from System.Agents.ManagingAgent.customer_monitoring_status import CustomerMonitoringStatus
-from System.Agents.ManagingAgent.customer_status import CustomerStatus
+from System.Actors.Customer.customer_simulation_status import CustomerSimulationStatus
+from System.Actors.Customer.customer_monitoring_status import CustomerMonitoringStatus
+from System.Actors.Customer.customer_status import CustomerStatus
 from System.Agents.IdentificationAgent.agent import IdentificationAgent
 from System.Agents.MonitoringAgent.agent import MonitoringAgent
 from System.Agents.VirtualQueueAgent.agent import VirtualQueueAgent
@@ -61,9 +61,9 @@ class ManagingAgent:
     traffic = Traffic.MEDIUM
 
     # Agents
-    identification_agent = IdentificationAgent.get_instance()
+    identification_agent = None  # Agent identifying the customer,
     monitoring_agents = []
-    virtual_queue_agent = VirtualQueueAgent.get_instance()
+    virtual_queue_agent = None  # VQ agent
     queues_agents = []
 
 
@@ -74,13 +74,16 @@ class ManagingAgent:
         self.gen = GeneratorAgent(self.dao)
         self.traffic = traffic
         self.customer_period_range = self.customer_period_ranges[self.traffic]
-        self.identification_agent.set_dao(self.dao)
 
 
-    """Creating customer pool, queues"""
+    """Creating customer pool, queues, all persistent agents in the system"""
     def setup_environment(self):
-        self.queues_agents = self.init_queues_agents()
         self.customer_pool = self.gen.generate_population(self.pool_size)
+        self.identification_agent = IdentificationAgent.get_instance()
+        self.virtual_queue_agent = VirtualQueueAgent.get_instance()
+        self.queues_agents = self.init_queues_agents()
+
+        self.identification_agent.set_dao(self.dao)
 
 
     """Initialising queues based on the config map"""

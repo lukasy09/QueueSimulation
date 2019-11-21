@@ -1,7 +1,7 @@
 from System.Agents.ManagingAgent.agent import ManagingAgent
 from System.Agents.ManagingAgent.simulation_mode import Traffic
-from System.Agents.ManagingAgent.customer_monitoring_status import CustomerMonitoringStatus
-from System.Agents.ManagingAgent.customer_simulation_status import CustomerSimulationStatus
+from System.Actors.Customer.customer_monitoring_status import CustomerMonitoringStatus
+from System.Actors.Customer.customer_simulation_status import CustomerSimulationStatus
 from Utils.GeneratorUtil import GeneratorUtil
 import time
 from os import system

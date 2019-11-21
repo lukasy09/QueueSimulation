@@ -1,5 +1,6 @@
-from System.Agents.ManagingAgent.customer_simulation_status import CustomerSimulationStatus
-from System.Agents.ManagingAgent.queue_types import QueueType
+from System.Actors.Customer.customer_simulation_status import CustomerSimulationStatus
+from System.Agents.QueueAgent.queue_types import QueueType
+
 
 
 class SimulationDataCollector:

@@ -1,6 +1,6 @@
-from System.Agents.ManagingAgent.customer_simulation_status import CustomerSimulationStatus
-from System.Agents.ManagingAgent.customer_status import CustomerStatus
-from System.Agents.ManagingAgent.customer_monitoring_status import CustomerMonitoringStatus
+from System.Actors.Customer.customer_simulation_status import CustomerSimulationStatus
+from System.Actors.Customer.customer_status import CustomerStatus
+from System.Actors.Customer.customer_monitoring_status import CustomerMonitoringStatus
 
 """
     The class represents the system's main actor

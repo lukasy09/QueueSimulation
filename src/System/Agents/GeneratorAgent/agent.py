@@ -1,6 +1,6 @@
 from Database.DAO.customer_dao import CustomerDao
 from System.Actors.Customer.customer import Customer
-from System.Agents.ManagingAgent.customer_status import CustomerStatus
+from System.Actors.Customer.customer_status import CustomerStatus
 from Utils.GeneratorUtil import GeneratorUtil
 import uuid
 
