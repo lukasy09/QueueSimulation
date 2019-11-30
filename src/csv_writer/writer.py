@@ -13,7 +13,7 @@ class WriterCSV:
     writer = None
 
     """On the input we receive all collected data from the simulation.
-        On the output we expect to get simulations results exported to a *.csv file"""
+        On the output we expect to get simulations sim_config exported to a *.csv file"""
 
     def __init__(self, output):
         self.output = output

@@ -3,7 +3,7 @@ from SimulationDataCollector.collector import SimulationDataCollector
 from csv_writer.writer import WriterCSV
 
 collector = SimulationDataCollector()  # Collecting data from simulation
-writer = WriterCSV("../results/result.csv")  # Processing the gained data and creating file resource
+# writer = WriterCSV("../sim_config/result.csv")  # Processing the gained data and creating file resource
 
 simulation = Simulation(collector)
 
@@ -11,7 +11,4 @@ simulation = Simulation(collector)
 simulation.run()
 # Simulation end
 
-data = collector.collect_data()
-
-writer.create_results(data)
-
+# data = collector.collect_data()

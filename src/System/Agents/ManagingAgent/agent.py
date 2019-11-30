@@ -21,7 +21,6 @@ class ManagingAgent:
     # Simulation constants
     simulation_time = 3600  # time unit e.g seconds, minutes etc.
     pool_size = 1000   # The pool of customers.
-    defaultTraffic = Traffic.HIGH  # Default mode
 
     customer_period_range = None  # This parameter is is set during runtime
     monitoring_success_rate = 0.2  # Probability of monitoring success at a time t
@@ -70,7 +69,7 @@ class ManagingAgent:
     # Others aggregated objects
     dao = CustomerDao()
 
-    def __init__(self, traffic=defaultTraffic):
+    def __init__(self, traffic):
         self.gen = GeneratorAgent(self.dao)
         self.traffic = traffic
         self.customer_period_range = self.customer_period_ranges[self.traffic]
@@ -82,7 +81,6 @@ class ManagingAgent:
         self.identification_agent = IdentificationAgent.get_instance()
         self.virtual_queue_agent = VirtualQueueAgent.get_instance()
         self.queues_agents = self.init_queues_agents()
-
         self.identification_agent.set_dao(self.dao)
 
 
