@@ -16,7 +16,6 @@ class Simulation:
     def __init__(self, logger):
         self.logger = logger
 
-
     def run(self):
         # Simulation parameters(if not using the default ones)
         traffic = Traffic.VERY_HIGH
@@ -97,4 +96,4 @@ class Simulation:
                                     customer.update_waiting_time()
             current_time += 1
 
-        self.logger.set_data_source(manager)
+        # self.logger.set_data_source(manager)

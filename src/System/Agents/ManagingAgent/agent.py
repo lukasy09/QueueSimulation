@@ -75,9 +75,14 @@ class ManagingAgent:
         self.gen = GeneratorAgent(self.dao)
         self.customer_period_range = self.customer_period_ranges[self.traffic]
         self.scene = Scene(self.scene_size[0], self.scene_size[1])
-        self.scene.build()
+        self.scene.create_nodes()
+        self.scene.build_connections()
 
-        print(len(self.scene.graph[2]))
+        print(len(self.scene.graph))
+        test_node = self.scene.graph[2][3]
+        print(test_node)
+        # print(len(test_node.connections))
+        print(test_node.exit_pointer)
 
 
     """Creating customer pool, queues, all persistent agents in the system"""
