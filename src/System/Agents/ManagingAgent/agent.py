@@ -11,7 +11,7 @@ from System.Agents.MonitoringAgent.agent import MonitoringAgent
 from System.Agents.VirtualQueueAgent.agent import VirtualQueueAgent
 from System.Agents.QueueAgent.agent import QueueAgent
 from Utils.GeneratorUtil import GeneratorUtil
-
+from System.Scene.scene import Scene
 
 """Managing agent  - MA"""
 
@@ -21,6 +21,7 @@ class ManagingAgent:
     # Simulation constants
     simulation_time = 3600  # time unit e.g seconds, minutes etc.
     pool_size = 1000   # The pool of customers.
+    scene_size = 6, 4  # The scene size m,n where m is number of columns(width) and the n is refers to the height(rows)`
 
     customer_period_range = None  # This parameter is is set during runtime
     monitoring_success_rate = 0.2  # Probability of monitoring success at a time t
@@ -70,9 +71,13 @@ class ManagingAgent:
     dao = CustomerDao()
 
     def __init__(self, traffic):
-        self.gen = GeneratorAgent(self.dao)
         self.traffic = traffic
+        self.gen = GeneratorAgent(self.dao)
         self.customer_period_range = self.customer_period_ranges[self.traffic]
+        self.scene = Scene(self.scene_size[0], self.scene_size[1])
+        self.scene.build()
+
+        print(len(self.scene.graph[2]))
 
 
     """Creating customer pool, queues, all persistent agents in the system"""

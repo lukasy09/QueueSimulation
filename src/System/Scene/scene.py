@@ -1,13 +1,20 @@
+from System.Scene.node import Node
+
+"""Representing the shop area"""
+
+
 class Scene:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+        self.graph = []
 
 
-    def __init__(self, size):
-        self.width = size[0]  # The total width of the shopping area
-        self.height = size[1]  # The height of the shopping area
+    def build(self):
+        for i in range(self.height):
+            nodes_in_row = []
+            for j in range(0, self.width):
+                node = Node(i, j)
+                nodes_in_row.append(node)
 
-        self.subareas = []
-
-
-    """"""
-    def divide_scene(self):
-        pass
+            self.graph.append(nodes_in_row)
