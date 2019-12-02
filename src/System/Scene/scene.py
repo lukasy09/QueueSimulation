@@ -1,4 +1,5 @@
 from System.Scene.node import Node
+import random
 
 """Representing the shop area"""
 
@@ -99,3 +100,31 @@ class Scene:
                         node.connections.append(self.graph[i - 1][j - 1])
                         node.exit_pointer = self.graph[i + 1][j + 1]
 
+    def getRandomNeighborCords(self, cords):
+        node = self.graph[cords[0]][cords[1]]
+        randomNeighbor = random.choice(node.connections)
+
+        return (randomNeighbor.row, randomNeighbor.col)
+
+    def generatePathToEscapeNode(self, cords):
+        current_cords = [cords[0], cords[1]]
+        path_to_escape = []
+
+        while (current_cords[0] < (self.height - 1) or current_cords[1] < (self.width - 1)):
+            if (current_cords[0] < (self.height - 1)):
+                current_cords[0] += 1
+            if (current_cords[1] < (self.width - 1)):
+                current_cords[1] += 1
+
+            path_to_escape.append((current_cords[0], current_cords[1]))
+        
+        return path_to_escape
+
+    def __str__(self):
+        out = ""
+        for row in self.graph:
+            for i in row:
+                out += str(i) + "|"
+            out += "\n"
+
+        return out

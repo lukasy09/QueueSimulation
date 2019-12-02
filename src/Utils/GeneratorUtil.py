@@ -63,3 +63,16 @@ class GeneratorUtil:
             return 0
         return int(time)
 
+    @staticmethod
+    def generate_path(scene):
+        nodes_index = [(0,0)]
+        path_length = GeneratorUtil.generate_integer_in_range(1, 10)
+        for i in range(path_length):
+            current_node = nodes_index[i]
+            neighbor = scene.getRandomNeighborCords(current_node);
+            nodes_index.append(neighbor)
+        
+        print(scene.generatePathToEscapeNode(nodes_index[-1]))
+        return nodes_index
+
+

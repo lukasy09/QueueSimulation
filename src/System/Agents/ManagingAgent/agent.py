@@ -75,14 +75,6 @@ class ManagingAgent:
         self.gen = GeneratorAgent(self.dao)
         self.customer_period_range = self.customer_period_ranges[self.traffic]
         self.scene = Scene(self.scene_size[0], self.scene_size[1])
-        self.scene.create_nodes()
-        self.scene.build_connections()
-
-        print(len(self.scene.graph))
-        test_node = self.scene.graph[2][3]
-        print(test_node)
-        # print(len(test_node.connections))
-        print(test_node.exit_pointer)
 
 
     """Creating customer pool, queues, all persistent agents in the system"""
@@ -92,7 +84,10 @@ class ManagingAgent:
         self.virtual_queue_agent = VirtualQueueAgent.get_instance()
         self.queues_agents = self.init_queues_agents()
         self.identification_agent.set_dao(self.dao)
-
+        self.scene.create_nodes()
+        self.scene.build_connections()
+        print(self.scene)
+        print(GeneratorUtil.generate_path(self.scene))
 
     """Initialising queues based on the config map"""
     def init_queues_agents(self):

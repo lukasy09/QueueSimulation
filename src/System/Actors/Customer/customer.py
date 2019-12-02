@@ -30,6 +30,7 @@ class Customer:
     waiting_time = None  # Number, time spent in queue waiting for service
     service_time = None
     is_first = False  # Flag informing if the customer is first in queue
+    path = []
 
 
     def __init__(self, identifier=None, biometric=None):
