@@ -106,6 +106,9 @@ class Scene:
 
         return (randomNeighbor.row, randomNeighbor.col)
 
+    def getNode(self, cords):
+        return self.graph[cords[0]][cords[1]]
+        
     def generatePathToEscapeNode(self, cords):
         current_cords = [cords[0], cords[1]]
         path_to_escape = []

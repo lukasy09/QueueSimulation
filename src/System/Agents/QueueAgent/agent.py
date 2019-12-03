@@ -24,6 +24,11 @@ class QueueAgent:
     def remove_head(self):
         self.queue.remove(self.queue[0])
 
+    def print_queue(self):
+        for cus in self.queue:
+            print(cus.next_node_time)
+            print(cus.path)
+
     def __str__(self):
         return "QueueAgent: Index: {}, type: {}, number of people waiting: {}"\
                 .format(self.index, self.queue_type, len(self.queue))

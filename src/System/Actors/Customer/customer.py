@@ -31,6 +31,8 @@ class Customer:
     service_time = None
     is_first = False  # Flag informing if the customer is first in queue
     path = []
+    tracked_path = []
+    next_node_time = 0
 
 
     def __init__(self, identifier=None, biometric=None):
@@ -54,9 +56,10 @@ class Customer:
     def set_simulation_status(self, status):
         self.simulation_status = status
 
-
     # Simulation parameters - times
 
+    def set_next_node_time(self, time):
+        self.next_node_time = time
 
     def set_shopping_remaining_time(self, time):
         self.shopping_remaining_time = time
@@ -86,6 +89,12 @@ class Customer:
 
     def set_is_first(self, is_first):
         self.is_first = is_first
+
+    def set_path(self, path):
+        self.path = path
+
+    def append_transition(self, transition):
+        self.tracked_path.append(transition)
 
     # Own detected features
 
