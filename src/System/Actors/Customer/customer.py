@@ -24,16 +24,21 @@ class Customer:
     # Simulation/System info
     simulation_status = CustomerSimulationStatus.BEFORE  # Default status, BEFORE entering the system
     monitoring_status = CustomerMonitoringStatus.BEFORE_MONITORING  # Enumeration
+
     shopping_remaining_time = None  # Integer
     virtual_queue_remaining_time = None  # Integer
     in_virtual_queue_area = False  # Boolean
+
+    # Graph
+    path = []  # The destination path
+    tracked_path = []  # The path that was(in reality) passed by the customer
+    next_node_time = 0
+    times = []
+
+    # Queues
     waiting_time = None  # Number, time spent in queue waiting for service
     service_time = None
     is_first = False  # Flag informing if the customer is first in queue
-    path = []
-    tracked_path = []
-    next_node_time = 0
-
 
     def __init__(self, identifier=None, biometric=None):
         self.index = identifier
@@ -90,15 +95,21 @@ class Customer:
     def set_is_first(self, is_first):
         self.is_first = is_first
 
+    def update_next_node_time(self):
+        self.next_node_time -= 1
+
+    # Graph parameters
+
     def set_path(self, path):
         self.path = path
 
-    def append_transition(self, transition):
-        self.tracked_path.append(transition)
+    def start_shopping(self):
+        self.tracked_path = [self.path[0]]  # Setting the first node
+
+    def append_transition(self, node):
+        self.tracked_path.append(node)
 
     # Own detected features
-
-
     def set_elderly(self, elderly):
         self.elderly = elderly
 

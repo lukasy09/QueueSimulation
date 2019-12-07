@@ -18,7 +18,7 @@ class Simulation:
 
     def run(self):
         # Simulation parameters(if not using the default ones)
-        traffic = Traffic.ULTIMATE
+        traffic = Traffic.VERY_HIGH
 
         # Setting up initials, creating simulation's environment
         manager = ManagingAgent(traffic=traffic)
@@ -34,12 +34,19 @@ class Simulation:
                 new_customer_index = GeneratorUtil.generate_integer_in_range(0, len(manager.customer_pool))
                 new_customer = manager.customer_pool[new_customer_index]
                 manager.import_to_system(new_customer, new_customer_index)
+
                 # Settings customer's simulation parameters
                 new_customer.set_shopping_remaining_time(
                     GeneratorUtil.generate_shopping_time(manager.shopping_time_distribution[0],
                                                          manager.shopping_time_distribution[1]))
                 new_customer.set_path(GeneratorUtil.generate_path(manager.scene))
-                new_customer.set_next_node_time(GeneratorUtil.generate_next_nodetime(15, 10, 5))                                   
+                new_customer.set_next_node_time(GeneratorUtil.generate_next_nodetime(manager.node_time_distribution[0],
+                                                                                     manager.node_time_distribution[1],
+                                                                                     manager.node_time_distribution[2]))
+                # print(new_customer.next_node_time)
+                new_customer.start_shopping()
+
+                # Activating customer's monitoring agent
                 manager.activate_monitoring_agent(new_customer)
 
                 # The time when the next unit is appearing in our system
@@ -53,7 +60,6 @@ class Simulation:
 
             # Customer's behaviour in system
             for customer in manager.system_customers:
-
                 # Customers in system, shopping
                 if customer.simulation_status == CustomerSimulationStatus.IN \
                         and customer.monitoring_status == CustomerMonitoringStatus.AFTER_MONITORING \
@@ -62,7 +68,6 @@ class Simulation:
                     if not customer.in_virtual_queue_area:  # If the customer wasn't in VQ's area before
                         customer.enter_virtual_queue_area(manager.virtual_queue_await_time)
                     else:
-
                         if customer.virtual_queue_remaining_time == 0:  # A customer is waiting long enough for queue assignment
                             manager.join_virtual_queue(customer)
 
@@ -73,16 +78,26 @@ class Simulation:
                     assigned_queue_type = manager.virtual_queue_agent.assign_queue(customer)  # Assigning queue type by the customer's state
                     manager.delegate_customer(customer, assigned_queue_type)  # Sending the customer to the right queue
 
-                # Customers in system who are not in any special state (doing shopping etc.)
+                # Customers doing shopping, walking through the graph
                 else:
+                    if customer.next_node_time > 0:
+                        customer.update_next_node_time()
+                    else:
+                        node_index = len(customer.tracked_path)
+                        if node_index < len(customer.path):
+                            customer.append_transition(customer.path[node_index])
+                            customer.set_next_node_time(GeneratorUtil.generate_next_nodetime(manager.node_time_distribution[0],
+                                                                                         manager.node_time_distribution[1],
+                                                                                         manager.node_time_distribution[2]))
+
                     customer.update_shopping_remaining_time()  # Decrementing
 
             # Customers waiting in queues
-            os.system('clear')
+            # os.system('cls')
             for queue_agent in manager.queues_agents:
                 customers_queue = queue_agent.queue  # Queue (list)
-                print(queue_agent)
-                queue_agent.print_queue()
+                # print(queue_agent)
+                # queue_agent.print_queue()
                 for customer in customers_queue:
                     if customer.simulation_status == CustomerSimulationStatus.IN_QUEUE:
                         customer.set_is_first(True)  # Setting is_first flag in each queue
@@ -99,7 +114,7 @@ class Simulation:
                                     customer.update_service_time()
                                 else:
                                     customer.update_waiting_time()
-            time.sleep(0.01)
+            # time.sleep(0.01)
             current_time += 1
 
         # self.logger.set_data_source(manager)

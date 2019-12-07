@@ -23,11 +23,10 @@ class GeneratorUtil:
 
     @staticmethod
     def generate_next_nodetime(mu, sigma, offset, n=1):
-        node_time = GeneratorUtil.generate_in_distribution(mu, sigma, n)
-        if (node_time <= offset):
+        node_time = GeneratorUtil.generate_in_distribution(mu, sigma, n)[0]
+        if node_time <= offset:
             return offset
-
-        return node_time + offset
+        return int(node_time + offset)
 
     @staticmethod
     def generate_uniform_random():
@@ -73,15 +72,15 @@ class GeneratorUtil:
 
     @staticmethod
     def generate_path(scene):
-        nodes_index = [(0,0)]
+        nodes_index = [(0, 0)]
         path_length = GeneratorUtil.generate_integer_in_range(1, 10)
         for i in range(path_length):
             current_node = nodes_index[i]
-            if (not scene.getNode(current_node).is_exit):
-                neighbor = scene.getRandomNeighborCords(current_node);
+            if not scene.get_node(current_node).is_exit:
+                neighbor = scene.get_random_neighbor_cords(current_node);
             nodes_index.append(neighbor)
         
-        pathToEnd = scene.generatePathToEscapeNode(nodes_index[-1])
+        pathToEnd = scene.generate_path_to_escape_node(nodes_index[-1])
         return nodes_index + pathToEnd
 
 

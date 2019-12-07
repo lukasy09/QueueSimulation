@@ -32,7 +32,7 @@ class ManagingAgent:
     age_distribution = (35.6, 18)
     temperature_distribution = (36.6, 0.2)
     service_service_time_distribution = (120, 20)
-
+    node_time_distribution = (15, 10, 5)  # Mu, Sigma, Offset
 
     # queue_type: count, there must at least one queue for each type
     queues_config = {
@@ -86,8 +86,6 @@ class ManagingAgent:
         self.identification_agent.set_dao(self.dao)
         self.scene.create_nodes()
         self.scene.build_connections()
-        print(self.scene)
-        print(GeneratorUtil.generate_path(self.scene))
 
     """Initialising queues based on the config map"""
     def init_queues_agents(self):

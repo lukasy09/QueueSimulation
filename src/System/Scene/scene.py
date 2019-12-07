@@ -58,7 +58,6 @@ class Scene:
                     elif j == self.width - 1:  # Handling the LAST ELEMENT in the LAST ROW -> END
                         node.is_exit = True
 
-
                     else:
                         node.connections.append(self.graph[i][j - 1])
                         node.connections.append(self.graph[i][j + 1])
@@ -100,23 +99,22 @@ class Scene:
                         node.connections.append(self.graph[i - 1][j - 1])
                         node.exit_pointer = self.graph[i + 1][j + 1]
 
-    def getRandomNeighborCords(self, cords):
+    def get_random_neighbor_cords(self, cords):
         node = self.graph[cords[0]][cords[1]]
-        randomNeighbor = random.choice(node.connections)
+        random_neighbor = random.choice(node.connections)
+        return random_neighbor.row, random_neighbor.col
 
-        return (randomNeighbor.row, randomNeighbor.col)
-
-    def getNode(self, cords):
+    def get_node(self, cords):
         return self.graph[cords[0]][cords[1]]
         
-    def generatePathToEscapeNode(self, cords):
+    def generate_path_to_escape_node(self, cords):
         current_cords = [cords[0], cords[1]]
         path_to_escape = []
 
-        while (current_cords[0] < (self.height - 1) or current_cords[1] < (self.width - 1)):
-            if (current_cords[0] < (self.height - 1)):
+        while current_cords[0] < (self.height - 1) or current_cords[1] < (self.width - 1):
+            if current_cords[0] < (self.height - 1):
                 current_cords[0] += 1
-            if (current_cords[1] < (self.width - 1)):
+            if (self.width - 1) > current_cords[1]:
                 current_cords[1] += 1
 
             path_to_escape.append((current_cords[0], current_cords[1]))
