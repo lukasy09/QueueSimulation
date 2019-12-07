@@ -34,6 +34,7 @@ class Customer:
     tracked_path = []  # The path that was(in reality) passed by the customer
     next_node_time = 0
     times = []
+    total_time = 0
 
     # Queues
     waiting_time = None  # Number, time spent in queue waiting for service
@@ -98,6 +99,9 @@ class Customer:
     def update_next_node_time(self):
         self.next_node_time -= 1
 
+    def update_total_time(self, time):
+        self.total_time += time
+
     # Graph parameters
 
     def set_path(self, path):
@@ -105,9 +109,17 @@ class Customer:
 
     def start_shopping(self):
         self.tracked_path = [self.path[0]]  # Setting the first node
+        self.total_time = 0
+        self.times = []
 
     def append_transition(self, node):
         self.tracked_path.append(node)
+
+    def append_path_time(self, time):
+        self.times.append(time)
+
+    def get_current_node(self):
+        return self.tracked_path[len(self.tracked_path) - 1]
 
     # Own detected features
     def set_elderly(self, elderly):

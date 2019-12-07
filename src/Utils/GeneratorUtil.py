@@ -80,7 +80,7 @@ class GeneratorUtil:
                 neighbor = scene.get_random_neighbor_cords(current_node);
             nodes_index.append(neighbor)
         
-        pathToEnd = scene.generate_path_to_escape_node(nodes_index[-1])
-        return nodes_index + pathToEnd
+        path_to_end = scene.generate_path_to_escape_node(nodes_index[-1])
+        return nodes_index + path_to_end
 
 

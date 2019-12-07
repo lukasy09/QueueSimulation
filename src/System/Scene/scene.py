@@ -121,6 +121,13 @@ class Scene:
         
         return path_to_escape
 
+    def get_exit_coords(self):
+        return self.height - 1, self.width - 1
+
+    def is_at_exit_node(self, position):
+        exit_node_position = self.get_exit_coords()
+        return exit_node_position[0] == position[0] and exit_node_position[1] == position[1]
+
     def __str__(self):
         out = ""
         for row in self.graph:

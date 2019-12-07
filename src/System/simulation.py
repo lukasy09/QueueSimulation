@@ -40,9 +40,13 @@ class Simulation:
                     GeneratorUtil.generate_shopping_time(manager.shopping_time_distribution[0],
                                                          manager.shopping_time_distribution[1]))
                 new_customer.set_path(GeneratorUtil.generate_path(manager.scene))
-                new_customer.set_next_node_time(GeneratorUtil.generate_next_nodetime(manager.node_time_distribution[0],
-                                                                                     manager.node_time_distribution[1],
-                                                                                     manager.node_time_distribution[2]))
+
+                path_time = GeneratorUtil.generate_next_nodetime(manager.node_time_distribution[0],
+                                                                 manager.node_time_distribution[1],
+                                                                 manager.node_time_distribution[2])
+
+                new_customer.set_next_node_time(path_time)
+                new_customer.append_path_time(path_time)
                 # print(new_customer.next_node_time)
                 new_customer.start_shopping()
 
@@ -60,10 +64,11 @@ class Simulation:
 
             # Customer's behaviour in system
             for customer in manager.system_customers:
+
                 # Customers in system, shopping
                 if customer.simulation_status == CustomerSimulationStatus.IN \
                         and customer.monitoring_status == CustomerMonitoringStatus.AFTER_MONITORING \
-                        and customer.shopping_remaining_time == 0:  # Customer entering VQ's area
+                        and manager.scene.is_at_exit_node(customer.get_current_node()):  # Customer entering VQ's area
 
                     if not customer.in_virtual_queue_area:  # If the customer wasn't in VQ's area before
                         customer.enter_virtual_queue_area(manager.virtual_queue_await_time)
@@ -86,11 +91,10 @@ class Simulation:
                         node_index = len(customer.tracked_path)
                         if node_index < len(customer.path):
                             customer.append_transition(customer.path[node_index])
-                            customer.set_next_node_time(GeneratorUtil.generate_next_nodetime(manager.node_time_distribution[0],
-                                                                                         manager.node_time_distribution[1],
-                                                                                         manager.node_time_distribution[2]))
-
-                    customer.update_shopping_remaining_time()  # Decrementing
+                            path_time = GeneratorUtil.generate_next_nodetime(manager.node_time_distribution[0], manager.node_time_distribution[1], manager.node_time_distribution[2])
+                            customer.set_next_node_time(path_time)
+                            customer.append_path_time(path_time)
+                            customer.update_total_time(path_time)
 
             # Customers waiting in queues
             # os.system('cls')
@@ -116,5 +120,18 @@ class Simulation:
                                     customer.update_waiting_time()
             # time.sleep(0.01)
             current_time += 1
+
+        for i, customer in enumerate(manager.system_customers):
+            if i == 34:
+                print("CUSTOMER:")
+                print(customer)
+                print("TRACKED PATH")
+                print(customer.tracked_path)
+                print("TIMES:")
+                print(customer.times)
+                print("TOTAL TIME")
+                print(customer.total_time)
+
+
 
         # self.logger.set_data_source(manager)
