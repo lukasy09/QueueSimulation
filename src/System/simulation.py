@@ -7,14 +7,24 @@ import time
 import os
 from datetime import datetime
 from random import *
+import logging
+import logging.handlers
+
 
 
 class Simulation:
 
-    logger = None
+    SETUP_ENV_STR = "Setting up environment"
+    STARTING_STR = "Starting for "
+
 
     def __init__(self, logger):
-        self.logger = logger
+        self.logger = logger  # Logger
+        self.tracked_customer_index = 5  # The tracked customer index in system_customer list
+        self.tracked_customer = None  # Tracked customer's object
+        self.path_changed = False  # Holding if the tracked customer has changed the position
+        self.speed_factor = 10  # Parametrizing the simulation's speed
+
 
     def run(self):
         # Simulation parameters(if not using the default ones)
@@ -22,7 +32,12 @@ class Simulation:
 
         # Setting up initials, creating simulation's environment
         manager = ManagingAgent(traffic=traffic)
+
+        self.logger.log_message(self.SETUP_ENV_STR)
         manager.setup_environment()  # Creating customer pool & queues with passed parameters
+        # self.logger.clean()
+        self.logger.log_with_await(self.STARTING_STR, 3)
+
         # Start
         current_time = 0  # Variable holds the current time of simulation
         appear_time = GeneratorUtil.get_next_appear_time(manager.customer_period_range[0],
@@ -36,18 +51,13 @@ class Simulation:
                 manager.import_to_system(new_customer, new_customer_index)
 
                 # Settings customer's simulation parameters
-                new_customer.set_shopping_remaining_time(
-                    GeneratorUtil.generate_shopping_time(manager.shopping_time_distribution[0],
-                                                         manager.shopping_time_distribution[1]))
                 new_customer.set_path(GeneratorUtil.generate_path(manager.scene))
 
                 path_time = GeneratorUtil.generate_next_nodetime(manager.node_time_distribution[0],
                                                                  manager.node_time_distribution[1],
                                                                  manager.node_time_distribution[2])
-
                 new_customer.set_next_node_time(path_time)
                 new_customer.append_path_time(path_time)
-                # print(new_customer.next_node_time)
                 new_customer.start_shopping()
 
                 # Activating customer's monitoring agent
@@ -63,7 +73,18 @@ class Simulation:
                     monitoring_agent.monitor_customer()
 
             # Customer's behaviour in system
-            for customer in manager.system_customers:
+            for i, customer in enumerate(manager.system_customers):
+                if i == self.tracked_customer_index:
+                    if self.tracked_customer is None:
+                        self.tracked_customer = manager.system_customers[self.tracked_customer_index]
+
+                    if self.path_changed and self.tracked_customer.simulation_status == CustomerSimulationStatus.IN:
+                        # print(self.tracked_customer.tracked_path)
+                        self.path_changed = False
+                        self.logger.clean()
+                        self.tracked_customer.display_tracked_path()
+
+                        # print(self.tracked_customer.tracked_path)
 
                 # Customers in system, shopping
                 if customer.simulation_status == CustomerSimulationStatus.IN \
@@ -96,12 +117,13 @@ class Simulation:
                             customer.append_path_time(path_time)
                             customer.update_total_time(path_time)
 
+                            if i == self.tracked_customer_index:
+                                self.path_changed = True
+
             # Customers waiting in queues
-            # os.system('cls')
             for queue_agent in manager.queues_agents:
                 customers_queue = queue_agent.queue  # Queue (list)
                 # print(queue_agent)
-                # queue_agent.print_queue()
                 for customer in customers_queue:
                     if customer.simulation_status == CustomerSimulationStatus.IN_QUEUE:
                         customer.set_is_first(True)  # Setting is_first flag in each queue
@@ -118,20 +140,6 @@ class Simulation:
                                     customer.update_service_time()
                                 else:
                                     customer.update_waiting_time()
-            # time.sleep(0.01)
+
+            time.sleep(1/self.speed_factor)
             current_time += 1
-
-        for i, customer in enumerate(manager.system_customers):
-            if i == 34:
-                print("CUSTOMER:")
-                print(customer)
-                print("TRACKED PATH")
-                print(customer.tracked_path)
-                print("TIMES:")
-                print(customer.times)
-                print("TOTAL TIME")
-                print(customer.total_time)
-
-
-
-        # self.logger.set_data_source(manager)

@@ -1,14 +1,12 @@
 from System.simulation import Simulation
 from SimulationDataCollector.collector import SimulationDataCollector
 from csv_writer.writer import WriterCSV
-
-collector = SimulationDataCollector()  # Collecting data from simulation
+from Logger.console_logger import ConsoleLogger
 # writer = WriterCSV("../sim_config/result.csv")  # Processing the gained data and creating file resource
 
-simulation = Simulation(collector)
+logger = ConsoleLogger()
+simulation = Simulation(logger)
 
 # Simulation invoke/start
 simulation.run()
 # Simulation end
-
-# data = collector.collect_data()

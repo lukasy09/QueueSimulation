@@ -25,7 +25,6 @@ class Customer:
     simulation_status = CustomerSimulationStatus.BEFORE  # Default status, BEFORE entering the system
     monitoring_status = CustomerMonitoringStatus.BEFORE_MONITORING  # Enumeration
 
-    shopping_remaining_time = None  # Integer
     virtual_queue_remaining_time = None  # Integer
     in_virtual_queue_area = False  # Boolean
 
@@ -66,13 +65,6 @@ class Customer:
 
     def set_next_node_time(self, time):
         self.next_node_time = time
-
-    def set_shopping_remaining_time(self, time):
-        self.shopping_remaining_time = time
-
-    def update_shopping_remaining_time(self):
-        if self.shopping_remaining_time > 0:
-            self.shopping_remaining_time -= 1
 
     def set_virtual_queue_remaining_time(self, time):
         self.virtual_queue_remaining_time = time
@@ -149,6 +141,14 @@ class Customer:
     def leave_virtual_queue_area(self):
         self.in_virtual_queue_area = False
 
+    def display_tracked_path(self):
+        path_str = "Tracked path: "
+        for i in range(len(self.tracked_path)):
+            node = str(self.tracked_path[i])
+            path_str += node
+            if not i == len(self.tracked_path) -1:
+                path_str += " -> "
+        print(path_str)
     """A log representation of a single customer"""
 
     def __str__(self):
