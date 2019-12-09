@@ -8,8 +8,6 @@ class ConsoleLogger:
     @staticmethod
     def log_message(msg):
         print("\r{0}...".format(msg))
-        # sys.stdout.write("\r{0}...".format(msg))
-        # sys.stdout.flush()
 
     @staticmethod
     def clean():
@@ -22,3 +20,8 @@ class ConsoleLogger:
             print(await_time-i)
             time.sleep(unit_time)
         cls.clean()
+
+    def log_queue(self, qtype, count, customer_symbol="*"):
+        stars = customer_symbol * count
+        out = "{}: {}".format(qtype, stars)
+        print(out)

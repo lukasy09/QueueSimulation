@@ -28,11 +28,11 @@ class ManagingAgent:
     virtual_queue_await_time = 5  # Time after which virtual queue system recognizes new unit in the VQ area
 
     # Generating parameters distributions
-    shopping_time_distribution = (10 * 60, 50)  # N ~ (m, s), expected value is in seconds
-    age_distribution = (35.6, 18)
-    temperature_distribution = (36.6, 0.2)
+    # shopping_time_distribution = (10 * 60, 50)  # N ~ (m, s), expected value is in seconds
+    age_distribution = (40, 22)
+    temperature_distribution = (37.6, 0.25)
     service_service_time_distribution = (120, 20)
-    node_time_distribution = (15, 10, 5)  # Mu, Sigma, Offset
+    node_time_distribution = (12, 15, 5)  # Mu, Sigma, Offset
 
     # queue_type: count, there must at least one queue for each type
     queues_config = {

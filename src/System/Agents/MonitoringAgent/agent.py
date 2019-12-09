@@ -20,9 +20,9 @@ class MonitoringAgent:
     # Customer decisive parameters
     elderly_threshold = 65
     sex_options = ["M", "F"]
-    disable_probability = 0.07
-    pregnant_probability = 0.1  # On the condition if the customer is "F"
-    thermal_threshold = 37.5
+    disable_probability = 0.1
+    pregnant_probability = 0.11  # On the condition if the customer is "F"
+    thermal_threshold = 37.2
 
 
     def __init__(self, rate):

@@ -20,25 +20,24 @@ class Simulation:
     STARTING_STR = "Starting for "
 
 
-    def __init__(self, logger):
-        self.logger = logger  # Logger
+    def __init__(self, console_logger, file_logger):
+        self.console_logger = console_logger  # Console logger
+        self.file_logger = file_logger
         self.tracked_customer_index = 5  # The tracked customer index in system_customer list
         self.tracked_customer = None  # Tracked customer's object
         self.path_changed = False  # Holding if the tracked customer has changed the position
-        self.speed_factor = 100  # Parametrizing the simulation speed
+        self.speed_factor = 10  # Parametrizing the simulation speed
 
 
     def run(self):
         # Simulation parameters(if not using the default ones)
-        traffic = Traffic.VERY_HIGH
-
+        traffic = Traffic.ULTIMATE
         # Setting up initials, creating simulation's environment
         manager = ManagingAgent(traffic=traffic)
 
-        self.logger.log_message(self.SETUP_ENV_STR)
+        self.console_logger.log_message(self.SETUP_ENV_STR)
         manager.setup_environment()  # Creating customer pool & queues with passed parameters
-        # self.logger.clean()
-        self.logger.log_with_await(self.STARTING_STR, 3)
+        self.console_logger.log_with_await(self.STARTING_STR, 3)
 
         # Start
         current_time = 0  # Variable holds the current time of simulation
@@ -76,17 +75,16 @@ class Simulation:
 
             # Customer's behaviour in system
             for i, customer in enumerate(manager.system_customers):
+
+                # Handling logs for tracked customer
                 if i == self.tracked_customer_index:
                     if self.tracked_customer is None:
                         self.tracked_customer = manager.system_customers[self.tracked_customer_index]
-
                     if self.path_changed and self.tracked_customer.simulation_status == CustomerSimulationStatus.IN:
-                        # print(self.tracked_customer.tracked_path)
                         self.path_changed = False
-                        self.logger.clean()
-                        self.tracked_customer.display_tracked_path()
+                        # self.console_logger.clean()
+                        # self.tracked_customer.display_tracked_path()  # Displaying tracked customer's current path
 
-                        # print(self.tracked_customer.tracked_path)
 
                 # Customers in system, shopping
                 if customer.simulation_status == CustomerSimulationStatus.IN \
@@ -121,11 +119,14 @@ class Simulation:
 
                             if i == self.tracked_customer_index:
                                 self.path_changed = True
+                                self.file_logger.add_node(customer.path[node_index])
 
             # Customers waiting in queues
+            self.console_logger.clean()
+            print("Time:" + str(current_time))
             for queue_agent in manager.queues_agents:
                 customers_queue = queue_agent.queue  # Queue (list)
-                # print(queue_agent)
+                self.console_logger.log_queue(queue_agent.queue_type, queue_agent.get_active_waiting_customers())
                 for customer in customers_queue:
                     if customer.simulation_status == CustomerSimulationStatus.IN_QUEUE:
                         customer.set_is_first(True)  # Setting is_first flag in each queue

@@ -6,8 +6,9 @@ from System.Agents.ManagingAgent.agent import *
 
 class GeneratorUtil:
 
-    age_distribution = (35.6, 25)
-    temperature_distribution = (36.8, 1.2)
+    age_distribution = (45, 18)
+    temperature_distribution = (36.6, 1.7)
+    path_length = (1, 20)
 
     @staticmethod
     def generate_integer_in_range(low=0, high=1):
@@ -70,10 +71,10 @@ class GeneratorUtil:
             return 0
         return int(time)
 
-    @staticmethod
-    def generate_path(scene):
+    @classmethod
+    def generate_path(cls, scene):
         nodes_index = [(0, 0)]
-        path_length = GeneratorUtil.generate_integer_in_range(1, 10)
+        path_length = GeneratorUtil.generate_integer_in_range(cls.path_length[0], cls.path_length[1])
         for i in range(path_length):
             current_node = nodes_index[i]
             if not scene.get_node(current_node).is_exit:
