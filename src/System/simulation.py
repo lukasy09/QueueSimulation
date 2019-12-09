@@ -20,18 +20,20 @@ class Simulation:
     STARTING_STR = "Starting for "
 
 
-    def __init__(self, console_logger, file_logger):
+    def __init__(self, console_logger, file_logger, collector):
         self.console_logger = console_logger  # Console logger
-        self.file_logger = file_logger
-        self.tracked_customer_index = 5  # The tracked customer index in system_customer list
+        self.file_logger = file_logger  # File logger
+        self.collector = collector  # Collector, aggreagating simulation's data
+
+        self.tracked_customer_index = 0  # The tracked customer index in system_customer list
         self.tracked_customer = None  # Tracked customer's object
         self.path_changed = False  # Holding if the tracked customer has changed the position
-        self.speed_factor = 10  # Parametrizing the simulation speed
+        self.speed_factor = 10000  # Parametrizing the simulation speed
 
 
     def run(self):
         # Simulation parameters(if not using the default ones)
-        traffic = Traffic.ULTIMATE
+        traffic = Traffic.HIGH
         # Setting up initials, creating simulation's environment
         manager = ManagingAgent(traffic=traffic)
 
@@ -122,11 +124,11 @@ class Simulation:
                                 self.file_logger.add_node(customer.path[node_index])
 
             # Customers waiting in queues
-            self.console_logger.clean()
-            print("Time:" + str(current_time))
+            # self.console_logger.clean()
+            # self.console_logger.log_message("Time:"+str(current_time))
             for queue_agent in manager.queues_agents:
                 customers_queue = queue_agent.queue  # Queue (list)
-                self.console_logger.log_queue(queue_agent.queue_type, queue_agent.get_active_waiting_customers())
+                # self.console_logger.log_queue(queue_agent.queue_type, queue_agent.get_active_waiting_customers())
                 for customer in customers_queue:
                     if customer.simulation_status == CustomerSimulationStatus.IN_QUEUE:
                         customer.set_is_first(True)  # Setting is_first flag in each queue
@@ -144,5 +146,9 @@ class Simulation:
                                 else:
                                     customer.update_waiting_time()
 
-            time.sleep(1/self.speed_factor)
+            # time.sleep(1/self.speed_factor)
             current_time += 1
+
+        self.collector.set_data_source(manager)
+        out = self.collector.collect_simulation_data()
+        return out

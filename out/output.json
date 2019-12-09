@@ -1,0 +1,5747 @@
+{
+  "queues": [
+    {
+      "index": 0,
+      "type": "vip",
+      "queue": [
+        481,
+        293,
+        885,
+        846,
+        656,
+        294,
+        91,
+        985
+      ],
+      "mean_waiting_time": 16.75
+    },
+    {
+      "index": 1,
+      "type": "thermal",
+      "queue": [
+        815,
+        648,
+        340,
+        586,
+        702,
+        545,
+        163,
+        873,
+        198,
+        748,
+        78,
+        701,
+        432,
+        185,
+        495,
+        518,
+        339,
+        858,
+        652,
+        437,
+        514,
+        383,
+        990
+      ],
+      "mean_waiting_time": 39.04347826086956
+    },
+    {
+      "index": 2,
+      "type": "special",
+      "queue": [
+        31,
+        454,
+        36,
+        714,
+        606,
+        306,
+        893,
+        153
+      ],
+      "mean_waiting_time": 10.75
+    },
+    {
+      "index": 3,
+      "type": "normal",
+      "queue": [
+        155,
+        844,
+        551,
+        605,
+        280,
+        788,
+        560,
+        412,
+        112,
+        77,
+        585,
+        628,
+        655,
+        414,
+        326,
+        842,
+        734,
+        219,
+        911,
+        989,
+        650,
+        636,
+        260
+      ],
+      "mean_waiting_time": 83.56521739130434
+    }
+  ],
+  "customers": [
+    {
+      "index": 815,
+      "biometric": "f8c9016c-1ac8-11ea-9d03-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "F",
+      "disable": false,
+      "pregnant": true,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        11,
+        16,
+        12,
+        10,
+        17,
+        5,
+        5,
+        10,
+        21,
+        17,
+        14,
+        5,
+        31
+      ],
+      "total_shopping_time": 174,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 31,
+      "biometric": "f6adaa79-1ac8-11ea-bfaf-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": true,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        17,
+        22,
+        31,
+        20,
+        30,
+        5,
+        5,
+        45,
+        5,
+        21,
+        5,
+        5,
+        5,
+        17,
+        5,
+        23,
+        25,
+        17,
+        5,
+        5
+      ],
+      "total_shopping_time": 313,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 648,
+      "biometric": "f8473769-1ac8-11ea-86e6-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        39,
+        21,
+        5,
+        22,
+        5,
+        5,
+        35,
+        5,
+        23,
+        23,
+        20,
+        32,
+        10,
+        5,
+        14,
+        32,
+        5
+      ],
+      "total_shopping_time": 301,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 155,
+      "biometric": "f7100272-1ac8-11ea-9df8-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "F",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        5,
+        5,
+        13,
+        5,
+        5,
+        5,
+        36,
+        28
+      ],
+      "total_shopping_time": 102,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 844,
+      "biometric": "f8d169fc-1ac8-11ea-a128-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "F",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        5,
+        23,
+        11,
+        18,
+        26,
+        5,
+        5,
+        5
+      ],
+      "total_shopping_time": 98,
+      "waiting_time": 4,
+      "service_time": 0
+    },
+    {
+      "index": 454,
+      "biometric": "f7beb2d1-1ac8-11ea-bb04-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "F",
+      "disable": false,
+      "pregnant": true,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        17,
+        21,
+        36,
+        21,
+        10,
+        36,
+        10,
+        19,
+        5,
+        5,
+        18,
+        28,
+        5,
+        5,
+        19,
+        19,
+        5
+      ],
+      "total_shopping_time": 279,
+      "waiting_time": 81,
+      "service_time": 0
+    },
+    {
+      "index": 586,
+      "biometric": "f7f4ebae-1ac8-11ea-8963-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": true,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        18,
+        5,
+        5,
+        18,
+        25,
+        13,
+        11,
+        23,
+        5,
+        23,
+        14,
+        15,
+        27,
+        19,
+        35,
+        14,
+        31,
+        5,
+        42,
+        40
+      ],
+      "total_shopping_time": 388,
+      "waiting_time": 5,
+      "service_time": 0
+    },
+    {
+      "index": 36,
+      "biometric": "f6adaa7e-1ac8-11ea-a483-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "F",
+      "disable": false,
+      "pregnant": true,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        27,
+        16,
+        5,
+        5,
+        24,
+        5,
+        12,
+        5,
+        32,
+        37,
+        5,
+        16,
+        36,
+        18,
+        47,
+        26,
+        5
+      ],
+      "total_shopping_time": 321,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 340,
+      "biometric": "f77255f8-1ac8-11ea-b0f2-acfdce91142c",
+      "is_new": true,
+      "elderly": true,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        37,
+        25,
+        31,
+        5,
+        40,
+        24
+      ],
+      "total_shopping_time": 162,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 551,
+      "biometric": "f7eab092-1ac8-11ea-8aa8-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        22,
+        19,
+        11,
+        5,
+        33,
+        16,
+        5,
+        5,
+        5,
+        29,
+        24,
+        12,
+        14,
+        5,
+        31
+      ],
+      "total_shopping_time": 236,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 605,
+      "biometric": "f8093801-1ac8-11ea-a34c-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "F",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        5,
+        28,
+        30,
+        14,
+        37,
+        20
+      ],
+      "total_shopping_time": 134,
+      "waiting_time": 110,
+      "service_time": 0
+    },
+    {
+      "index": 702,
+      "biometric": "f86d63bb-1ac8-11ea-a694-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "F",
+      "disable": false,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        5,
+        5,
+        5,
+        27,
+        27,
+        26,
+        26,
+        5,
+        5,
+        32,
+        5,
+        33,
+        5
+      ],
+      "total_shopping_time": 206,
+      "waiting_time": 40,
+      "service_time": 0
+    },
+    {
+      "index": 280,
+      "biometric": "f747e581-1ac8-11ea-a81f-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        34,
+        22,
+        38,
+        5,
+        5,
+        24,
+        14
+      ],
+      "total_shopping_time": 142,
+      "waiting_time": 142,
+      "service_time": 0
+    },
+    {
+      "index": 714,
+      "biometric": "f8741dd3-1ac8-11ea-9900-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": true,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        5,
+        35,
+        19,
+        36,
+        5,
+        13,
+        5,
+        18,
+        12,
+        17
+      ],
+      "total_shopping_time": 165,
+      "waiting_time": 5,
+      "service_time": 0
+    },
+    {
+      "index": 788,
+      "biometric": "f8c224e8-1ac8-11ea-8af3-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "F",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        5,
+        22,
+        35,
+        29,
+        5,
+        5,
+        5,
+        5,
+        5,
+        41,
+        5,
+        5,
+        5,
+        5,
+        26,
+        35
+      ],
+      "total_shopping_time": 238,
+      "waiting_time": 146,
+      "service_time": 0
+    },
+    {
+      "index": 545,
+      "biometric": "f7e75498-1ac8-11ea-b4e0-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        20,
+        5,
+        20,
+        27,
+        46,
+        26,
+        22,
+        22,
+        17,
+        28,
+        12,
+        5,
+        12,
+        14,
+        19,
+        5,
+        25,
+        5,
+        39
+      ],
+      "total_shopping_time": 369,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 481,
+      "biometric": "f7c235d1-1ac8-11ea-9aa7-acfdce91142c",
+      "is_new": false,
+      "elderly": false,
+      "sex": "F",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        12,
+        11,
+        30,
+        22,
+        5,
+        29,
+        37,
+        10,
+        25,
+        16,
+        12
+      ],
+      "total_shopping_time": 209,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 163,
+      "biometric": "f710027a-1ac8-11ea-965f-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        29,
+        10,
+        23,
+        5,
+        5,
+        11,
+        10,
+        27,
+        5,
+        25,
+        5,
+        5,
+        32
+      ],
+      "total_shopping_time": 192,
+      "waiting_time": 73,
+      "service_time": 0
+    },
+    {
+      "index": 560,
+      "biometric": "f7ee32e8-1ac8-11ea-aefb-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        5,
+        5,
+        5,
+        25,
+        10,
+        33,
+        5,
+        47,
+        5,
+        20
+      ],
+      "total_shopping_time": 160,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 412,
+      "biometric": "f7adc056-1ac8-11ea-b5ec-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "F",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        18,
+        21,
+        5,
+        36,
+        5,
+        22,
+        23,
+        5,
+        5,
+        38,
+        5,
+        18,
+        22,
+        5
+      ],
+      "total_shopping_time": 228,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 293,
+      "biometric": "f752454f-1ac8-11ea-b23d-acfdce91142c",
+      "is_new": false,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        19,
+        40,
+        5,
+        21,
+        5
+      ],
+      "total_shopping_time": 90,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 873,
+      "biometric": "f8ec70ff-1ac8-11ea-84cf-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        17,
+        47,
+        16,
+        5,
+        26,
+        5,
+        23,
+        23,
+        21,
+        5,
+        5,
+        19,
+        11,
+        37,
+        24,
+        25,
+        17,
+        5
+      ],
+      "total_shopping_time": 331,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 198,
+      "biometric": "f72cdbe4-1ac8-11ea-a37b-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        29,
+        30,
+        5,
+        40,
+        5,
+        47,
+        15,
+        22,
+        35,
+        11,
+        34,
+        16,
+        27,
+        39,
+        36,
+        15,
+        5
+      ],
+      "total_shopping_time": 411,
+      "waiting_time": 65,
+      "service_time": 0
+    },
+    {
+      "index": 77,
+      "biometric": "f6e257d4-1ac8-11ea-a302-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        21,
+        24,
+        15,
+        5,
+        5,
+        13,
+        5,
+        37,
+        5,
+        5,
+        18,
+        5,
+        27,
+        16,
+        38,
+        5,
+        31,
+        39
+      ],
+      "total_shopping_time": 314,
+      "waiting_time": 114,
+      "service_time": 0
+    },
+    {
+      "index": 606,
+      "biometric": "f8093802-1ac8-11ea-9845-acfdce91142c",
+      "is_new": true,
+      "elderly": true,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        5,
+        23,
+        5,
+        21,
+        23,
+        23,
+        22,
+        11,
+        18,
+        33,
+        38
+      ],
+      "total_shopping_time": 222,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 585,
+      "biometric": "f7f4ebad-1ac8-11ea-ada3-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "F",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        5,
+        31,
+        36,
+        5,
+        38,
+        5,
+        5,
+        43,
+        5,
+        22,
+        5,
+        5,
+        23,
+        5
+      ],
+      "total_shopping_time": 233,
+      "waiting_time": 182,
+      "service_time": 0
+    },
+    {
+      "index": 112,
+      "biometric": "f6f85775-1ac8-11ea-bd49-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "F",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        5,
+        21,
+        15,
+        5,
+        5,
+        27,
+        52,
+        5,
+        5,
+        32,
+        43,
+        25,
+        24,
+        47,
+        28
+      ],
+      "total_shopping_time": 339,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 306,
+      "biometric": "f75c590f-1ac8-11ea-9a09-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "F",
+      "disable": false,
+      "pregnant": true,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        20,
+        37,
+        5,
+        22,
+        28,
+        5,
+        14,
+        5,
+        5,
+        22,
+        5,
+        5,
+        16,
+        5
+      ],
+      "total_shopping_time": 194,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 78,
+      "biometric": "f6e257d5-1ac8-11ea-bc7a-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        5,
+        15,
+        5,
+        5,
+        5,
+        5,
+        16,
+        18,
+        5,
+        36,
+        5,
+        53,
+        30,
+        12,
+        17,
+        5,
+        16,
+        12,
+        15,
+        25,
+        5,
+        5
+      ],
+      "total_shopping_time": 315,
+      "waiting_time": 65,
+      "service_time": 0
+    },
+    {
+      "index": 628,
+      "biometric": "f813731b-1ac8-11ea-81ef-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        29,
+        5,
+        16,
+        37,
+        5,
+        25,
+        23,
+        25,
+        5,
+        46,
+        38
+      ],
+      "total_shopping_time": 254,
+      "waiting_time": 15,
+      "service_time": 0
+    },
+    {
+      "index": 748,
+      "biometric": "f8886acd-1ac8-11ea-afb0-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        22,
+        21,
+        5,
+        30,
+        5,
+        15,
+        5,
+        22,
+        24,
+        27,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "total_shopping_time": 201,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 655,
+      "biometric": "f8473770-1ac8-11ea-8169-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "F",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        39,
+        20,
+        54,
+        28,
+        5,
+        24,
+        5,
+        35,
+        35,
+        13,
+        17,
+        5,
+        17,
+        5,
+        13,
+        45,
+        5,
+        12
+      ],
+      "total_shopping_time": 377,
+      "waiting_time": 26,
+      "service_time": 0
+    },
+    {
+      "index": 185,
+      "biometric": "f7211aa5-1ac8-11ea-9046-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        27,
+        22,
+        5,
+        5,
+        38,
+        18,
+        16,
+        12,
+        20,
+        5,
+        5,
+        10,
+        30,
+        43,
+        5,
+        13,
+        13,
+        23,
+        5,
+        5
+      ],
+      "total_shopping_time": 320,
+      "waiting_time": 204,
+      "service_time": 0
+    },
+    {
+      "index": 432,
+      "biometric": "f7b49f56-1ac8-11ea-915d-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "F",
+      "disable": false,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        5,
+        5,
+        18,
+        5,
+        5,
+        11,
+        33,
+        12,
+        46,
+        5,
+        35,
+        5,
+        54,
+        19
+      ],
+      "total_shopping_time": 258,
+      "waiting_time": 95,
+      "service_time": 0
+    },
+    {
+      "index": 414,
+      "biometric": "f7adc058-1ac8-11ea-921f-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        5,
+        5,
+        15,
+        18,
+        21,
+        37,
+        14,
+        33,
+        5,
+        20,
+        36,
+        11,
+        15,
+        30,
+        5,
+        18,
+        5,
+        20,
+        5
+      ],
+      "total_shopping_time": 318,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 701,
+      "biometric": "f86d63ba-1ac8-11ea-86c7-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "F",
+      "disable": false,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        5,
+        5,
+        21,
+        14,
+        44,
+        31,
+        15
+      ],
+      "total_shopping_time": 135,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 326,
+      "biometric": "f77255ea-1ac8-11ea-a8de-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "F",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        14,
+        33,
+        12,
+        17,
+        23,
+        24,
+        35,
+        37,
+        33,
+        17,
+        13,
+        20,
+        29,
+        19,
+        40,
+        16,
+        5,
+        16
+      ],
+      "total_shopping_time": 403,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 885,
+      "biometric": "f8ec710b-1ac8-11ea-bc9b-acfdce91142c",
+      "is_new": false,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        12,
+        5,
+        5,
+        17,
+        5
+      ],
+      "total_shopping_time": 44,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 893,
+      "biometric": "f8f6a9f0-1ac8-11ea-b433-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": true,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        43,
+        5,
+        5,
+        34,
+        11,
+        31,
+        10,
+        44,
+        39,
+        10
+      ],
+      "total_shopping_time": 232,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 734,
+      "biometric": "f8850ea6-1ac8-11ea-96ab-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "F",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        5,
+        21,
+        27,
+        36,
+        13,
+        5,
+        5,
+        43,
+        5,
+        5,
+        20,
+        11,
+        5,
+        18,
+        20,
+        46,
+        14,
+        22,
+        33,
+        5,
+        5,
+        5
+      ],
+      "total_shopping_time": 369,
+      "waiting_time": 54,
+      "service_time": 0
+    },
+    {
+      "index": 495,
+      "biometric": "f7cc49c6-1ac8-11ea-9a45-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        5,
+        5,
+        43,
+        15,
+        21
+      ],
+      "total_shopping_time": 89,
+      "waiting_time": 64,
+      "service_time": 0
+    },
+    {
+      "index": 339,
+      "biometric": "f77255f7-1ac8-11ea-83c4-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "F",
+      "disable": false,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        5,
+        22,
+        39,
+        10,
+        5,
+        5,
+        28,
+        19,
+        17,
+        5,
+        5,
+        13,
+        12,
+        5,
+        26,
+        32,
+        31,
+        17,
+        28,
+        27
+      ],
+      "total_shopping_time": 351,
+      "waiting_time": 69,
+      "service_time": 0
+    },
+    {
+      "index": 842,
+      "biometric": "f8d169fa-1ac8-11ea-8336-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        28,
+        29,
+        5,
+        31,
+        5,
+        13,
+        33,
+        26,
+        5,
+        22,
+        5,
+        46
+      ],
+      "total_shopping_time": 248,
+      "waiting_time": 19,
+      "service_time": 0
+    },
+    {
+      "index": 219,
+      "biometric": "f72cdbf9-1ac8-11ea-bb94-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        13,
+        19,
+        20,
+        5,
+        5,
+        5,
+        5,
+        11,
+        29,
+        25,
+        24,
+        48,
+        31,
+        5,
+        57,
+        32,
+        26
+      ],
+      "total_shopping_time": 360,
+      "waiting_time": 59,
+      "service_time": 0
+    },
+    {
+      "index": 911,
+      "biometric": "f8fa0723-1ac8-11ea-8b71-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        16,
+        10,
+        5,
+        24,
+        5,
+        34,
+        5,
+        17,
+        15,
+        23,
+        15,
+        17,
+        5,
+        37,
+        10,
+        5,
+        18,
+        18,
+        5,
+        29,
+        5,
+        44
+      ],
+      "total_shopping_time": 362,
+      "waiting_time": 188,
+      "service_time": 0
+    },
+    {
+      "index": 846,
+      "biometric": "f8d169fe-1ac8-11ea-804f-acfdce91142c",
+      "is_new": false,
+      "elderly": false,
+      "sex": "F",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        22,
+        29,
+        14,
+        5,
+        44,
+        25,
+        15,
+        5,
+        5,
+        5
+      ],
+      "total_shopping_time": 169,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 518,
+      "biometric": "f7db8ec8-1ac8-11ea-92bb-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "F",
+      "disable": false,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        25,
+        23,
+        15,
+        5,
+        34
+      ],
+      "total_shopping_time": 102,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 650,
+      "biometric": "f847376b-1ac8-11ea-9ad3-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "F",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        22,
+        5,
+        5,
+        21,
+        20,
+        5,
+        14,
+        24,
+        5,
+        5,
+        28,
+        15,
+        23,
+        20,
+        34,
+        5,
+        5,
+        27,
+        5,
+        5,
+        5
+      ],
+      "total_shopping_time": 298,
+      "waiting_time": 253,
+      "service_time": 0
+    },
+    {
+      "index": 656,
+      "biometric": "f8473771-1ac8-11ea-8607-acfdce91142c",
+      "is_new": false,
+      "elderly": false,
+      "sex": "F",
+      "disable": false,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        15,
+        16,
+        25,
+        24,
+        24,
+        41,
+        11,
+        5,
+        5,
+        32,
+        5,
+        23,
+        41,
+        31,
+        22
+      ],
+      "total_shopping_time": 320,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 858,
+      "biometric": "f8d81f50-1ac8-11ea-a176-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        5,
+        39,
+        23,
+        12,
+        5,
+        31,
+        16,
+        5,
+        5,
+        40,
+        15,
+        23,
+        25,
+        5,
+        25,
+        22,
+        37
+      ],
+      "total_shopping_time": 333,
+      "waiting_time": 7,
+      "service_time": 0
+    },
+    {
+      "index": 294,
+      "biometric": "f7557c82-1ac8-11ea-bf4f-acfdce91142c",
+      "is_new": false,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        29,
+        5,
+        24,
+        5,
+        26,
+        5,
+        5,
+        16,
+        5,
+        13,
+        20,
+        40,
+        24,
+        20
+      ],
+      "total_shopping_time": 237,
+      "waiting_time": 106,
+      "service_time": 0
+    },
+    {
+      "index": 989,
+      "biometric": "f9079d8d-1ac8-11ea-9f96-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "F",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        5,
+        20,
+        14,
+        31,
+        12,
+        13,
+        26
+      ],
+      "total_shopping_time": 121,
+      "waiting_time": 178,
+      "service_time": 0
+    },
+    {
+      "index": 514,
+      "biometric": "f7d68564-1ac8-11ea-9e4f-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        17,
+        5,
+        13,
+        50,
+        40,
+        43,
+        27,
+        14,
+        27,
+        19,
+        21,
+        31,
+        5,
+        11,
+        5,
+        32,
+        40,
+        5,
+        5,
+        42,
+        5
+      ],
+      "total_shopping_time": 457,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 652,
+      "biometric": "f847376d-1ac8-11ea-bd0e-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        5,
+        34,
+        28,
+        31,
+        5,
+        10,
+        5,
+        5,
+        5,
+        5,
+        13,
+        5
+      ],
+      "total_shopping_time": 151,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 260,
+      "biometric": "f7412b6d-1ac8-11ea-9cfd-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "F",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        31,
+        5,
+        26,
+        26,
+        15,
+        37,
+        33,
+        36,
+        5,
+        10,
+        17
+      ],
+      "total_shopping_time": 241,
+      "waiting_time": 264,
+      "service_time": 15
+    },
+    {
+      "index": 636,
+      "biometric": "f81a2da8-1ac8-11ea-aa96-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        5,
+        32,
+        5,
+        33,
+        16,
+        25,
+        5,
+        5,
+        5,
+        12,
+        5,
+        20
+      ],
+      "total_shopping_time": 168,
+      "waiting_time": 168,
+      "service_time": 0
+    },
+    {
+      "index": 437,
+      "biometric": "f7bb56c2-1ac8-11ea-8234-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        5,
+        17,
+        33,
+        5,
+        10,
+        5,
+        22
+      ],
+      "total_shopping_time": 97,
+      "waiting_time": 1,
+      "service_time": 0
+    },
+    {
+      "index": 91,
+      "biometric": "f6e257e2-1ac8-11ea-9e1b-acfdce91142c",
+      "is_new": false,
+      "elderly": false,
+      "sex": "M",
+      "disable": true,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        16,
+        14,
+        23,
+        5,
+        5,
+        38,
+        12,
+        13,
+        51,
+        5,
+        5,
+        5,
+        40
+      ],
+      "total_shopping_time": 232,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 153,
+      "biometric": "f7100270-1ac8-11ea-88cc-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "F",
+      "disable": true,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        27,
+        5,
+        26,
+        22,
+        15,
+        22,
+        18,
+        34
+      ],
+      "total_shopping_time": 169,
+      "waiting_time": 0,
+      "service_time": 0
+    },
+    {
+      "index": 383,
+      "biometric": "f7a38373-1ac8-11ea-818b-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "F",
+      "disable": false,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        5,
+        31,
+        25,
+        11,
+        14,
+        11,
+        11,
+        13,
+        18,
+        5,
+        5,
+        5,
+        37
+      ],
+      "total_shopping_time": 191,
+      "waiting_time": 109,
+      "service_time": 2
+    },
+    {
+      "index": 985,
+      "biometric": "f904444a-1ac8-11ea-9ba9-acfdce91142c",
+      "is_new": false,
+      "elderly": true,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        27,
+        31,
+        12,
+        36,
+        22,
+        5
+      ],
+      "total_shopping_time": 133,
+      "waiting_time": 28,
+      "service_time": 2
+    },
+    {
+      "index": 990,
+      "biometric": "f9079d8e-1ac8-11ea-8182-acfdce91142c",
+      "is_new": true,
+      "elderly": true,
+      "sex": "F",
+      "disable": false,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "times": [
+        5,
+        28,
+        5,
+        33,
+        5,
+        38,
+        26
+      ],
+      "total_shopping_time": 140,
+      "waiting_time": 101,
+      "service_time": 108
+    },
+    {
+      "index": 299,
+      "biometric": "f758ff9c-1ac8-11ea-9520-acfdce91142c",
+      "is_new": true,
+      "elderly": true,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": true,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "times": [
+        26,
+        17,
+        11,
+        30,
+        33,
+        36,
+        25
+      ],
+      "total_shopping_time": 178,
+      "waiting_time": null,
+      "service_time": null
+    },
+    {
+      "index": 722,
+      "biometric": "f87779c9-1ac8-11ea-be0a-acfdce91142c",
+      "is_new": true,
+      "elderly": true,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "times": [
+        38,
+        14,
+        5,
+        5,
+        38,
+        38,
+        38
+      ],
+      "total_shopping_time": 176,
+      "waiting_time": null,
+      "service_time": null
+    },
+    {
+      "index": 401,
+      "biometric": "f7adc04b-1ac8-11ea-b2f3-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "M",
+      "disable": false,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "times": [
+        15,
+        5,
+        5,
+        28,
+        20,
+        14,
+        40
+      ],
+      "total_shopping_time": 127,
+      "waiting_time": null,
+      "service_time": null
+    },
+    {
+      "index": 531,
+      "biometric": "f7db8ed5-1ac8-11ea-b80e-acfdce91142c",
+      "is_new": true,
+      "elderly": false,
+      "sex": "F",
+      "disable": true,
+      "pregnant": false,
+      "thermal": false,
+      "tracked_path": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "times": [
+        27,
+        5,
+        14,
+        31
+      ],
+      "total_shopping_time": 77,
+      "waiting_time": null,
+      "service_time": null
+    }
+  ]
+}

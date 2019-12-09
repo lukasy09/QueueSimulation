@@ -7,7 +7,7 @@ class ConsoleLogger:
 
     @staticmethod
     def log_message(msg):
-        print("\r{0}...".format(msg))
+        print("\r{0}".format(msg))
 
     @staticmethod
     def clean():

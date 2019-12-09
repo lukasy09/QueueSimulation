@@ -1,6 +1,6 @@
 from System.Actors.Customer.customer_simulation_status import CustomerSimulationStatus
 from System.Agents.QueueAgent.queue_types import QueueType
-
+import json
 
 
 class SimulationDataCollector:
@@ -11,29 +11,63 @@ class SimulationDataCollector:
     def set_data_source(self, manager):
         self.manager = manager
 
-    def collect_data(self):
-        queues = self.collect_queues()
-        general = self.collect_general_data()
-        mean_time_data = self.compute_mean_waiting_time()
-        # shopping_customers = self.collect_system_status_customers(CustomerSimulationStatus.IN)
-        # vq_customers = self.collect_queue_status_customers(CustomerSimulationStatus.IN_VQ)
-        waiting_customers = self.collect_queue_status_customers(CustomerSimulationStatus.IN_QUEUE)
-        serviced_customers = self.collect_queue_status_customers(CustomerSimulationStatus.AFTER)
-
-        return queues, general, mean_time_data, waiting_customers, serviced_customers
-
-    """Collecting general simulation data"""
-    def collect_general_data(self):
+    def collect_simulation_data(self):
         manager = self.manager
-        general = {
-            "time": manager.simulation_time,
-            "total": len(manager.system_customers)
-        }
-        return general
+        out = {}
+        queues = []
+        for queue_agent in manager.queues_agents:
+            indexes = []
+            for customer in queue_agent.queue:
+                indexes.append(customer.index)
+
+            obj = {
+                "index": queue_agent.index,
+                "type": queue_agent.queue_type,
+                "queue": indexes,
+                "mean_waiting_time": self.get_mean_waiting_time(queue_agent.index)
+            }
+
+            queues.append(obj)
+
+        out["queues"] = queues
+
+        customers = []
+        for customer in manager.system_customers:
+            tracked_path = customer.tracked_path
+            obj = {
+                "index": customer.index,
+                "biometric": str(customer.biometric),
+                "is_new": customer.is_new,
+                "elderly": customer.elderly,
+                "sex": customer.sex,
+                "disable": customer.disable,
+                "pregnant": customer.pregnant,
+                "thermal": customer.thermal,
+                "tracked_path": customer.tracked_path,
+                "times": customer.times,
+                'total_shopping_time': customer.total_time,
+                'waiting_time': customer.waiting_time,
+            }
+            customers.append(obj)
 
 
+        out["customers"] = customers
+        return out
 
-    """Computing customers' mean waiting time per each queue"""
+    def get_mean_waiting_time(self, queue_index):
+        manager = self.manager
+        count = 0
+        length = None
+        for queue_agent in manager.queues_agents:
+            if queue_agent.index == queue_index:
+
+                for customer in queue_agent.queue:
+                    count += customer.waiting_time
+                length = len(queue_agent.queue)
+        assert length > 0
+        return count/length
+
+
     def compute_mean_waiting_time(self):
         manager = self.manager
         queues_mean_waiting_time = dict()
@@ -45,14 +79,15 @@ class SimulationDataCollector:
                 queue_waiting_time_sum += unit.waiting_time
 
             if queue_customer_number > 0:
-                queues_mean_waiting_time[str(queue_agent.queue_type)] = round(queue_waiting_time_sum/queue_customer_number)
+                queues_mean_waiting_time[str(queue_agent.queue_type)] = round(
+                    queue_waiting_time_sum / queue_customer_number)
 
         return queues_mean_waiting_time
 
-
     """Collecting data about customers that currently are or were in any queue"""
+
     def collect_queue_status_customers(self, status):
-        manager= self.manager
+        manager = self.manager
         serviced_customers = {}
         total = 0
         for queue in manager.queues_agents:
@@ -67,23 +102,6 @@ class SimulationDataCollector:
         return serviced_customers
 
 
-    def collect_system_status_customers(self, status):
-        manager = self.manager
-        count = 0
-        for customer in manager.system_customers:
-            if customer.simulation_status == status:
-                count += 1
-
-        return status, count
-
-
-    def collect_queues(self):
-        manager = self.manager
-        queues = []
-        for queue_agent in manager.queues_agents:
-            queues.append((queue_agent.index, queue_agent.queue_type))
-
-        return queues
 
     def log_final_state(self):
         manager = self.manager
@@ -102,5 +120,3 @@ class SimulationDataCollector:
                 c += 1
         print(c, "<- In queue customers")
         print(len(manager.removed_customers), "<- Removed customers")
-
-

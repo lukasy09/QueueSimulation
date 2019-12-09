@@ -12,3 +12,5 @@ venv
 *.pyc
 
 .vscode
+
+./out

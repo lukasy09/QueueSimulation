@@ -32,8 +32,8 @@ class Customer:
     path = []  # The destination path
     tracked_path = []  # The path that was(in reality) passed by the customer
     next_node_time = 0
-    times = []
-    total_time = 0
+    times = []  # Walktime through nodes
+    total_time = 0  # Total shopping time, that is a sum of all 'times'
 
     # Queues
     waiting_time = None  # Number, time spent in queue waiting for service
