@@ -21,7 +21,7 @@ class ManagingAgent:
     # Simulation constants
     simulation_time = 3600  # time unit e.g seconds, minutes etc.
     pool_size = 1000   # The pool of customers.
-    scene_size = 6, 4  # The scene size m,n where m is number of columns(width) and the n is refers to the height(rows)`
+    scene_size = 6, 4  # The scene size m,n where m is number of rows(height) and the n is refers to the width(columns)`
 
     customer_period_range = None  # This parameter is is set during runtime
     monitoring_success_rate = 0.2  # Probability of monitoring success at a time t

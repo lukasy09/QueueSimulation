@@ -10,10 +10,12 @@ from random import *
 import logging
 import logging.handlers
 
+"""The class runs the simulation."""
 
 
 class Simulation:
 
+    # Simulation output messages
     SETUP_ENV_STR = "Setting up environment"
     STARTING_STR = "Starting for "
 
@@ -23,7 +25,7 @@ class Simulation:
         self.tracked_customer_index = 5  # The tracked customer index in system_customer list
         self.tracked_customer = None  # Tracked customer's object
         self.path_changed = False  # Holding if the tracked customer has changed the position
-        self.speed_factor = 10  # Parametrizing the simulation's speed
+        self.speed_factor = 100  # Parametrizing the simulation speed
 
 
     def run(self):

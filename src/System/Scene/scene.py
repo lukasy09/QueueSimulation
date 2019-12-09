@@ -30,14 +30,12 @@ class Scene:
                         node.connections.append(self.graph[i][j+1])
                         node.connections.append(self.graph[i+1][j+1])
                         node.connections.append(self.graph[i+1][j])
-                        node.exit_pointer = self.graph[i+1][j+1]
                         node.is_start = True
 
                     elif j == self.width - 1:  # Handling the LAST ELEMENT in the FIRST ROW
                         node.connections.append(self.graph[i+1][j])
                         node.connections.append(self.graph[i+1][j-1])
                         node.connections.append(self.graph[i][j-1])
-                        node.exit_pointer = self.graph[i + 1][j]
 
                     else:
                         node.connections.append(self.graph[i][j - 1])
@@ -45,14 +43,12 @@ class Scene:
                         node.connections.append(self.graph[i+1][j + 1])
                         node.connections.append(self.graph[i+1][j])
                         node.connections.append(self.graph[i+1][j-1])
-                        node.exit_pointer = self.graph[i + 1][j + 1]
 
                 elif i == self.height - 1:  # The last row
                     if j == 0:  # Handling the FIRST ELEMENT in the FIRST ROW
                         node.connections.append(self.graph[i - 1][j])
                         node.connections.append(self.graph[i - 1][j + 1])
                         node.connections.append(self.graph[i][j + 1])
-                        node.exit_pointer = self.graph[i][j + 1]
 
 
                     elif j == self.width - 1:  # Handling the LAST ELEMENT in the LAST ROW -> END
@@ -64,7 +60,6 @@ class Scene:
                         node.connections.append(self.graph[i - 1][j - 1])
                         node.connections.append(self.graph[i - 1][j])
                         node.connections.append(self.graph[i - 1][j + 1])
-                        node.exit_pointer = self.graph[i][j + 1]
 
 
 
@@ -76,7 +71,6 @@ class Scene:
                         node.connections.append(self.graph[i][j+1])
                         node.connections.append(self.graph[i+1][j+1])
                         node.connections.append(self.graph[i+1][j])
-                        node.exit_pointer = self.graph[i + 1][j + 1]
 
 
                     elif j == self.width - 1:
@@ -85,7 +79,6 @@ class Scene:
                         node.connections.append(self.graph[i + 1][j - 1])
                         node.connections.append(self.graph[i][j - 1])
                         node.connections.append(self.graph[i-1][j - 1])
-                        node.exit_pointer = self.graph[i + 1][j]
 
 
                     else:
@@ -97,7 +90,6 @@ class Scene:
                         node.connections.append(self.graph[i + 1][j - 1])
                         node.connections.append(self.graph[i][j - 1])
                         node.connections.append(self.graph[i - 1][j - 1])
-                        node.exit_pointer = self.graph[i + 1][j + 1]
 
     def get_random_neighbor_cords(self, cords):
         node = self.graph[cords[0]][cords[1]]
@@ -134,5 +126,4 @@ class Scene:
             for i in row:
                 out += str(i) + "|"
             out += "\n"
-
         return out

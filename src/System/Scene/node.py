@@ -6,7 +6,6 @@ class Node:
         self.row = row
         self.col = col
         self.connections = []  # All possible ways to leave the node
-        self.exit_pointer = None
         self.is_exit = False
         self.is_start = False
 
