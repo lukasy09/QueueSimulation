@@ -28,16 +28,17 @@ class Simulation:
         self.tracked_customer_index = 0  # The tracked customer index in system_customer list
         self.tracked_customer = None  # Tracked customer's object
         self.path_changed = False  # Holding if the tracked customer has changed the position
-        self.speed_factor = 10000  # Parametrizing the simulation speed
+        self.speed_factor = 100  # Parametrizing the simulation speed
 
 
     def run(self):
         # Simulation parameters(if not using the default ones)
-        traffic = Traffic.HIGH
+        traffic = Traffic.VERY_HIGH
         # Setting up initials, creating simulation's environment
         manager = ManagingAgent(traffic=traffic)
 
         self.console_logger.log_message(self.SETUP_ENV_STR)
+        # self.console_logger.clean()
         manager.setup_environment()  # Creating customer pool & queues with passed parameters
         self.console_logger.log_with_await(self.STARTING_STR, 3)
 
@@ -84,8 +85,7 @@ class Simulation:
                         self.tracked_customer = manager.system_customers[self.tracked_customer_index]
                     if self.path_changed and self.tracked_customer.simulation_status == CustomerSimulationStatus.IN:
                         self.path_changed = False
-                        # self.console_logger.clean()
-                        # self.tracked_customer.display_tracked_path()  # Displaying tracked customer's current path
+                        #self.tracked_customer.display_tracked_path()  # Displaying tracked customer's current path
 
 
                 # Customers in system, shopping
@@ -124,11 +124,11 @@ class Simulation:
                                 self.file_logger.add_node(customer.path[node_index])
 
             # Customers waiting in queues
-            # self.console_logger.clean()
-            # self.console_logger.log_message("Time:"+str(current_time))
+            self.console_logger.clean()
+            self.console_logger.log_message("Time:"+str(current_time))
             for queue_agent in manager.queues_agents:
                 customers_queue = queue_agent.queue  # Queue (list)
-                # self.console_logger.log_queue(queue_agent.queue_type, queue_agent.get_active_waiting_customers())
+                self.console_logger.log_queue(queue_agent.queue_type, queue_agent.get_active_waiting_customers())
                 for customer in customers_queue:
                     if customer.simulation_status == CustomerSimulationStatus.IN_QUEUE:
                         customer.set_is_first(True)  # Setting is_first flag in each queue
@@ -146,7 +146,7 @@ class Simulation:
                                 else:
                                     customer.update_waiting_time()
 
-            # time.sleep(1/self.speed_factor)
+            time.sleep(1/self.speed_factor)
             current_time += 1
 
         self.collector.set_data_source(manager)

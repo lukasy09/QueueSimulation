@@ -1,5 +1,6 @@
 from System.Actors.Customer.customer_simulation_status import CustomerSimulationStatus
 from System.Agents.QueueAgent.queue_types import QueueType
+from System.Actors.Customer.customer_status import CustomerStatus
 import json
 
 
@@ -15,6 +16,8 @@ class SimulationDataCollector:
         manager = self.manager
         out = {}
         queues = []
+
+
         for queue_agent in manager.queues_agents:
             indexes = []
             for customer in queue_agent.queue:
@@ -23,16 +26,42 @@ class SimulationDataCollector:
             obj = {
                 "index": queue_agent.index,
                 "type": queue_agent.queue_type,
+                "total": len(queue_agent.queue),
+                "waiting_at_the_end": queue_agent.get_active_waiting_customers(),
                 "queue": indexes,
                 "mean_waiting_time": self.get_mean_waiting_time(queue_agent.index)
             }
 
             queues.append(obj)
 
-        out["queues"] = queues
-
         customers = []
+        total_customers = len(manager.system_customers)
+        vip = 0
+        elderly = 0
+        males = 0
+        females = 0
+        disable = 0
+        pregnant = 0
+        thermal = 0
+
         for customer in manager.system_customers:
+
+            if customer.customer_status == CustomerStatus.VIP:
+                vip += 1
+            if customer.elderly:
+                elderly += 1
+            if customer.sex == 'M':
+                males += 1
+            else:
+                females += 1
+
+            if customer.disable:
+                disable += 1
+            if customer.pregnant:
+                pregnant += 1
+            if customer.thermal:
+                thermal += 1
+
             tracked_path = customer.tracked_path
             obj = {
                 "index": customer.index,
@@ -50,7 +79,19 @@ class SimulationDataCollector:
             }
             customers.append(obj)
 
+        stats = {
+            "all": total_customers,
+            "vip": vip,
+            "elderly": elderly,
+            "males": males,
+            "females": females,
+            "disable": disable,
+            "pregnant": pregnant,
+            "thermal": thermal
+        }
 
+        out["statistics"] = stats
+        out["queues"] = queues
         out["customers"] = customers
         return out
 
@@ -102,21 +143,15 @@ class SimulationDataCollector:
         return serviced_customers
 
 
+    def collect_statistics(self, customer):
+        vip = False
+        if customer.customer_status == CustomerStatus.VIP:
+            vip = True
 
-    def log_final_state(self):
-        manager = self.manager
-        self.collect_data()
-        #
-        print(len(manager.system_customers), "<- Number of customers that were in system")
-        c = 0
-        for customer in manager.system_customers:
-            if customer.simulation_status == CustomerSimulationStatus.IN:
-                c += 1
-        print(c, "<- Number of customers in shopping")
-        print(len(manager.virtual_queue_agent.virtual_queue), "<- Customers in VQ")
-        c = 0
-        for customer in manager.system_customers:
-            if customer.simulation_status == CustomerSimulationStatus.IN_QUEUE:
-                c += 1
-        print(c, "<- In queue customers")
-        print(len(manager.removed_customers), "<- Removed customers")
+        return {
+            "vip": vip,
+            "elderly": customer.elderly,
+
+        }
+
+

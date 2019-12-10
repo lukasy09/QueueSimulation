@@ -16,13 +16,16 @@ class VisualGraph:
         self.ax1 = self.fig.add_subplot(1, 1, 1)
 
     def visualise_scene(self):
-        x = []
-        y = []
+        color = ""
         for i in range(self.height):
             for j in range(self.width):
-                x.append(i)
-                y.append(j)
-        self.ax1.scatter(x, y, s=80)
+                if i == 0 and j == 0:
+                    color = "red"
+                elif i == self.height-1 and j == self.width -1:
+                    color = "black"
+                else:
+                    color = "blue"
+                self.ax1.scatter(i, j, s=80, color=color)
         plt.grid(True)
 
 

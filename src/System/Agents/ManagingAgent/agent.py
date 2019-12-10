@@ -19,7 +19,7 @@ from System.Scene.scene import Scene
 class ManagingAgent:
 
     # Simulation constants
-    simulation_time = 3600  # time unit e.g seconds, minutes etc.
+    simulation_time = 2400 # time unit e.g seconds, minutes etc.
     pool_size = 1000   # The pool of customers.
     scene_size = 6, 4  # The scene size m,n where m is number of rows(height) and the n is refers to the width(columns)`
 
@@ -28,7 +28,6 @@ class ManagingAgent:
     virtual_queue_await_time = 5  # Time after which virtual queue system recognizes new unit in the VQ area
 
     # Generating parameters distributions
-    # shopping_time_distribution = (10 * 60, 50)  # N ~ (m, s), expected value is in seconds
     age_distribution = (40, 22)
     temperature_distribution = (37.6, 0.25)
     service_service_time_distribution = (120, 20)

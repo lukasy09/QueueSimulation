@@ -5,23 +5,40 @@ import time
 
 class ConsoleLogger:
 
-    @staticmethod
-    def log_message(msg):
-        print("\r{0}".format(msg))
+    logging_active = True
 
-    @staticmethod
-    def clean():
-        os.system('cls' if os.name == 'nt' else 'clear')
+    @classmethod
+    def log_message(cls, msg):
+        # sys.stdout.flush()
+        if cls.logging_active:
+            # print("\r{0}".format(msg))
+            sys.stdout.write(str(msg+"\n"))
+            sys.stdout.flush()
+
+    @classmethod
+    def clean(cls):
+        if cls.logging_active:
+            os.system('cls' if os.name == 'nt' else 'clear')
 
     @classmethod
     def log_with_await(cls, msg, await_time, unit_time=1):
-        print("\r{}".format(msg))
-        for i in range(0, await_time):
-            print(await_time-i)
-            time.sleep(unit_time)
-        cls.clean()
+        if cls.logging_active:
+            sys.stdout.write("{}".format(msg))
+            sys.stdout.flush()
+            for i in range(0, await_time):
+                sys.stdout.write(str(await_time-i) + " ")
+                time.sleep(unit_time)
+                sys.stdout.flush()
+            cls.clean()
 
-    def log_queue(self, qtype, count, customer_symbol="*"):
-        stars = customer_symbol * count
-        out = "{}: {}".format(qtype, stars)
-        print(out)
+    @classmethod
+    def log_queue(cls, qtype, count, customer_symbol="*"):
+        if cls.logging_active:
+            stars = customer_symbol * count
+            out = "{}: {}\n".format(qtype, stars)
+            sys.stdout.write(out)
+            sys.stdout.flush()
+
+
+
+
