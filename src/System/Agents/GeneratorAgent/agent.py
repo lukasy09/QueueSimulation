@@ -6,7 +6,7 @@ import uuid
 
 
 class GeneratorAgent:
-
+T
 
     """Customers' parameters"""
     vip_probability = 0.12

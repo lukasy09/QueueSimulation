@@ -21,6 +21,12 @@ class Simulation:
 
 
     def __init__(self, console_logger, file_logger, collector):
+        # Simulation parameters
+        self.simulation_time = 2400  # time unit e.g seconds, minutes etc.
+        self.traffic = Traffic.VERY_HIGH  # Simulation mode
+        self.pool_size = 1000  # The pool of customers.
+        self.scene_size = 6, 4  # The scene size m,n where m is number of rows(height) and the n is refers to the width(columns)`
+
         self.console_logger = console_logger  # Console logger
         self.file_logger = file_logger  # File logger
         self.collector = collector  # Collector, aggreagating simulation's data
@@ -32,10 +38,8 @@ class Simulation:
 
 
     def run(self):
-        # Simulation parameters(if not using the default ones)
-        traffic = Traffic.VERY_HIGH
-        # Setting up initials, creating simulation's environment
-        manager = ManagingAgent(traffic=traffic)
+        # Setting up initials, Managing Agent, creating simulation's environment
+        manager = ManagingAgent(traffic=self.traffic, time=self.simulation_time, pool_size=self.pool_size, scene_size=self.scene_size)
 
         self.console_logger.log_message(self.SETUP_ENV_STR)
         # self.console_logger.clean()
@@ -85,7 +89,7 @@ class Simulation:
                         self.tracked_customer = manager.system_customers[self.tracked_customer_index]
                     if self.path_changed and self.tracked_customer.simulation_status == CustomerSimulationStatus.IN:
                         self.path_changed = False
-                        #self.tracked_customer.display_tracked_path()  # Displaying tracked customer's current path
+                        # self.tracked_customer.display_tracked_path()  # Displaying tracked customer's current path
 
 
                 # Customers in system, shopping

@@ -18,11 +18,7 @@ from System.Scene.scene import Scene
 
 class ManagingAgent:
 
-    # Simulation constants
-    simulation_time = 2400 # time unit e.g seconds, minutes etc.
-    pool_size = 1000   # The pool of customers.
-    scene_size = 6, 4  # The scene size m,n where m is number of rows(height) and the n is refers to the width(columns)`
-
+    # System constants
     customer_period_range = None  # This parameter is is set during runtime
     monitoring_success_rate = 0.2  # Probability of monitoring success at a time t
     virtual_queue_await_time = 5  # Time after which virtual queue system recognizes new unit in the VQ area
@@ -56,9 +52,6 @@ class ManagingAgent:
     system_customers = []   # Collection of all customers that came through the system
     removed_customers = []  # Collection of all customers that had left the system before the simulation  ended
 
-    # Defaults
-    traffic = Traffic.MEDIUM
-
     # Agents
     identification_agent = None  # Agent identifying the customer,
     monitoring_agents = []
@@ -69,8 +62,12 @@ class ManagingAgent:
     # Others aggregated objects
     dao = CustomerDao()
 
-    def __init__(self, traffic):
+    def __init__(self, traffic, time, pool_size, scene_size):
         self.traffic = traffic
+        self.simulation_time = time
+        self.pool_size = pool_size
+        self.scene_size = scene_size
+
         self.gen = GeneratorAgent(self.dao)
         self.customer_period_range = self.customer_period_ranges[self.traffic]
         self.scene = Scene(self.scene_size[0], self.scene_size[1])
@@ -131,9 +128,6 @@ class ManagingAgent:
     """Passing the customer on to the VQ agent and deleting from the system list(shopping)"""
     def join_virtual_queue(self, customer):
         self.virtual_queue_agent.accept_customer(customer)
-        # for i, unit in enumerate(self.system_customers):
-        #     if unit.index == customer.index:
-        #         del self.system_customers[i]
         customer.set_simulation_status(CustomerSimulationStatus.IN_VQ)
 
 
