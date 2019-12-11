@@ -16,7 +16,7 @@ import logging.handlers
 class Simulation:
 
     # Simulation output messages
-    SETUP_ENV_STR = "Setting up environment"
+    SETUP_ENV_STR = "Setting up simulation environment..."
     STARTING_STR = "Starting for "
 
 
@@ -34,7 +34,7 @@ class Simulation:
         self.tracked_customer_index = 0  # The tracked customer index in system_customer list
         self.tracked_customer = None  # Tracked customer's object
         self.path_changed = False  # Holding if the tracked customer has changed the position
-        self.speed_factor = 100  # Parametrizing the simulation speed
+        self.speed_factor = 10  # Parametrizing the simulation speed
 
 
     def run(self):
@@ -129,7 +129,7 @@ class Simulation:
 
             # Customers waiting in queues
             self.console_logger.clean()
-            self.console_logger.log_message("Time:"+str(current_time))
+            self.console_logger.log_message("Time:"+str(current_time) + " [s] ")
             for queue_agent in manager.queues_agents:
                 customers_queue = queue_agent.queue  # Queue (list)
                 self.console_logger.log_queue(queue_agent.queue_type, queue_agent.get_active_waiting_customers())

@@ -21,7 +21,7 @@ class VisualGraph:
             for j in range(self.width):
                 if i == 0 and j == 0:
                     color = "red"
-                elif i == self.height-1 and j == self.width -1:
+                elif i == self.height-1 and j == self.width - 1:
                     color = "black"
                 else:
                     color = "blue"
@@ -39,6 +39,11 @@ class VisualGraph:
         self.visualise_scene()
         self.ax1.plot(xar, yar)
 
+        last_x = len(xar)-1
+        last_y = len(yar)-1
+
+        if last_x != self.width-1 or last_y != self.height-1:
+            self.ax1.scatter(xar[last_x], yar[last_y], s=80, color="yellow")
 
     def read_data(self):
         pull_data = open(self.DATA_SOURCE, "r").read()
