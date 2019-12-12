@@ -3,6 +3,7 @@ from System.Agents.ManagingAgent.simulation_mode import Traffic
 from System.Actors.Customer.customer_monitoring_status import CustomerMonitoringStatus
 from System.Actors.Customer.customer_simulation_status import CustomerSimulationStatus
 from Utils.GeneratorUtil import GeneratorUtil
+from System.Agents.GeneratorAgent.agent import GeneratorAgent
 import time
 import os
 from datetime import datetime
@@ -48,8 +49,8 @@ class Simulation:
 
         # Start
         current_time = 0  # Variable holds the current time of simulation
-        appear_time = GeneratorUtil.get_next_appear_time(manager.customer_period_range[0],
-                                                         manager.customer_period_range[1], current_time)
+        appear_time = GeneratorAgent.get_next_appear_time(manager.customer_period_range[0],
+                                                          manager.customer_period_range[1], current_time)
         while current_time <= manager.simulation_time:
             # Is new customer in our system?
             if current_time == appear_time:
@@ -59,11 +60,11 @@ class Simulation:
                 manager.import_to_system(new_customer, new_customer_index)
 
                 # Settings customer's simulation parameters
-                new_customer.set_path(GeneratorUtil.generate_path(manager.scene))
+                new_customer.set_path(GeneratorAgent.generate_path(manager.scene))
 
-                path_time = GeneratorUtil.generate_next_nodetime(manager.node_time_distribution[0],
-                                                                 manager.node_time_distribution[1],
-                                                                 manager.node_time_distribution[2])
+                path_time = GeneratorAgent.generate_next_nodetime(manager.node_time_distribution[0],
+                                                                  manager.node_time_distribution[1],
+                                                                  manager.node_time_distribution[2])
                 new_customer.set_next_node_time(path_time)
                 new_customer.append_path_time(path_time)
                 new_customer.start_shopping()
@@ -72,8 +73,8 @@ class Simulation:
                 manager.activate_monitoring_agent(new_customer)
 
                 # The time when the next unit is appearing in our system
-                appear_time = GeneratorUtil.get_next_appear_time(manager.customer_period_range[0],
-                                                                 manager.customer_period_range[1], current_time)
+                appear_time = GeneratorAgent.get_next_appear_time(manager.customer_period_range[0],
+                                                                  manager.customer_period_range[1], current_time)
 
             # Monitoring customer behaviour
             for monitoring_agent in manager.monitoring_agents:
@@ -107,6 +108,7 @@ class Simulation:
 
                 # Customers in virtual queue
                 elif customer.simulation_status == CustomerSimulationStatus.IN_VQ:
+                    customer.set_avg_speed(len(customer.tracked_path)/customer.total_time)
                     assigned_queue_type = manager.virtual_queue_agent.assign_queue(customer)  # Assigning queue type by the customer's state
                     manager.delegate_customer(customer, assigned_queue_type)  # Sending the customer to the right queue
 
@@ -118,7 +120,7 @@ class Simulation:
                         node_index = len(customer.tracked_path)
                         if node_index < len(customer.path):
                             customer.append_transition(customer.path[node_index])
-                            path_time = GeneratorUtil.generate_next_nodetime(manager.node_time_distribution[0], manager.node_time_distribution[1], manager.node_time_distribution[2])
+                            path_time = GeneratorAgent.generate_next_nodetime(manager.node_time_distribution[0], manager.node_time_distribution[1], manager.node_time_distribution[2])
                             customer.set_next_node_time(path_time)
                             customer.append_path_time(path_time)
                             customer.update_total_time(path_time)

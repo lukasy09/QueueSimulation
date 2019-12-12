@@ -24,8 +24,10 @@ class ManagingAgent:
     virtual_queue_await_time = 5  # Time after which virtual queue system recognizes new unit in the VQ area
 
     # Generating parameters distributions
-    age_distribution = (40, 22)
-    temperature_distribution = (37.6, 0.25)
+
+    age_distribution = (45, 18)
+    temperature_distribution = (36.6, 1.3)
+
     service_service_time_distribution = (120, 20)
     node_time_distribution = (12, 15, 5)  # Mu, Sigma, Offset
 
@@ -51,6 +53,9 @@ class ManagingAgent:
     customer_pool = []      # Collection of customers that may take part in simulation
     system_customers = []   # Collection of all customers that came through the system
     removed_customers = []  # Collection of all customers that had left the system before the simulation  ended
+
+    # Defaults
+    traffic = Traffic.MEDIUM
 
     # Agents
     identification_agent = None  # Agent identifying the customer,
@@ -153,7 +158,7 @@ class ManagingAgent:
             optimal_agent.accept(customer)
 
         self.virtual_queue_agent.remove_customer(customer)  # Removing from the VQ
-        customer.set_service_time(GeneratorUtil.generate_service_time(self.service_service_time_distribution))
+        customer.set_service_time(GeneratorAgent.generate_service_time(self.service_service_time_distribution))
         customer.set_simulation_status(CustomerSimulationStatus.IN_QUEUE)  # Setting the customer's status
         customer.start_waiting()
 

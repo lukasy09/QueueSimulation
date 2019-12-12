@@ -27,7 +27,7 @@ class VirtualQueueAgent:
         if self.instance is not None:
             if customer.customer_status == CustomerStatus.VIP:
                 return QueueType.VIP
-            elif customer.thermal:
+            elif customer.thermal or customer.avg_speed > 0.085:
                 return QueueType.THERMAL
 
             elif customer.elderly or customer.disable or customer.pregnant:

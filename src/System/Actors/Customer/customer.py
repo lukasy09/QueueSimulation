@@ -34,6 +34,7 @@ class Customer:
     next_node_time = 0
     times = []  # Walktime through nodes
     total_time = 0  # Total shopping time, that is a sum of all 'times'
+    avg_speed = 0
 
     # Queues
     waiting_time = None  # Number, time spent in queue waiting for service
@@ -93,6 +94,9 @@ class Customer:
 
     def update_total_time(self, time):
         self.total_time += time
+
+    def set_avg_speed(self, speed):
+        self.avg_speed = speed
 
     # Graph parameters
 
