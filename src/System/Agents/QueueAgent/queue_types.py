@@ -2,8 +2,8 @@
 
 
 class QueueType:
-    VIP = "vip"
-    SPECIAL = "special"
-    THERMAL = "thermal"
-    NORMAL = "normal"
+    VIP = "VIP"
+    SPECIAL = "SPECIAL"
+    THERMAL = "THERMAL"
+    NORMAL = "NORMAL"
 

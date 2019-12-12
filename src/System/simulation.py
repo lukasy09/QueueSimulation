@@ -20,13 +20,13 @@ class Simulation:
     STARTING_STR = "Starting for "
 
 
-    def __init__(self, console_logger, file_logger, collector):
+    def __init__(self, config, console_logger, file_logger, collector):
         # Simulation parameters
-        self.simulation_time = 2400  # time unit e.g seconds, minutes etc.
-        self.traffic = Traffic.VERY_HIGH  # Simulation mode
-        self.pool_size = 1000  # The pool of customers.
-        self.scene_size = 6, 4  # The scene size m,n where m is number of rows(height) and the n is refers to the width(columns)`
-        self.speed_factor = 500  # Parametrizing the simulation speed
+        self.simulation_time = config['simulation_time']  # time unit e.g seconds, minutes etc.
+        self.traffic = config['traffic']  # Simulation mode
+        self.pool_size = config['pool_size']  # The pool of customers.
+        self.scene_size = config['scene_size'][0], config['scene_size'][1]  # The scene size m,n where m is number of rows(height) and the n is refers to the width(columns)`
+        self.speed_factor = config['speed_factor']  # Parametrizing the simulation speed
 
         self.console_logger = console_logger  # Console logger
         self.file_logger = file_logger  # File logger
