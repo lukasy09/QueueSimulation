@@ -29,7 +29,8 @@ class SimulationDataCollector:
                 "total": len(queue_agent.queue),
                 "waiting_at_the_end": queue_agent.get_active_waiting_customers(),
                 "queue": indexes,
-                "mean_waiting_time": self.get_mean_waiting_time(queue_agent.index)
+                "mean_waiting_time": self.get_mean_waiting_time(queue_agent.index),
+                "active_customers_per_time": queue_agent.queue_count_through_time
             }
 
             queues.append(obj)

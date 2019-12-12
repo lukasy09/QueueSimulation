@@ -4,16 +4,11 @@ from System.Actors.Customer.customer_simulation_status import CustomerSimulation
 
 class QueueAgent:
 
-    # queue identifier
-    index = None
-
-    # type of the related queue to the agent
-    queue_type = QueueType.NORMAL  # NORMAL is the default one
-    expected_waiting_time = 0
-
     def __init__(self, index):
         self.index = index
         self.queue = []
+        self.queue_type = None
+        self.queue_count_through_time = []  # Info how the queue changed through time
 
     def set_queue_type(self, queue_type):
         self.queue_type = queue_type
@@ -35,6 +30,9 @@ class QueueAgent:
             if customer.simulation_status == CustomerSimulationStatus.IN_QUEUE:
                 count += 1
         return count
+
+    def append_active_waiting_customers(self, count):
+        self.queue_count_through_time.append(count)
 
     def __str__(self):
         return "QueueAgent: Index: {}, type: {}, number of people waiting: {}"\

@@ -26,6 +26,7 @@ class Simulation:
         self.traffic = Traffic.VERY_HIGH  # Simulation mode
         self.pool_size = 1000  # The pool of customers.
         self.scene_size = 6, 4  # The scene size m,n where m is number of rows(height) and the n is refers to the width(columns)`
+        self.speed_factor = 500  # Parametrizing the simulation speed
 
         self.console_logger = console_logger  # Console logger
         self.file_logger = file_logger  # File logger
@@ -34,7 +35,6 @@ class Simulation:
         self.tracked_customer_index = 0  # The tracked customer index in system_customer list
         self.tracked_customer = None  # Tracked customer's object
         self.path_changed = False  # Holding if the tracked customer has changed the position
-        self.speed_factor = 10  # Parametrizing the simulation speed
 
 
     def run(self):
@@ -129,10 +129,15 @@ class Simulation:
 
             # Customers waiting in queues
             self.console_logger.clean()
+            self.file_logger.clean_histogram_file()
             self.console_logger.log_message("Time:"+str(current_time) + " [s] ")
             for queue_agent in manager.queues_agents:
                 customers_queue = queue_agent.queue  # Queue (list)
-                self.console_logger.log_queue(queue_agent.queue_type, queue_agent.get_active_waiting_customers())
+                active_customers = queue_agent.get_active_waiting_customers()
+                queue_agent.append_active_waiting_customers(active_customers)
+                self.console_logger.log_queue(queue_agent.queue_type, active_customers)  # Logging to the console
+                self.file_logger.log_histogram_data(queue_agent.queue_type, active_customers)  # Logging to the file being under listening
+
                 for customer in customers_queue:
                     if customer.simulation_status == CustomerSimulationStatus.IN_QUEUE:
                         customer.set_is_first(True)  # Setting is_first flag in each queue

@@ -4,6 +4,7 @@ import json
 class FileLogger:
 
     TRACKED_DATA_DESTINATION = "./data/tracked_customer.log"
+    HISTOGRAM_DATA_DESTINATION = "./data/histogram.log"
     OUTPUT_DATA_DESTINATIONS = "../out/output.json"
 
 
@@ -23,7 +24,17 @@ class FileLogger:
         file.write(row)
         file.close()
 
+    def log_histogram_data(self, type_, value):
+        row = "{}:{}\n".format(str(type_), str(value))
+        file = open(self.HISTOGRAM_DATA_DESTINATION, "a+")
+        file.write(row)
+        file.close()
+
     def log_json_output(self, data):
         with open(self.OUTPUT_DATA_DESTINATIONS, 'w+') as outfile:
             outfile.truncate(0)
             json.dump(data, outfile, indent=2)
+
+    def clean_histogram_file(self):
+        file = open(self.HISTOGRAM_DATA_DESTINATION, "w+")
+        file.truncate(0)

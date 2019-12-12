@@ -80,11 +80,3 @@ class VisualGraph:
 
 graph = VisualGraph(6, 4)
 graph.track_path()
-# # path = [0, 1, 2]
-# # path_2 = [0, 0, 1]
-# # g.visualise_path(path, path_2)
-# # path = [0, 1, 2, 1]
-# # path_2 = [0, 0, 1, 1]
-# # g.visualise_path(path, path_2)
-# # # plt.plot(path, path_2)
-# # # plt.show()
