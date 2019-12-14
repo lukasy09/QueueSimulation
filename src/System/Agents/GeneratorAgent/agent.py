@@ -7,11 +7,14 @@ import uuid
 
 class GeneratorAgent:
 
+    """Generating parameters"""
+
     age_distribution = (45, 18)
     temperature_distribution = (36.6, 1)
+    vip_probability = 0.12
 
     """Customers' parameters"""
-    vip_probability = 0.12
+
 
     customer_pool = []
     path_length = (1, 20)
