@@ -8,42 +8,41 @@ from System.Actors.Customer.customer_monitoring_status import CustomerMonitoring
 
 
 class Customer:
-    # identification data stored in the main db
-    index = None  # Informs about creation order of customers, unique(Integer).
-    biometric = None  # Biometric data of a customer, unique hash
-    customer_status = CustomerStatus.NORMAL  # Informs about the customer status(e.g is he/she a VIP or a REGULAR customer or a NORMAL)
-    is_new = True  # Flag(Boolean) informing if the unit is known by the system before the simulation's start
-
-    # Customer's properties set by the monitoring system based on the physical features
-    elderly = False  # Boolean
-    sex = None  # Enumeration
-    disable = False  # Boolean
-    pregnant = False  # Boolean
-    thermal = False  # Boolean
-
-    # Simulation/System info
-    simulation_status = CustomerSimulationStatus.BEFORE  # Default status, BEFORE entering the system
-    monitoring_status = CustomerMonitoringStatus.BEFORE_MONITORING  # Enumeration
-
-    virtual_queue_remaining_time = None  # Integer
-    in_virtual_queue_area = False  # Boolean
-
-    # Graph
-    path = []  # The destination path
-    tracked_path = []  # The path that was(in reality) passed by the customer
-    next_node_time = 0
-    times = []  # Walktime through nodes
-    total_time = 0  # Total shopping time, that is a sum of all 'times'
-    avg_speed = 0
-
-    # Queues
-    waiting_time = None  # Number, time spent in queue waiting for service
-    service_time = None
-    is_first = False  # Flag informing if the customer is first in queue
 
     def __init__(self, identifier=None, biometric=None):
-        self.index = identifier
-        self.biometric = biometric
+        self.index = identifier  # Informs about creation order of customers, unique(Integer).
+        self.biometric = biometric  # Biometric data of a customer, unique hash
+
+        self.customer_status = CustomerStatus.NORMAL  # Informs about the customer status(e.g is he/she a VIP or a REGULAR customer or a NORMAL)
+        self.is_new = True  # Flag(Boolean) informing if the unit is known by the system before the simulation's start
+
+        # Customer's properties set by the monitoring system based on the physical features
+        self.elderly = False  # Boolean
+        self.sex = None  # Enumeration
+        self.disable = False  # Boolean
+        self.pregnant = False  # Boolean
+        self.thermal = False  # Boolean
+
+        # Simulation/System info
+        self.simulation_status = CustomerSimulationStatus.BEFORE  # Default status, BEFORE entering the system
+        self.monitoring_status = CustomerMonitoringStatus.BEFORE_MONITORING  # Enumeration
+
+        self.appear_time = None
+        self.virtual_queue_remaining_time = None  # Integer
+        self.in_virtual_queue_area = False  # Boolean
+
+        # Graph
+        self.path = []  # The destination path
+        self.tracked_path = []  # The path that was(in reality) passed by the customer
+        self.next_node_time = 0
+        self.times = []  # Walktime through nodes
+        self.total_time = 0  # Total shopping time, that is a sum of all 'times'
+        self.avg_speed = 0
+
+        # Queues
+        self.waiting_time = None  # Number, time spent in queue waiting for service
+        self.service_time = None
+        self.is_first = False  # Flag informing if the customer is first in queue
 
     """Mutation methods, setters and updates method(s)"""
 
@@ -62,6 +61,8 @@ class Customer:
     def set_simulation_status(self, status):
         self.simulation_status = status
 
+    def set_appear_time(self, time):
+        self.appear_time = time
     # Simulation parameters - times
 
     def set_next_node_time(self, time):

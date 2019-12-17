@@ -54,15 +54,11 @@ class ManagingAgent:
     system_customers = []   # Collection of all customers that came through the system
     removed_customers = []  # Collection of all customers that had left the system before the simulation  ended
 
-    # Defaults
-    traffic = Traffic.MEDIUM
-
     # Agents
     identification_agent = None  # Agent identifying the customer,
     monitoring_agents = []
     virtual_queue_agent = None  # VQ agent
     queues_agents = []
-
 
     # Others aggregated objects
     dao = CustomerDao()

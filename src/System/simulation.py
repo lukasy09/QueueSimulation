@@ -58,8 +58,9 @@ class Simulation:
                 new_customer_index = GeneratorUtil.generate_integer_in_range(0, len(manager.customer_pool))
                 new_customer = manager.customer_pool[new_customer_index]
                 manager.import_to_system(new_customer, new_customer_index)
+                new_customer.set_appear_time(current_time)
 
-                # Settings customer's simulation parameters
+                # Setting customer tracking parameters
                 new_customer.set_path(GeneratorAgent.generate_path(manager.scene))
 
                 path_time = GeneratorAgent.generate_next_nodetime(manager.node_time_distribution[0],
@@ -83,7 +84,6 @@ class Simulation:
 
             # Customer's behaviour in system
             for i, customer in enumerate(manager.system_customers):
-
                 # Handling logs for tracked customer
                 if i == self.tracked_customer_index:
                     if self.tracked_customer is None:

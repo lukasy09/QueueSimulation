@@ -73,6 +73,7 @@ class SimulationDataCollector:
                 "disable": customer.disable,
                 "pregnant": customer.pregnant,
                 "thermal": customer.thermal,
+                "appear_time": customer.appear_time,
                 "tracked_path": customer.tracked_path,
                 "times": customer.times,
                 'total_shopping_time': customer.total_time,
