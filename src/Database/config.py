@@ -1,6 +1,6 @@
 db_config = {
     "user": "root",
-    "password": "",
+    "password": "tiger",
     "db": "queue_simulation",
     "host": "127.0.0.1",
 }

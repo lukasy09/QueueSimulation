@@ -1,4 +1,5 @@
 CREATE DATABASE queue_simulation;
+USE queue_simulation;
 
 CREATE TABLE `customers` (
 	`id` INT(1) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT COMMENT 'Primary key',

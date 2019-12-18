@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
+import numpy as np
 
 queues = []
 labels = []
@@ -9,7 +10,8 @@ axes = []
 anims = []
 pull_data = open("../data/queue_usage.log", "r").read()
 data_array = pull_data.split('\n')
-
+fig, axes = plt.subplots(2,2, figsize=(8,8))
+fig
 
 def animate(j):
     pull_data = open("../data/queue_usage.log", "r").read()
@@ -26,24 +28,17 @@ def animate(j):
                 new_val.append(int(val))
             values.append(new_val)
 
-    for i, figure in enumerate(axes):
-        if len(values) == len(axes):
-            axes[i].clear()
-            axes[i].plot(values[i])
-            axes[i].set_xlabel("Time [s]")
-            axes[i].set_ylabel("Number of customers")
-            axes[i].set_title(labels[i])
+    counter = 0
+    for i in range(len(axes)):
+        for j in range(len(axes[i])):
+            if (len(values) == 4):
+                axes[i, j].clear()
+                axes[i, j].plot(values[counter])
+                # axes[i, j].set_xlabel("Time [s]")
+                axes[i, j].set_ylabel("Number of customers")
+                axes[i, j].set_title(labels[counter])
+                counter +=1
 
 
-for i in range(len(data_array)):
-    el = data_array[i]
-    if el.find(":") > 0:
-        fig = plt.figure(i + 1)
-        figures.append(fig)
-
-for i in range(len(figures)):
-    anim = animation.FuncAnimation(figures[i], animate, interval=2000)
-    anims.append(anim)
-    ax = figures[i].add_subplot(111)
-    axes.append(ax)
+anim = animation.FuncAnimation(fig, func=animate, interval=100)
 plt.show()

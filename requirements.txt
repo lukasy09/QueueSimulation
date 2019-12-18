@@ -4,3 +4,4 @@ uuid==1.30
 virtualenv==16.0.0
 virtualenv-clone==0.5.3
 mysql-connector-python==8.0.18
+matplotlib
