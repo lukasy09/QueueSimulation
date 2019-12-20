@@ -107,7 +107,7 @@ class SimulationDataCollector:
                 for customer in queue_agent.queue:
                     count += customer.waiting_time
                 length = len(queue_agent.queue)
-        assert length > 0
+        # assert length > 0
         return count/length
 
 

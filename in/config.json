@@ -1,7 +1,7 @@
 {
-  "simulation_time": 1400,
+  "simulation_time": 7200,
   "traffic": 5,
   "pool_size": 1000,
   "scene_size": [6, 4],
-  "speed_factor": 30
+  "speed_factor": 3000
 }

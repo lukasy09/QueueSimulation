@@ -13,4 +13,6 @@ venv
 
 .vscode
 
-./out
+out/output.json
+
+/out

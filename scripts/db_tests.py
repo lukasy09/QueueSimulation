@@ -1,4 +1,5 @@
 import mysql.connector
+
 db_config = {
     "user": "root",
     "password": "",
@@ -12,7 +13,7 @@ cnx = mysql.connector.connect(user=db_config["user"],
                                    database=db_config["db"])
 cursor = cnx.cursor(buffered = True)
 
-query = ("SELECT * FROM customers where id = 29")
+query = ("SELECT * FROM customers")
 cursor.execute(query)
 
 for (id, biometric, customer_status, is_new) in cursor:
