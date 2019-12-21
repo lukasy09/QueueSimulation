@@ -3,6 +3,7 @@ from SimulationDataCollector.collector import SimulationDataCollector
 from Logger.console_logger import ConsoleLogger
 from Logger.file_logger import FileLogger
 from Loader.input_loader import SimulationInputLoader
+from ReportGenerator.xls_report import XLSReportGenerator
 
 # Objects cooperating with simulation
 console_logger = ConsoleLogger()
@@ -16,3 +17,7 @@ simulation = Simulation(simulation_config, console_logger, file_logger, collecto
 out = simulation.run()
 # Simulation end
 file_logger.log_json_output(out)
+
+# Excell reports
+gen = XLSReportGenerator("../out/output.json", "../out/reports/")
+gen.build_report()
