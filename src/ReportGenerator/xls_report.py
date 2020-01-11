@@ -1,4 +1,4 @@
-import xlwt
+# import xlwt
 from xlwt import Workbook
 import json
 from datetime import datetime
@@ -60,8 +60,16 @@ class XLSReportGenerator:
             customers = data['customers']
             self.write_customers(customers)
 
-
+            sheet_index = 3
+            for queue in queues:
+                self.add_sheet(queue["type"])
+                self.write_queue_usage(sheet_index, queue["active_customers_per_time"])
+                sheet_index += 1
         self.submit()
+
+    def write_queue_usage(self,sheet_index, queue_usage):
+        for i, count in enumerate(queue_usage):
+            self.sheets[sheet_index].write(i, 0, count)
 
     def submit(self):
         final_path = "{}{}".format(self.output_path, self.generate_report_name())

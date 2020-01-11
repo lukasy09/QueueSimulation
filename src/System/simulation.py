@@ -133,12 +133,12 @@ class Simulation:
             self.console_logger.clean()
             self.file_logger.clean_histogram_file()
             self.file_logger.clean_queues_file()
-            self.console_logger.log_message("Time:"+str(current_time) + " [s] ")
+            # self.console_logger.log_message("Time:"+str(current_time) + " [s] ")
             for queue_agent in manager.queues_agents:
                 customers_queue = queue_agent.queue  # Queue (list)
                 active_customers = queue_agent.get_active_waiting_customers()
                 queue_agent.append_active_waiting_customers(active_customers)
-                self.console_logger.log_queue(queue_agent.queue_type, active_customers)  # Logging to the console
+                # self.console_logger.log_queue(queue_agent.queue_type, active_customers)  # Logging a queue to the console
                 self.file_logger.log_histogram_data(queue_agent.queue_type, active_customers)  # Logging to the file being under listening
                 data = {
                     "type": queue_agent.queue_type,
@@ -163,7 +163,7 @@ class Simulation:
                                 else:
                                     customer.update_waiting_time()
 
-            time.sleep(1/self.speed_factor)
+            # time.sleep(1/self.speed_factor)
             current_time += 1
 
         self.collector.set_data_source(manager)
